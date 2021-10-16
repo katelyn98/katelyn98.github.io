@@ -7,7 +7,7 @@ importance: 1
 category: Interactive Visualizations
 ---
 
-View our deployed web app of [***Visualizing Wildfires in the United States***](https://cmu-vis-2021.github.io/assignment-3-environment-viz/).
+View our deployed web app of ***[Visualizing Wildfires in the United States](https://cmu-vis-2021.github.io/assignment-3-environment-viz/)***.
 
 In collaboration with Swetha Kannan, we create interaction visualizations for a subset of reported fires from the US Forest Service’s [SpatialWildfire Occurrence Data for The United States](https://www.fs.usda.gov/rds/archive/Catalog/RDS-2013-0009.5). This was done as a class project for [Data Visualizations class](https://dig.cmu.edu/courses/2021-fall-datavis.html) at Carnegie Mellon University. To learn more about the development process and design decisions, check out our [`README.md`](https://github.com/CMU-Vis-2021/assignment-3-environment-viz#readme).
 
