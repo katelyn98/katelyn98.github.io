@@ -4,7 +4,7 @@ title: projects
 permalink: /projects/
 description: A collection of research, class, and personal projects.
 nav: true
-display_categories: [Interactive Visualizations, Computer Vision, Explainable AI]
+display_categories: [Explainable AI, Interactive Visualizations, Computer Vision]
 horizontal: false
 ---
 <div class="projects">
