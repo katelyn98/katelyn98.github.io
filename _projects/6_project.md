@@ -41,7 +41,7 @@ The VGG did predict that this was a doberman, but you can see that it is focusin
 
 ### Human vs Inception V3 & VGG16
 
-After seeing how these two models produced significantly different XRAI heatmaps, I wondered how humans would produce this heatmap for the same image. I conducted a very low-cost study to find some preliminary results. I drafted up some very [simple directions](https://drive.google.com/drive/u/2/folders/1V2uBFsWO592eOiWqj67vi0yL_T3nlo-c) and sent it to four of my friends. Their results can be seen below. 
+After seeing how these two models produced significantly different XRAI heatmaps, I wondered how humans would produce this heatmap for the same image. I conducted a very low-cost study to find some preliminary results. I drafted up some very [simple directions](https://drive.google.com/file/d/1CuVTnwA4-vSRJcl0fie9-BxVMut4GXo0/view?usp=sharing) and sent it to four of my friends. Their results can be seen below. 
 
 <img src="/assets/img/humanresults.png" alt="drawing" width="100%"/>
 
