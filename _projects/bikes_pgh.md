@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Distribution of Smart Mobility Resources
-description: Personal research project on Pittsburgh's Healthy Ride Bike Stations.
+title: Smart Mobility Resources
+description: Research projects on bike sharing and electric scooter programs.
 img: /assets/img/bikesviz.gif
 importance: 4
 category: Interactive Visualizations
@@ -24,6 +24,6 @@ Since my study abroad research trip to Manizales was cancelled, I decided to lea
 
 Currently as a side project with [Dr. Nik Matelero](), [Dr. Sarah Fox](), and [Dr. Patrick Carrington](), I have been scraping Twitter to fetch tweets talking about the new electric scooters offered in Pittsburgh. The tweets are connected to a google spreadsheet and will eventually be automatically scraped once every day. The scraper also grabs videos and images to include in the database. 
 
-From a very preliminary analysis, I identified several themes from the tweets including unusual or illegal uses, disrepect or damage of scotters, scooter accidents, and affordability. 
+From a very preliminary analysis, I identified several themes from the tweets including *unusual or illegal uses*, *disrepect or damage of scotters*, *scooter accidents*, and *affordability*. 
 
 In the future, I hope to continue coding out the rest of the tweet database and create a UI for city officials in any city to get a real-time understanding of what the public thinks about new transportation resources deployed. 
