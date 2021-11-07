@@ -16,7 +16,10 @@ We are exploring different interactions and interfaces for non-expert users to b
 To learn more about shape bias, you can read this paper from ICLR 2019: [ImageNet-trained CNNs are biased towards texture; increasing shape bias improves accuracy and robustness](https://openreview.net/forum?id=Bygh9j09KX). 
 
 
-## Working Demo (*still under construction - project due November 30th*)
+## Working Demo 
+
+Not all features are fully implemented yet (*still under construction - project due November 30th*).
+
 [Demo](https://cmu-vis-2021.github.io/Human-vs-Machine-Final-Project/)
 
 [Codebase](https://github.com/CMU-Vis-2021/Human-vs-Machine-Final-Project)
