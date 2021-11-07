@@ -17,6 +17,6 @@ To learn more about shape bias, you can read this paper from ICLR 2019: [ImageNe
 
 
 ## Working Demo (*still under construction - project due November 30th*)
-[Demo](cmu-vis-2021.github.io/human-vs-machine-final-project/)
+[Demo](https://cmu-vis-2021.github.io/human-vs-machine-final-project/)
 
 [Codebase](https://github.com/CMU-Vis-2021/Human-vs-Machine-Final-Project)
