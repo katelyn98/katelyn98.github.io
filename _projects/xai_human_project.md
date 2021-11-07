@@ -45,7 +45,7 @@ After seeing how these two models produced significantly different XRAI heatmaps
 
 <img src="/assets/img/humanresults.png" alt="drawing" width="100%"/>
 
-Running this study on a large scale and then averaging the color for every pixel from the study results would generate one final image which may or may not look similar to the model's XRAI heatmap. If it does, this can suggest that humans do use similar features that these models use when reasoning the classification of an image. I am looking forward to expanding this study in this future.
+**Future Work**. Running this study on a large scale and then averaging the color for every pixel from the study results would generate one final image which may or may not look similar to the model's XRAI heatmap. If it does look similar, this can suggest that humans do use similar features that these models use when reasoning the classification of an image. The collected human-generated saliency maps can be used to fine tune a model to generate saliency maps that are human-like. It could be useful to just see the output of this expeirment regardless to identify future directions. 
 
 
 ---
@@ -87,5 +87,4 @@ The InceptionV3 prediction was also 'African elephant, Loxodonta africana'. We c
 
 ### Future Work
 
-These results are just preliminary experiments that I did. More work should be done on other models, other corruptions from ImageNet-C, and other texture cue-conflicts. 
-Should continue this more on other severity levels, other corruptions, and other models. 
+These results are just preliminary experiments that I did. More work should be done on other models, other corruptions from ImageNet-C, and other texture cue-conflicts. Should continue this more on other severity levels, other corruptions, and other models. 
