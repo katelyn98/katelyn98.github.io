@@ -13,7 +13,7 @@ In collaboration with Swetha Kannan, we create interaction visualizations for a 
 
 ### Exploratory Data Analysis
 
-We retrieved our data from the US Forest Service's Spatial Wildfire Occurence Data for The United States. The dataset was originally provided as an .sqlite file type and had over 2 million records of fires from 1992 - 2018. We created a subset of this dataset using SQL queries. Our filtered subset contains 259 records of fires from 2000 - 2018 that burned over 25,000 acres. However, I performed exploratory data analysis on this dataset for the previous assignment in this class. Below are a summary of my findings.
+We retrieved our data from the US Forest Service's Spatial Wildfire Occurence Data for The United States. The dataset was originally provided as an .sqlite file type and had over 2 million records of fires from 1992 - 2018. We created a subset of this dataset using SQL queries. Our filtered subset contains 259 records of fires from 2000 - 2018 that burned over 25,000 acres. However, I performed exploratory data analysis on this dataset for the previous assignment in this class. You can read my full report <a href="/assets/pdf/Data_Visualization_Assignment_2_Reported_Fires_Analysis.pdf">here</a>.
 
 
 
