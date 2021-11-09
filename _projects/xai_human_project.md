@@ -48,6 +48,8 @@ After seeing how these two models produced significantly different XRAI heatmaps
 **Future Work**. Running this study on a large scale and then averaging the color for every pixel from the study results would generate one final image which may or may not look similar to the model's XRAI heatmap. If it does look similar, this can suggest that humans do use similar features that these models use when reasoning the classification of an image. The collected human-generated saliency maps can be used to fine tune a model to generate saliency maps that are human-like. It could be useful to just see the output of this expeirment regardless to identify future directions. 
 
 
+(*View doberman <a href="/assets/img/dobermanorig.png" alt="doberman" width="100%">image</a> - for testing purposes*)
+
 ---
 
 ### Out-of-distribution Images
