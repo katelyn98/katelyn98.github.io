@@ -1,6 +1,6 @@
 ---
 layout: page
-title: In*sight*ful Saliency Maps
+title: Insightful Saliency Maps
 description: Final project for Data Visualization class in collaboration with Swetha Kannan.
 img: /assets/img/DataVizFinalProject.gif
 importance: 1
