@@ -9,7 +9,7 @@ category: Interactive Visualizations
 
 ## Project Description
 
-We are exploring different interactions and interfaces for non-expert users to better understand (1) when deep learning models make classifications based on shape or texture, (2) the limitations of deep learning models used for image classification tasks , and (3) compare and contrast XAI techniques to regions that non-experts think are important for the classification of a given image. 
+Explainability techniques for image classification such as saliency maps provide insight into which regions of the image influenced the prediction. Saliency techniques can assist data scientists in model debugging by identifying features in images that are not relevant to the image class. However, the static presentation of saliency maps withhold data scientists from further exploring model behavior on out-of-distribution data. Incorporating saliency maps in an interactive tool will enable data scientists to debug their models while understanding how their model behaves on out-of-distribution data. We present a protoype that incorporates saliency maps in an interactive, exploratory tool to showcase novel interactions that data scientists can experience with saliency maps. 
 
 ### Shape Bias
 
