@@ -20,6 +20,6 @@ To learn more about shape bias, you can read this paper from ICLR 2019: [ImageNe
 
 Not all features are fully implemented yet (*still under construction - project due November 30th*).
 
-[Demo](https://cmu-vis-2021.github.io/Human-vs-Machine-Final-Project/)
+[Demo](https://cmu-vis-2021.github.io/Insightful-Saliency-Maps/)
 
-[Codebase](https://github.com/CMU-Vis-2021/Human-vs-Machine-Final-Project)
+[Codebase](https://github.com/CMU-Vis-2021/Insightful-Saliency-Maps)
