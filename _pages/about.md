@@ -8,7 +8,7 @@ profile:
   align: right
   image: prof_pic.jpg
   address: >
-    
+    <i class="far fa-file-alt"></i> <a href="/assets/pdf/Morrison_Katelyn_Resume.pdf">Current Resume</a>
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
