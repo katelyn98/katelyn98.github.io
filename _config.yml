@@ -77,8 +77,8 @@ panelbear_analytics: XXXXXXXXX # panelbear analytics site ID
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: al-folio  # your blog must have a name for it to show up in the nav bar
-blog_description: a simple whitespace theme for academics
+blog_name: Ph.D. Life with Kate  # your blog must have a name for it to show up in the nav bar
+blog_description: a series of stories for budding researchers
 permalink: /blog/:year/:title/
 
 # Pagination
