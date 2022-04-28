@@ -108,11 +108,11 @@ Brief introduction about what we did
 
 Describe how we did an empirical study of many object detection models to narrow down the models we further investigate. Make sure to add in the details of the models we used etc.
 
-## Data Augmentations
+### Data Augmentations
 
 Describe the data augmentation techniques we did and how we did them to create the augmented pascal dataset. Make sure to add in the specific details about things. 
 
-## Experiment Design
+### Experiment Design
 
 Describe how we designed the final experiment we did between faster r-cnn and ssd with a vgg backbone. Make sure to add in specifics about fine-tuning etc. 
 
