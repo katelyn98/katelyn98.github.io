@@ -35,8 +35,7 @@ bibliography: 2022-05-09-vlr.bib
 toc:
   - name: Introduction
     subsections:
-      - name: Motivation
-      - name: Research Questions
+      - name: Research Question & Contributions
   - name: Related Work
   - name: Methods
     subsections:
@@ -44,8 +43,12 @@ toc:
       - name: Data Augmentations
       - name: Experiment Design
   - name: Results
+    subsections:
+      - name: Empirical Study
+      - name: Main Experiment 
   - name: Limtations
   - name: Future Work & Conclusion
+  - name: Code
 
 # Below is an example of injecting additional post-specific styles.
 # If you use this post as a template, delete this _styles block.
@@ -84,15 +87,16 @@ $$
 
 Note that MathJax 3 is [a major re-write of MathJax](https://docs.mathjax.org/en/latest/upgrading/whats-new-3.0.html) that brought a significant improvement to the loading and rendering speed, which is now [on par with KaTeX](http://www.intmath.com/cg5/katex-mathjax-comparison.php).
  -->
- Add the introduction to our project here. 
+Deep neural networks have made significant advances in wide-ranging tasks including image classification, segmentation, in-painting, captioning, object detection, action recognition, deep fakes, etc. However, deep neural networks often lack reliability in the real world because they are "black-boxes" and can have dependence on spurious input features that are not essential to the true label. 
 
-### Motivation
+Just include the motivation and the problem in the introduction.
 
-Some motivation listed here.
+### Research Question & Contributions
 
-### Research Questions
+Therefore, our primary research question is:
+* [**RQ1**] What techniques will cause state-of-the-art object detection models to generate saliency maps that are similar to human eye-fixations while maintaining accuracy?
+  - [**H1**] We hyppothesize that some form of data augmentation the penalizes spurious patterns will result in more human-centered saliency maps.
 
-Add our core research questions here
 
 
 ## Related Works
@@ -120,9 +124,19 @@ Describe how we designed the final experiment we did between faster r-cnn and ss
 
 Describe our results here. Shows charts, tables, pictures, etc.
 
+### Empirical Study
+
+Show the results from our class presentation here.
+
+### Main Experiment
+
+Show the results from the fine-tuning or training the models here. 
+
 ## Limitations
 
 ## Future Work & Conclusion
+
+## Code
 <!-- ## Citations
 
 Citations are then used in the article body with the `<d-cite>` tag.
