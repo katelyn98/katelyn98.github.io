@@ -87,17 +87,21 @@ $$
 
 Note that MathJax 3 is [a major re-write of MathJax](https://docs.mathjax.org/en/latest/upgrading/whats-new-3.0.html) that brought a significant improvement to the loading and rendering speed, which is now [on par with KaTeX](http://www.intmath.com/cg5/katex-mathjax-comparison.php).
  -->
-Deep neural networks have made significant advances in wide-ranging tasks including image classification, segmentation, in-painting, captioning, object detection, action recognition, deep fakes, etc. However, deep neural networks often lack reliability in the real world because they are "black-boxes" and can have dependence on spurious input features that are not essential to the true label. 
+Deep neural networks have made significant advances in wide-ranging tasks including image classification, segmentation, in-painting, captioning, object detection, action recognition, deep fakes, etc. However, deep neural networks often lack reliability in the real world because they are "black-boxes" and can depend on spurious input features that are not essential to the true label. 
 
 Just include the motivation and the problem in the introduction.
 
-### Research Question & Contributions
+### Research Questions & Contributions
 
-Therefore, our primary research question is:
-* [**RQ1**] What techniques will cause state-of-the-art object detection models to generate saliency maps that are similar to human eye-fixations while maintaining accuracy?
-  - [**H1**] We hypothesize that some form of data augmentation that penalizes spurious patterns will result in more human-centered saliency maps.
+Therefore, our primary research questions are:
+* [**RQ1**] How do current state-of-the-art object detection models compare to human attention? 
+  - [**H1**] We hypothesize that current state-of-the-art object detection models do not nearly compare to human attention.
+* [**RQ2**] What techniques will cause state-of-the-art object detection models to generate saliency maps that are similar to human eye-fixations while maintaining accuracy?
+  - [**H2**] We hypothesize that some form of data augmentation that penalizes spurious patterns will result in more human-centered saliency maps.
 
-
+Our primary contributons include: 
+* We conduct a small empirical study to understand how seven current object detection models compare to human attention.
+* *Insert contribution here*
 
 ## Related Works
 
