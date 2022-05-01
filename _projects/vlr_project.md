@@ -122,7 +122,7 @@ before being evaluated on by the model. The saliency map for the object detectio
 
 ### Data Augmentations
 
-Data augmentation for object detection is slightly more complex than data augmentation for image classification tasks because of the associated bounding boxes for each object <d-cite key="https://arxiv.org/abs/1906.11172"></d-cite>.
+Data augmentation for object detection is slightly more complex than data augmentation for image classification tasks because of the associated bounding boxes for each object <d-cite key="DBLP:journals/corr/abs-1906-11172"></d-cite>.
 
 ### Experiment Design
 
