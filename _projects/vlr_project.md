@@ -95,13 +95,13 @@ Just include the motivation and the problem in the introduction.
 
 Therefore, our primary research question is:
 * [**RQ1**] What techniques will cause state-of-the-art object detection models to generate saliency maps that are similar to human eye-fixations while maintaining accuracy?
-  - [**H1**] We hyppothesize that some form of data augmentation the penalizes spurious patterns will result in more human-centered saliency maps.
+  - [**H1**] We hypothesize that some form of data augmentation that penalizes spurious patterns will result in more human-centered saliency maps.
 
 
 
 ## Related Works
 
-Add some related works sections here about human attention compared to deep learning and recent approachs people have done to improve deep learning interpretability based on human attention
+Add some related works sections here about human attention compared to deep learning and recent approaches people have done to improve deep learning interpretability based on human attention
 
 
 ## Methods
