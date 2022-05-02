@@ -151,6 +151,9 @@ Show the results from the fine-tuning or training the models here.
 Future work should explore these questions for image classification instead of object detection. 
 
 ## Code
+
+<img src="/assets/img/github-brands.svg" alt="logo" width="3%"/> [GitHub Repository](https://github.com/Gkao03/Saliency-Map-Visualization)
+
 <!-- ## Citations
 
 Citations are then used in the article body with the `<d-cite>` tag.
