@@ -117,7 +117,7 @@ before being evaluated on by the model. The saliency map for the object detectio
 
 Data augmentation for object detection is slightly more complex than data augmentation for image classification tasks because of the associated bounding boxes for each object <d-cite key="DBLP:journals/corr/abs-1906-11172"></d-cite>. 
 
-We use three different data augmentation techniques: *selective erasing*, *selective inpainting*, and *non-trivial transformations*. Below, we define and provide examples of each of these data augmentations. 
+We designed three different data augmentation techniques: *selective erasing*, *selective inpainting*, and *non-trivial transformations*. Below, we define and provide examples of each of these data augmentations. 
 
 **Selective Erasing**
 
@@ -131,7 +131,7 @@ The goal of selective erasing is to get rid of potential spurious patterns, patt
 
 **Selective Inpainting**
 
-The selective inpainting augmentation process follows the same steps as selective erasing and then inpaints the erased image. To inpaint the top 2.5% salient pixels as denoted by Faster R-CNN, we send the selective erased image and mask into an untrained neural network and optimize on learning the pixels that minimize the chosen loss function. [ADd details here about the Deep Image Prior Paper <d-cite key="DBLP:journals/corr/abs-1711-10925"></d-cite>.]
+The selective inpainting augmentation process follows the same steps as selective erasing and then inpaints the erased image. To inpaint the top 2.5% salient pixels as denoted by Faster R-CNN, we send the selective erased image and mask into an untrained neural network and optimize on learning the pixels that minimize the chosen loss function. This idea is presented in the Deep Image Prior Paper <d-cite key="DBLP:journals/corr/abs-1711-10925"></d-cite>. We used $4001$ iterations with an untrained ResNet to inpaint the erased regions in each image. 
 
 
 **Non-trivial Transformations**
