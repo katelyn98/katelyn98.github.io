@@ -78,7 +78,7 @@ panelbear_analytics: XXXXXXXXX # panelbear analytics site ID
 # -----------------------------------------------------------------------------
 
 blog_name: Ph.D. Life with Kate  # your blog must have a name for it to show up in the nav bar
-blog_description: a series of stories for budding researchers
+blog_description: a series of research projects and stories
 permalink: /blog/:year/:title/
 
 # Pagination

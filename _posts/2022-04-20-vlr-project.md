@@ -4,7 +4,7 @@ title: Towards Generating Human-Centered Saliency Maps without Sacrificing Accur
 date: 2022-05-04
 img: /assets/img/placeholderpicture.png
 importance: 4
-tags: research courses
+tags: research class
 categories: Explainability AI
 
 authors:
