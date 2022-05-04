@@ -6,5 +6,5 @@ img: /assets/img/placeholderpicture.png
 importance: 4
 category: Explainable AI
 
-redirect: https://katelyn98.github.io/blog/2021/vlr-project/
+redirect: https://katelyn98.github.io/blog/2022/vlr-project/
 ---
