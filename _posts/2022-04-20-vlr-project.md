@@ -71,7 +71,7 @@ _styles: >
 
 ---
 
-
+*We completed this project to satisfy the project requirement for [16-824: Visual Learning & Recognition](https://visual-learning.cs.cmu.edu/index.html). We want to thank the TAs and Professor for their hard work and dedication to the class throughout the semester.*
 
 ## Introduction
 
