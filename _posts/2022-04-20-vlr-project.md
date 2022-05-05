@@ -100,14 +100,14 @@ Several explainable artificial intelligence (AI) techniques have been proposed a
 
 ### DNN Saliency Maps Compared to Human Attention
 
-Add studies here comparing current DNNs to human attention
-
+With novel interpretability techniques increasingly being developed, some researchers are taking a cognitive science approach to interpretability to understand how human attention and artificial attention compare. 
+<d-cite key="9133499,DBLP:journals/corr/abs-1906-08764,DBLP:journals/corr/DasAZPB16"></d-cite>
 
 ### Towards DNNs with Human-Centered Saliency Maps
 
-Recently, papers have proposed various routes to make saliency maps more human-centered and semantically meaningful to humans. For example, Boyd et al., propose a novel loss function that uses human annotations <d-cite key="cyborg"></d-cite>. This loss function is designed to penalize the model during training for generating saliency maps that are significantly different from the human saliency maps. The authors had to collect ground truth annotations from human subjects in order to make this loss function which does not generalize well for other models or domains. 
+Recently, papers have proposed various routes to make saliency maps more human-centered and semantically meaningful to humans. For example, Boyd et al., propose a novel loss function that uses human annotations <d-cite key="cyborg"></d-cite>. This loss function is designed to penalize the model during training for generating saliency maps that are significantly different from the human saliency maps. The same authors just recently show that human annotations can improve the generalization of a DNN <d-cite key="DBLP:journals/corr/abs-2105-03492"></d-cite>. For both of these studies, the authors had to collect ground truth annotations from human subjects in order to make this loss function which does not generalize well for other models or domains.
 
-The MIT/Tuebingen Saliency Benchmark has yielded several techniques that can avoid the need for human subjects to obtain approximate ground truth human attention maps <d-cite key="kummererSaliencyBenchmarkingMade2018,salMetrics_Bylinskii,Judd_2012"></d-cite>. For example, the DeepGazeIIE saliency prediction model is currently the best performing saliency prediction technique compared to gold standard metrics <d-cite key="Linardos_2021_ICCV"></d-cite>. 
+Instead of continuously having to collect human annotations, the MIT/Tuebingen Saliency Benchmark has designed a challenge for saliency prediction models. This benchmark has yielded several techniques that can avoid the need for human subjects to obtain approximate ground truth human attention maps <d-cite key="kummererSaliencyBenchmarkingMade2018,salMetrics_Bylinskii,Judd_2012"></d-cite>. For example, the DeepGazeIIE saliency prediction model is currently the best performing saliency prediction technique compared to gold standard metrics <d-cite key="Linardos_2021_ICCV"></d-cite>. 
 
 ## Methods
 
