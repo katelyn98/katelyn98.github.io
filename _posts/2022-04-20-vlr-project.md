@@ -116,7 +116,13 @@ We conducted an empirical study to gain an understanding of which state-of-the-a
 
 **Experiment Details**
 
-We generated a saliency map for every single image that had an associated human attention map (ground truth saliency) from the ML-Interpretability-Evaluation-Benchmark <d-cite key="mohseni2020benchmark"></d-cite> and for every image in the MIT1003 dataset <d-cite key="mit-saliency-benchmark"></d-cite>. Each image was resized to $$
+We generated a saliency map for every single image that had an associated human attention map (ground truth saliency) from the ML-Interpretability-Evaluation-Benchmark <d-cite key="mohseni2020benchmark"></d-cite> and for every image in the MIT1003 dataset <d-cite key="mit-saliency-benchmark"></d-cite>. 
+<figure>
+  <img src="/assets/img/emprical_study_pipeline.png" alt="visualization of evaluation pipeline described in text." width="100%"/>
+  <figcaption> Figure #: Visualization of evaluation pipeline for the empirical study. We generated the saliency map for an image of a dog using the SSD-VGG16 model as an example.</figcaption>
+</figure>
+
+Each image was resized to $$
 512$$ x $$512
 $$ 
 before being evaluated on by the model. The saliency map for the object detection model is generated using the EigenCAM method (<d-cite key="DBLP:journals/corr/abs-2008-00299"></d-cite>) from the PyTorch library for CAM methods <d-cite key="jacobgilpytorchcam"></d-cite>. Once the saliency map from the object detection model is generated, the mean absolute error (MAE) is calculated between the generated saliency map and the human attention map. The MAE is also calculated between the generated saliency map and the predicted human eye-fixations (produced from the DeepGazeIIE model). While the MAE to some extent can reveal how similar the saliency maps are, we also calculate intersection over union (IoU) between the top $$90\%$$ salient pixels of the generated saliency map and the top $$90\%$$ salient pixels from the human attention map/predicted human eye-fixation. Calculating the IoU will help reveal if the most salient region identify by the model and the humans align <d-cite key="DBLP:journals/corr/abs-2107-09234"></d-cite>.
