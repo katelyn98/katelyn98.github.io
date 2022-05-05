@@ -78,9 +78,7 @@ _styles: >
 
 ## Introduction
 
-Artificial intelligence (AI) is increasingly being built for and deployed in high-stakes domains such as detecting cancer from medical imagery [**CITE**] , disaster relief efforts [**CITE**], and self-driving cars [**CITE**].  
-Deep neural networks have made significant advances in wide-ranging tasks including image classification, segmentation, in-painting, captioning, object detection, action recognition, deep fakes, etc. However, deep neural networks often lack reliability in the real world because they are "black-boxes" and can depend on spurious input features that are not essential to the true label. 
-
+Artificial intelligence (AI) is increasingly being built for and deployed in high-stakes domains such as detecting cancer from medical imagery [**CITE**] , disaster relief efforts [**CITE**], and self-driving cars [**CITE**]. However, these models are "black-boxes" and not interpretable to decision-makers that collaborate with these models [**CITE**]. Therefore, the interpretability and accuracy of these models are equally important to calibrate decision-makers reliance on AI and improve human-AI collaboration. 
 
 
 ### Research Questions & Contributions
@@ -107,9 +105,7 @@ Add studies here comparing current DNNs to human attention
 
 ### Towards DNNs with Human-Centered Saliency Maps
 
-Add techniques here about how people have tried to modify models or loss or whatever to help models generate more human centered saliency maps. 
-
-
+Recently, papers have proposed various routes to make saliency maps more human-centered and semantically meaningful to humans. For example, Boyd et al., propose a novel loss function that uses human annotations <d-cite key="cyborg"></d-cite>.
 ## Methods
 
 Brief introduction about what we did
