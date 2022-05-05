@@ -78,7 +78,7 @@ _styles: >
 
 ## Introduction
 
-Artificial intelligence (AI) is increasingly being built for and deployed in high-stakes domains such as detecting cancer from medical imagery [**CITE**] , disaster relief efforts [**CITE**], and self-driving cars [**CITE**]. However, these models are "black-boxes" and not interpretable to decision-makers that collaborate with these models [**CITE**]. Therefore, the interpretability and accuracy of these models are equally important to calibrate decision-makers reliance on AI and improve human-AI collaboration. 
+Artificial intelligence (AI) is increasingly being built for and deployed in high-stakes domains such as detecting cancer from medical imagery [**CITE**] , disaster relief efforts [**CITE**], and self-driving cars [**CITE**]. However, these models are "black-boxes" and not interpretable to people that collaborate or interact with these models <d-cite key="10.1145/3377325.3377519"></d-cite>. Therefore, the interpretability and accuracy of these models are equally important to calibrate decision-makers reliance on AI and improve human-AI collaboration. 
 
 
 ### Research Questions & Contributions
@@ -96,7 +96,7 @@ Our primary contributions include:
 
 ## Related Works
 
-Several explainable artificial intelligence (AI) techniques have been proposed as new ways to provide insights into the AI's prediction. Recently, several empirical studies have evaluated the interpretability of different techniques and their impact on decision-making. We present different saliency map techniques and perform empirical studies on different saliency map techniques.
+Several explainable artificial intelligence (AI) techniques have been proposed as new ways to provide insights into the AI's prediction. Such techniques for computer vision tasks traditionally are presented as a heat map, highlighting the regions that most contributed to the model's prediction. However, several empirical studies in human-computer interaction literature have evaluated the interpretability of different techniques and their impact on decision-making. We present different saliency map techniques and perform empirical studies on different saliency map techniques.
 
 ### DNN Saliency Maps Compared to Human Attention
 
@@ -105,7 +105,10 @@ Add studies here comparing current DNNs to human attention
 
 ### Towards DNNs with Human-Centered Saliency Maps
 
-Recently, papers have proposed various routes to make saliency maps more human-centered and semantically meaningful to humans. For example, Boyd et al., propose a novel loss function that uses human annotations <d-cite key="cyborg"></d-cite>.
+Recently, papers have proposed various routes to make saliency maps more human-centered and semantically meaningful to humans. For example, Boyd et al., propose a novel loss function that uses human annotations <d-cite key="cyborg"></d-cite>. This loss function is designed to penalize the model during training for generating saliency maps that are significantly different from the human saliency maps. The authors had to collect ground truth annotations from human subjects in order to make this loss function which does not generalize well for other models or domains. 
+
+The MIT/Tuebingen Saliency Benchmark has yielded several techniques that can avoid the need for human subjects to obtain approximate ground truth human attention maps <d-cite key="kummererSaliencyBenchmarkingMade2018,salMetrics_Bylinskii,Judd_2012"></d-cite>. For example, the DeepGazeIIE saliency prediction model is currently the best performing saliency prediction technique compared to gold standard metrics <d-cite key="Linardos_2021_ICCV"></d-cite>. 
+
 ## Methods
 
 Brief introduction about what we did
@@ -175,8 +178,13 @@ Add details about this augmentation technique here.
 Describe how we designed the final experiment we did between faster r-cnn with a resnet 50 backbone. Make sure to add in specifics about fine-tuning etc.
 
 <figure>
+  <img src="/assets/img/baseline_pipeline.png" alt="visualization of main experiment pipeline described in text." width="100%"/>
+  <figcaption> Figure #: Visualization of the pipeline for the creating and evaluating the augmented models. </figcaption>
+</figure> 
+
+<figure>
   <img src="/assets/img/experiment_pipeline.png" alt="visualization of main experiment pipeline described in text." width="100%"/>
-  <figcaption> Figure #: Visualization of the pipeline for the main experiment. </figcaption>
+  <figcaption> Figure #: Visualization of the pipeline for the creating and evaluating the augmented models. </figcaption>
 </figure> 
 
 ## Results
