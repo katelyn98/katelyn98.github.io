@@ -131,7 +131,8 @@ Data augmentation for object detection is slightly more complex than data augmen
 
 We designed three different data augmentation techniques: *selective erasing*, *selective inpainting*, and *non-trivial transformations*. Below, we define and provide examples of each of these data augmentations. 
 
-**Selective Erasing** [![Open In Colab](#)
+**Selective Erasing** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](#)
+
 
 
 The goal of selective erasing is to get rid of potential spurious patterns, patterns that the model has learned to associate with a label even though it does not represent that label [*CITATION*]. In order to augment images using selective erasing, we send the image through Faster R-CNN and use EigenCAM to generate the saliency map. We then send the image through the DeepGazeIIE model to generated the predicted eye-fixations map. We calculate the mean absolute error (MAE) between the two saliency maps. If the MAE is below 0.1, meaning the two saliency maps are significantly different from one another, then we erase the top 2.5% salient pixels identified from the Faster R-CNN saliency map from the original image. An example of this process and the outcomes from each step are shown in Figure 1
