@@ -172,7 +172,12 @@ Add details about this augmentation technique here.
 
 ### Experiment Design
 
-Describe how we designed the final experiment we did between faster r-cnn with a resnet 50 backbone. Make sure to add in specifics about fine-tuning etc. 
+Describe how we designed the final experiment we did between faster r-cnn with a resnet 50 backbone. Make sure to add in specifics about fine-tuning etc.
+
+<figure>
+  <img src="/assets/img/experiment_pipeline.png" alt="visualization of main experiment pipeline described in text." width="100%"/>
+  <figcaption> Figure #: Visualization of the pipeline for the main experiment. </figcaption>
+</figure> 
 
 ## Results
 
