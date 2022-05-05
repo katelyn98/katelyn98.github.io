@@ -38,6 +38,9 @@ toc:
     subsections:
       - name: Research Question & Contributions
   - name: Related Work
+    subsections:
+      - name: DNN Saliency Maps Compared to Human Attention
+      - name: Towards DNNs with Human-Centered Saliency Maps
   - name: Methods
     subsections:
       - name: Empirical Study
@@ -94,7 +97,16 @@ Our primary contributions include:
 
 ## Related Works
 
-Add some related works sections here about human attention compared to deep learning and recent approaches people have done to improve deep learning interpretability based on human attention
+Several explainable artificial intelligence (AI) techniques have been proposed as new ways to provide insights into the AI's prediction. Recently, several empirical studies have evaluated the interpretability of different techniques and their impact on decision-making. We present different saliency map techniques and perform empirical studies on different saliency map techniques.
+
+### DNN Saliency Maps Compared to Human Attention
+
+Add studies here comparing current DNNs to human attention
+
+
+### Towards DNNs with Human-Centered Saliency Maps
+
+Add techniques here about how people have tried to modify models or loss or whatever to help models generate more human centered saliency maps. 
 
 
 ## Methods
@@ -119,7 +131,8 @@ Data augmentation for object detection is slightly more complex than data augmen
 
 We designed three different data augmentation techniques: *selective erasing*, *selective inpainting*, and *non-trivial transformations*. Below, we define and provide examples of each of these data augmentations. 
 
-**Selective Erasing**
+**Selective Erasing** [![Open In Colab](#)
+
 
 The goal of selective erasing is to get rid of potential spurious patterns, patterns that the model has learned to associate with a label even though it does not represent that label [*CITATION*]. In order to augment images using selective erasing, we send the image through Faster R-CNN and use EigenCAM to generate the saliency map. We then send the image through the DeepGazeIIE model to generated the predicted eye-fixations map. We calculate the mean absolute error (MAE) between the two saliency maps. If the MAE is below 0.1, meaning the two saliency maps are significantly different from one another, then we erase the top 2.5% salient pixels identified from the Faster R-CNN saliency map from the original image. An example of this process and the outcomes from each step are shown in Figure 1
 
@@ -130,11 +143,14 @@ The goal of selective erasing is to get rid of potential spurious patterns, patt
 
 
 **Selective Inpainting**
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](#)
+
 
 The selective inpainting augmentation process follows the same steps as selective erasing and then inpaints the erased image. To inpaint the top 2.5% salient pixels as denoted by Faster R-CNN, we send the selective erased image and mask into an untrained neural network and optimize on learning the pixels that minimize the chosen loss function. This idea is presented in the Deep Image Prior Paper <d-cite key="DBLP:journals/corr/abs-1711-10925"></d-cite>. We used $4001$ iterations with an untrained ResNet to inpaint the erased regions in each image. 
 
 
-**Non-trivial Transformations**
+**Non-trivial Transformations** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](#)
+
 
 <figure>
 <img src="/assets/img/non-trivial_firstpart.png" alt="dataset augmentations non-trivial" width="100%"/>
@@ -215,6 +231,13 @@ The MAE (mean absolute error) is preferred to be close to 0.0; the IoU (intersec
 
 Show the results from the fine-tuning or training the models here. 
 
+**Table 5: Pre-trained Faster R-CNN Fine-tuned on PASCALVOC2012**
+
+| mAP        | MAE | IoU |
+|    :--:   |     :--:   |     :--:   | 
+| $00000$      |  $00000$    |   $00000$    |  
+
+**Table 6: Pre-trained Faster R-CNN Fine-tuned on Augmented PASCALVOC2012**
 
 | Augmentation      | mAP        | MAE | IoU |
 | :--:       |    :--:   |     :--:   |     :--:   | 
@@ -228,13 +251,13 @@ Show the results from the fine-tuning or training the models here.
 
 We did this entire project on Google Colab which limited us in terms of the GPU that we could use and the amount of memory we had. We were able to use Colab Pro, but even then the GPUs we were using were limited to 16GB which forced us to use smaller batch sizes than normal. 
 
-**Another limitation**
+**Pre-trained models trained on COCO**
 
-Some details about that limitation.
+The pre-trained models we used in our empirical study were from the PyTorch torchvision library <d-cite key="pytorchtorchvision"></d-cite>, but our dataset that we were using was PASCALVOC2012. Evaluating the pre-trained models on a different dataset could have impacted how we interpret our results. Unfortunately we realized this too late in the project to switch to COCO. 
 
 ## Future Work & Conclusion
 
-Future work should explore these questions for image classification instead of object detection. 
+Future work should explore these questions for image classification instead of object detection. Other future works could try instead of doing augmentations could create a novel function that incorporates the MAE between the saliency map generated from the model and the saliency map of the DeepGazeIIE or similar saliency prediction model into the loss function to basically train the model to focus on semantically meaningful regions of the image with ground truth labels.
 
 ## Code
 
