@@ -175,25 +175,14 @@ The selective inpainting augmentation process follows the same steps as selectiv
 **Non-trivial Transformations** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://drive.google.com/file/d/1z158yrypCbLhpOGYCzsYJGXJIlhrDTW7/view?usp=sharing)
 
 
-Data augmentation can improve performance and outcomes of models as it can add new and different examples to the training dataset. If the dataset in a model can be more rich and sufficient with the augmentation techniques, the model can perform better. To improve the model generalization, we apply the following augmentation techniques seen in Figure 2. In our experiment, we do experiments of bounding box geometric augmentation, color augmentation, and geometric augmentation. 
-
-<!-- <figure>
-<img src="/assets/img/non-trivial_firstpart.png" alt="dataset augmentations non-trivial" width="100%"/>
-<figcaption>Figure 2: Sample of different augmentations used in the non-trivial transformations function. Augmentations that are a part of the PIL library (cite or link) or bbaug (need to cite or link) library were considered. More non-trivial augmentation examples can be found in the footnotes <d-footnote>
-  <figure>
-  <img src="/assets/img/non-trivial_secondpart.png" alt="dataset augmentations non-trivial" width="100%"/>
-  <img src="/assets/img/non-trivial_thirdpart.png" alt="dataset augmentations non-trivial" width="100%"/>
-  <figcaption>More examples of augmentations considered in the non-trivial transformations.</figcaption>
-  </figure>
-</d-footnote>.</figcaption>
-</figure> -->
+Data augmentation can improve performance and outcomes of models as it can add new and different examples to the training dataset. If the dataset in a model can be more rich and sufficient with the augmentation techniques, the model can perform better. To improve the model generalization, we apply the following augmentation techniques seen in Figure 2. In our experiment, we do experiments of bounding box geometric augmentation, color augmentation, and geometric augmentation. Augmentations considered in this experiemnt are from the PIL.ImageOps as well as torchvision.transforms libraries.
 
 <figure>
 <img src="/assets/img/non-trivial_firstpart.png" alt="dataset augmentations non-trivial" width="100%"/>
   <figure>
   <img src="/assets/img/non-trivial_secondpart.png" alt="dataset augmentations non-trivial" width="100%"/>
   <img src="/assets/img/non-trivial_thirdpart.png" alt="dataset augmentations non-trivial" width="100%"/>
-  <figcaption>Figure 2: Sample of different augmentations used in the non-trivial transformations function. Augmentations that are a part of the PIL  library (cite or link) or bbaug (need to cite or link) library were considered. More non-trivial augmentation examples can be found in the footnotes <d-footnote>
+  <figcaption>Figure 2: Sample of different augmentations used in the experiment. 
   </figure>
 </d-footnote>.</figcaption>
 </figure>
