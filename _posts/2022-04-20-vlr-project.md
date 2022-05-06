@@ -184,7 +184,7 @@ Data augmentation can improve performance and outcomes of models as it can add n
   <img src="/assets/img/non-trivial_thirdpart.png" alt="dataset augmentations non-trivial" width="100%"/>
   <figcaption>Figure 2: Sample of different augmentations used in the experiment. 
   </figure>
-</d-footnote>.</figcaption>
+</d-footnote></figcaption>
 </figure>
 
 ### Experiment Design
