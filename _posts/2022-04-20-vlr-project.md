@@ -222,7 +222,7 @@ We observed that the SSD with a VGG backbone generated saliency maps most simila
 | DETR   | **0.1275**     | $0.2136$     |
 
 
-We also conducted the same study between the saliency maps from the models and the predicted eye-fixations for a subset of PASCALVOC2012. This subset was determined based on the PASCALVOC2012 images that had a ground truth human attention map in the ML Interpretability Bench
+We also conducted the same study between the saliency maps from the models and the predicted eye-fixations as well as ground truth for a subset of PASCALVOC2012. This subset was determined based on the PASCALVOC2012 images that had a ground truth human attention map in the ML Interpretability Evaluation Benchmark. We observed that Faster R-CNN with a ResNet50 backbone generated saliency maps most similar to the predicted eye-fixations and the human attention masks in terms of MAE with values of $0.1700$ and $0.1145$ respectively. In terms of IoU, the SSD with a VGG backbone generated saliency maps most similar to the predicted eye-fixations and human attention masks with values of $0.2474$ and $0.3225$ respectively. 
 
 **Table 2: Object Detection Models compared to DeepGazeIIE Predicted Eye-Fixations for PASCALVOC2012**
 
@@ -255,14 +255,25 @@ We identify a top preforming model in terms of MAE and IoU and use that model in
 
 Show the results from the fine-tuning or training the models here. 
 
-**Table 4: Pre-trained Faster R-CNN Fine-tuned on PASCALVOC2012**
+**Table 4: Pre-trained Faster R-CNN Fine-tuned on PASCALVOC2012 Compared to Predicted Eye-Fixations**
 
 | Augmentation      | mAP (IoU=0.5)       | MAE | IoU |
 | :--:       |    :--:   |     :--:   |     :--:   | 
 | Selective Erasing      | $0.754$      |  $00000$    |   $00000$    |  
 | Selective Inpainting   | $0.763$       | $0000$       |  $0000$       | 
 | Non-Trivial Transformations   | *0.766*        | $0000$       | $0000$       | 
-| No augmentations | $0.774$ | $0000$ | $0000$ | $00000$ |
+| No augmentations | $0.774$ | $0000$ | $0000$ | 
+
+
+**Table 4: Pre-trained Faster R-CNN Fine-tuned on PASCALVOC2012 Compared to Human Attention Masks**
+
+| Augmentation      | mAP (IoU=0.5)       | MAE | IoU |
+| :--:       |    :--:   |     :--:   |     :--:   | 
+| Selective Erasing      | $0.754$      |  $00000$ | $00000$ |  
+| Selective Inpainting   | $0.763$       | $0000$ | $0000$ | 
+| Non-Trivial Transformations   | *0.766*        | $0000$ | $0000$ | 
+| No augmentations | $0.774$ | $0000$ | $0000$ | 
+
 
 ## Limitations
 
