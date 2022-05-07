@@ -259,20 +259,20 @@ Show the results from the fine-tuning or training the models here.
 
 | Augmentation      | mAP (IoU=0.5)       | MAE | IoU |
 | :--:       |    :--:   |     :--:   |     :--:   | 
-| Selective Erasing      | $0.754$      |  $00000$    |   $00000$    |  
-| Selective Inpainting   | $0.763$       | $0000$       |  $0000$       | 
-| Non-Trivial Transformations   | *0.766*        | $0000$       | $0000$       | 
-| No augmentations | $0.774$ | $0000$ | $0000$ | 
+| Selective Erasing      | $0.754$      |  **0.1560**    |   **0.1878**    |  
+| Selective Inpainting   | $0.763$       | $00000$       |  $000000$       | 
+| Non-Trivial Transformations   | **0.766**        | $0.1586$       | $0.1759$       | 
+| No augmentations | $0.774$ | $0.1596$ | $0.1788$ | 
 
 
 **Table 4: Pre-trained Faster R-CNN Fine-tuned on PASCALVOC2012 Compared to Human Attention Masks**
 
 | Augmentation      | mAP (IoU=0.5)       | MAE | IoU |
 | :--:       |    :--:   |     :--:   |     :--:   | 
-| Selective Erasing      | $0.754$      |  $00000$ | $00000$ |  
+| Selective Erasing      | $0.754$      |  **0.1561** | $0.2657$ |  
 | Selective Inpainting   | $0.763$       | $0000$ | $0000$ | 
-| Non-Trivial Transformations   | *0.766*        | $0000$ | $0000$ | 
-| No augmentations | $0.774$ | $0000$ | $0000$ | 
+| Non-Trivial Transformations   | *0.766*        | $0.1603$ | $0.2654$ | 
+| No augmentations | $0.774$ | $0.1617$ | $0.2672$ | 
 
 
 ## Limitations
