@@ -221,7 +221,10 @@ We observed that the SSD with a VGG backbone generated saliency maps most simila
 
 **Example Saliency Map Results**
 
-
+<figure>
+  <img src="/assets/img/mit-saliency.png" alt="visualization of sample saliency maps." width="100%"/>
+  <figcaption> Figure 7: Sample saliency maps from different models compared to the predicted eye-fixations (DeepGazeIIE) for MIT1003. </figcaption>
+</figure> 
 
 
 We also conducted the same study between the saliency maps from the models and the predicted eye-fixations as well as ground truth for a subset of PASCALVOC2012. This subset was determined based on the PASCALVOC2012 images that had a ground truth human attention map in the ML Interpretability Evaluation Benchmark. We observed that Faster R-CNN with a ResNet50 backbone generated saliency maps most similar to the predicted eye-fixations and the human attention masks in terms of MAE with values of $0.1700$ and $0.1145$ respectively. In terms of IoU, the SSD with a VGG backbone generated saliency maps most similar to the predicted eye-fixations and human attention masks with values of $0.2474$ and $0.3225$ respectively. 
@@ -238,6 +241,13 @@ We also conducted the same study between the saliency maps from the models and t
 | Mask R-CNN   | $0.1753$       | $0.2353$    |
 | DETR   | $0.1913$      | $0.1664$     |
 
+**Example Saliency Map Results**
+
+<figure>
+  <img src="/assets/img/pascal-pred.png" alt="visualization of sample saliency maps." width="100%"/>
+  <figcaption> Figure 8: Sample saliency maps from different models compared to the predicted eye-fixations (DeepGazeIIE) for PASCALVOC2012. </figcaption>
+</figure> 
+
 **Table 3: Object Detection Models compared to Human Attention Masks for PASCALVOC2012**
 
 | Model       | MAE         | IoU           |
@@ -249,6 +259,13 @@ We also conducted the same study between the saliency maps from the models and t
 | RetinaNet   | $0.2073$   | $0.2313$    |
 | Mask R-CNN   | $0.1254$       | $0.2234$    |
 | DETR   | $0.1519$      | $0.2100$     |
+
+**Example Saliency Map Results**
+
+<figure>
+  <img src="/assets/img/pascal-human.png" alt="visualization of sample saliency maps." width="100%"/>
+  <figcaption> Figure 9: Sample saliency maps from different models compared to the human attention masks for PASCALVOC2012. </figcaption>
+</figure> 
 
 
 We identify a top preforming model in terms of MAE because this metric is not variable based on a threshold like IoU. We selected the top performing model for our main experiment to focus on the impact of the augmentations for one model instead of comparing the impact of augmentations across different models. Since Faster R-CNN performed the best for MAE on PASCALVOC2012, we use this model in our main experiment. 
