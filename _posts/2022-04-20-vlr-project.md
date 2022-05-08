@@ -8,15 +8,7 @@ tags: research class
 categories: Explainability AI
 
 authors:
-  - name: Katelyn Morrison
-    url: "https://cs.cmu.edu/~kcmorris"
-    affiliations:
-      name: HCII, CMU
   - name: Vivek Aswal
-    url: "#"
-    affiliations:
-      name: ECE, CMU
-  - name: Ashley Kim
     url: "#"
     affiliations:
       name: ECE, CMU
@@ -24,6 +16,14 @@ authors:
     url: "#"
     affiliations:
       name: ECE, CMU
+  - name: Ashley Kim
+    url: "#"
+    affiliations:
+      name: ECE, CMU
+  - name: Katelyn Morrison
+    url: "https://cs.cmu.edu/~kcmorris"
+    affiliations:
+      name: HCII, CMU
 
 bibliography: 2022-05-09-vlr.bib
 
@@ -99,8 +99,7 @@ Several explainable artificial intelligence (AI) techniques have been proposed a
 
 ### DNN Saliency Maps Compared to Human Attention
 
-With novel interpretability techniques increasingly being developed, some researchers are taking a cognitive science approach to interpretability to understand how human attention and artificial attention compare. 
-<d-cite key="9133499,DBLP:journals/corr/abs-1906-08764,DBLP:journals/corr/DasAZPB16"></d-cite>
+With novel interpretability techniques increasingly being developed, some researchers are taking a cognitive science approach to interpretability to understand how human attention compares to deep learning models. One study investigates if DNNs look at the same regions humans do in a visual question answering task <d-ccite key="DBLP:journals/corr/DasAZPB16"></d-ccite> while another study compares human attention to DNNs for segmentation, action recognition, and classification tasks <d-cite key="9133499,DBLP:journals/corr/abs-1906-08764"></d-cite>.
 
 ### Towards DNNs with Human-Centered Saliency Maps
 
@@ -219,6 +218,10 @@ We observed that the SSD with a VGG backbone generated saliency maps most simila
 | RetinaNet   | $0.2966$   | $0.1857$    |
 | Mask R-CNN   | $0.1550$       | $0.1678$    |
 | DETR   | **0.1275**     | $0.2136$     |
+
+**Example Saliency Map Results**
+
+
 
 
 We also conducted the same study between the saliency maps from the models and the predicted eye-fixations as well as ground truth for a subset of PASCALVOC2012. This subset was determined based on the PASCALVOC2012 images that had a ground truth human attention map in the ML Interpretability Evaluation Benchmark. We observed that Faster R-CNN with a ResNet50 backbone generated saliency maps most similar to the predicted eye-fixations and the human attention masks in terms of MAE with values of $0.1700$ and $0.1145$ respectively. In terms of IoU, the SSD with a VGG backbone generated saliency maps most similar to the predicted eye-fixations and human attention masks with values of $0.2474$ and $0.3225$ respectively. 
