@@ -151,11 +151,11 @@ We designed three different data augmentation techniques: ***selective erasing**
 
 
 
-The goal of selective erasing is to get rid of potential spurious patterns, patterns that the model has learned to associate with a label even though it does not represent that label. In order to augment images using selective erasing, we send the image through Faster R-CNN and use EigenCAM to generate the saliency map from layer 4 in the backbone. We then send the image through the DeepGazeIIE model to generated the predicted eye-fixations map. We calculate the intersection over union (IoU) between the two saliency maps. If the IoU is below 0.1, meaning the two saliency maps are significantly different from one another, then we erase the top 2.5% salient pixels identified from the Faster R-CNN saliency map from the original image. We identified 6476 images that met this criteria. An example of this process and the outcomes from each step are shown in Figure 1. We chose the top 2.5% because these pixels would most likely make up the core region of a potentially spurious region. 
+The goal of selective erasing is to get rid of potential spurious patterns, patterns that the model has learned to associate with a label even though it does not represent that label. In order to augment images using selective erasing, we send the image through Faster R-CNN and use EigenCAM to generate the saliency map from layer 4 in the backbone. We then send the image through the DeepGazeIIE model to generated the predicted eye-fixations map. We calculate the intersection over union (IoU) between the two saliency maps. If the IoU is below 0.1, meaning the two saliency maps are significantly different from one another, then we erase the top 2.5% salient pixels identified from the Faster R-CNN saliency map from the original image. We identified 6476 images that met this criteria. An example of this process and the outcomes from each step are shown in Figure 4. We chose the top 2.5% because these pixels would most likely make up the core region of a potentially spurious region. 
 
 <figure>
 <img src="/assets/img/selective_augment.png" alt="dataset augmentations" width="100%"/>
-<figcaption>Figure 1: Example of how the selective erasing and selective inpainting augmentation techniques work. If the IoU between the Faster R-CNN saliency map and DeepGaze saliency map is less than 0.1 than erase the top 2.5% salient pixels from the original image. Using an untrained neural network, inpaint the pixels that were erased. In this image, pixels along the border were most salient so they were erased and then inpainted. </figcaption>
+<figcaption>Figure 4: Example of how the selective erasing and selective inpainting augmentation techniques work. If the IoU between the Faster R-CNN saliency map and DeepGaze saliency map is less than 0.1 than erase the top 2.5% salient pixels from the original image. Using an untrained neural network, inpaint the pixels that were erased. In this image, pixels along the border were most salient so they were erased and then inpainted. </figcaption>
 </figure>
 
 
@@ -169,29 +169,29 @@ The selective inpainting augmentation process follows the same steps as selectiv
 **Non-trivial Transformations** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://drive.google.com/file/d/1z158yrypCbLhpOGYCzsYJGXJIlhrDTW7/view?usp=sharing)
 
 
-Data augmentation can improve performance and outcomes of models as it can add new and different examples to the training dataset. If the dataset in a model can be more rich and sufficient with the augmentation techniques, the model can perform better. To improve the model generalization, we apply the following augmentation techniques seen in Figure 4. In our experiment, we do experiments of bounding box geometric augmentation, color augmentation, and geometric augmentation. Augmentations considered in this experiment are from the PIL.ImageOps as well as torchvision.transforms libraries. The source codes are from the following repos: [imgaug](https://github.com/aleju/imgaug) and [AutoAugment for Detection Implementation with Pytorch](https://github.com/Jasonlee1995/AutoAugment_Detection). Each image in the dataset was augmented only once with a random augmentation selected from Figure 4. This was to ensure we had the same amount of data to fine-tune on as the other augmentation techniques. 
+Data augmentation can improve performance and outcomes of models as it can add new and different examples to the training dataset. If the dataset in a model can be more rich and sufficient with the augmentation techniques, the model can perform better. To improve the model generalization, we apply the following augmentation techniques seen in Figure 5. In our experiment, we do experiments of bounding box geometric augmentation, color augmentation, and geometric augmentation. Augmentations considered in this experiment are from the PIL.ImageOps as well as torchvision.transforms libraries. The source codes are from the following repos: [imgaug](https://github.com/aleju/imgaug) and [AutoAugment for Detection Implementation with Pytorch](https://github.com/Jasonlee1995/AutoAugment_Detection). Each image in the dataset was augmented only once with a random augmentation selected from Figure 4. This was to ensure we had the same amount of data to fine-tune on as the other augmentation techniques. 
 
 <figure>
   <img src="/assets/img/non-trivial_firstpart.png" alt="dataset augmentations non-trivial" width="100%"/>
   <img src="/assets/img/non-trivial_secondpart.png" alt="dataset augmentations non-trivial" width="100%"/>
   <img src="/assets/img/non-trivial_thirdpart.png" alt="dataset augmentations non-trivial" width="100%"/>
-  <figcaption>Figure 4: Sample of different augmentations used in the experiment. </figcaption>  
+  <figcaption>Figure 5: Sample of different augmentations used in the experiment. </figcaption>  
 </figure>
 
 ### Experiment Design
 
-We gather a baseline to compare our three different data augmentations against. In Figure 5, we show the pipeline we used for the baseline. We fine-tuned Faster R-CNN on our PASCAL2012VOC training set and save the model to later evaluate it on our PASCALVOC2012 test set. During evaluation we calculate the mean average precision (mAP) at IoU of 0.5. We also calculate the MAE and IoU between the saliency maps generated by the saved model and the predicted eye-fixations. We again calculate those metrics for the saliency maps generated by the model and the human attention masks.
+We gather a baseline to compare our three different data augmentations against. In Figure 6, we show the pipeline we used for the baseline. We fine-tuned Faster R-CNN on our PASCAL2012VOC training set and save the model to later evaluate it on our PASCALVOC2012 test set. During evaluation we calculate the mean average precision (mAP) at IoU of 0.5. We also calculate the MAE and IoU between the saliency maps generated by the saved model and the predicted eye-fixations. We again calculate those metrics for the saliency maps generated by the model and the human attention masks.
 
 <figure>
   <img src="/assets/img/baseline_pipeline.png" alt="visualization of main experiment pipeline described in text." width="100%"/>
-  <figcaption> Figure 5: Visualization of the pipeline for the creating and evaluating the augmented models. </figcaption>
+  <figcaption> Figure 6: Visualization of the pipeline for the creating and evaluating the augmented models. </figcaption>
 </figure> 
 
-For evaluating the impact of data augmentation, we created three different augmented PASCALVOC2012 training sets, one for each augmentation. Then we separately fine-tuned the pre-trained Faster R-CNN on each augmented dataset (shown in Figure 6). We do the same metric calculations as we did for the baseline model (mAP, IoU, and MAE). 
+For evaluating the impact of data augmentation, we created three different augmented PASCALVOC2012 training sets, one for each augmentation. Then we separately fine-tuned the pre-trained Faster R-CNN on each augmented dataset (shown in Figure 7). We do the same metric calculations as we did for the baseline model (mAP, IoU, and MAE). 
 
 <figure>
   <img src="/assets/img/experiment_pipeline.png" alt="visualization of main experiment pipeline described in text." width="100%"/>
-  <figcaption> Figure 6: Visualization of the pipeline for the creating and evaluating the augmented models. </figcaption>
+  <figcaption> Figure 7: Visualization of the pipeline for the creating and evaluating the augmented models. </figcaption>
 </figure> 
 
 For all fine-tuning, we used the following training parameters: 5 epochs, learning rate of 0.005, SGD optimizer with momentum set to 0.9 and weight decay set to 5e-4, and the StepLR learning rate scheduler with a step size of 2 and a gamma of 0.1.
@@ -223,7 +223,7 @@ We observed that the SSD with a VGG backbone generated saliency maps most simila
 
 <figure>
   <img src="/assets/img/mit-saliency.png" alt="visualization of sample saliency maps." width="100%"/>
-  <figcaption> Figure 7: Sample saliency maps from different models compared to the predicted eye-fixations (DeepGazeIIE) for MIT1003. </figcaption>
+  <figcaption> Figure 8: Sample saliency maps from different models compared to the predicted eye-fixations (DeepGazeIIE) for MIT1003. </figcaption>
 </figure> 
 
 
@@ -245,7 +245,7 @@ We also conducted the same study between the saliency maps from the models and t
 
 <figure>
   <img src="/assets/img/pascal-pred.png" alt="visualization of sample saliency maps." width="100%"/>
-  <figcaption> Figure 8: Sample saliency maps from different models compared to the predicted eye-fixations (DeepGazeIIE) for PASCALVOC2012. </figcaption>
+  <figcaption> Figure 9: Sample saliency maps from different models compared to the predicted eye-fixations (DeepGazeIIE) for PASCALVOC2012. </figcaption>
 </figure> 
 
 **Table 3: Object Detection Models compared to Human Attention Masks for PASCALVOC2012**
@@ -264,7 +264,7 @@ We also conducted the same study between the saliency maps from the models and t
 
 <figure>
   <img src="/assets/img/pascal-human.png" alt="visualization of sample saliency maps." width="100%"/>
-  <figcaption> Figure 9: Sample saliency maps from different models compared to the human attention masks for PASCALVOC2012. </figcaption>
+  <figcaption> Figure 10: Sample saliency maps from different models compared to the human attention masks for PASCALVOC2012. </figcaption>
 </figure> 
 
 
