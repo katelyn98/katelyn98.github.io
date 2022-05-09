@@ -212,12 +212,12 @@ We observed that the SSD with a VGG backbone generated saliency maps most simila
 | Model       | MAE         | IoU           |
 | :--:       |    :--:   |     :--:     |
 | YOLOV5      | $0.1799$      | $0.1895$   |
-| SSD-VGG16   | $0.1643$       | **$0.2379$**     |
+| SSD-VGG16   | $0.1643$       | **0.2379**     |
 | SSD-MobileNet   | $0.1553$        | $0.1670$     |
 | Faster R-CNN   | $0.1441$     | $0.1896$      |
 | RetinaNet   | $0.2966$   | $0.1857$    |
 | Mask R-CNN   | $0.1550$       | $0.1678$    |
-| DETR   | **$0.1275$**     | $0.2136$     |
+| DETR   | **0.1275**     | $0.2136$     |
 
 **Example Saliency Map Results**
 
@@ -234,9 +234,9 @@ We also conducted the same study between the saliency maps from the models and t
 | Model       | MAE         | IoU           |
 | :--:       |    :--:   |     :--:     |
 | YOLOV5      | $0.2147$      | $0.1837$   |
-| SSD-VGG16   | $0.1731$       | **$0.2474$**     |
+| SSD-VGG16   | $0.1731$       | **0.2474**     |
 | SSD-MobileNet   | $0.1737$        | $0.2086$     |
-| Faster R-CNN   | **$0.1700$**     | $0.2382$      |
+| Faster R-CNN   | **0.1700**     | $0.2382$      |
 | RetinaNet   | $0.2578$   | $0.2158$    |
 | Mask R-CNN   | $0.1753$       | $0.2353$    |
 | DETR   | $0.1913$      | $0.1664$     |
@@ -253,9 +253,9 @@ We also conducted the same study between the saliency maps from the models and t
 | Model       | MAE         | IoU           |
 | :--:       |    :--:   |     :--:     |
 | YOLOV5      | $0.1571$      | $0.2400$   |
-| SSD-VGG16   | $0.1277$       | **$0.3225$**     |
+| SSD-VGG16   | $0.1277$       | **0.3225**     |
 | SSD-MobileNet   | $0.1765$        | $0.2086$     |
-| Faster R-CNN   | **$0.1145$**     | $0.2438$      |
+| Faster R-CNN   | **0.1145**     | $0.2438$      |
 | RetinaNet   | $0.2073$   | $0.2313$    |
 | Mask R-CNN   | $0.1254$       | $0.2234$    |
 | DETR   | $0.1519$      | $0.2100$     |
@@ -280,20 +280,20 @@ The Faster R-CNN generated saliency maps that were more similar to predicted eye
 
 | Augmentation      | mAP (IoU=0.5)       | MAE | IoU |
 | :--:       |    :--:   |     :--:   |     :--:   | 
-| Selective Erasing      | $0.754$      |  $0.1560$    |   $**0.1878**$    |  
-| Selective Inpainting   | $0.763$       | $**0.1552**$       |  $0.1863$       | 
+| Selective Erasing      | $0.754$      |  $0.1560$    |   **0.1878**    |  
+| Selective Inpainting   | $0.763$       | **0.1552**       |  $0.1863$       | 
 | Non-Trivial Transformations   | $0.781$        | $0.1581$      | $0.1762$       | 
-| No augmentations | $**0.787**$ | $0.1575$ | $0.1823$ | 
+| No augmentations | **0.787** | $0.1575$ | $0.1823$ | 
 
 
 **Table 5: Pre-trained Faster R-CNN Fine-tuned on PASCALVOC2012 Compared to Human Attention Masks**
 
 | Augmentation      | mAP (IoU=0.5)       | MAE | IoU |
 | :--:       |    :--:   |     :--:   |     :--:   | 
-| Selective Erasing      | $0.754$      |  $**0.1561**$ | $0.2657$ |  
+| Selective Erasing      | $0.754$      |  **0.1561** | $0.2657$ |  
 | Selective Inpainting   | $0.763$       | $0.1572$ | $0.2657$ | 
 | Non-Trivial Transformations   | $0.781$        | $0.1600$ | $0.2676$ | 
-| No augmentations | $**0.787**$ | $0.1583$ | $**0.2688**$ | 
+| No augmentations | **0.787** | $0.1583$ | **0.2688** | 
 
 
 ## Limitations
