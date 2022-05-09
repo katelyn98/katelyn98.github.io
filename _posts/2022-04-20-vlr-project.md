@@ -280,20 +280,20 @@ The Faster R-CNN generated saliency maps that were more similar to predicted eye
 
 | Augmentation      | mAP (IoU=0.5)       | MAE | IoU |
 | :--:       |    :--:   |     :--:   |     :--:   | 
-| Selective Erasing      | $0.754$      |  $0.1560$    |   **$0.1878$**    |  
-| Selective Inpainting   | $0.763$       | **$0.1552$**       |  $0.1863$       | 
+| Selective Erasing      | $0.754$      |  $0.1560$    |   $**0.1878**$    |  
+| Selective Inpainting   | $0.763$       | $**0.1552**$       |  $0.1863$       | 
 | Non-Trivial Transformations   | $0.781$        | $0.1581$      | $0.1762$       | 
-| No augmentations | **$0.787$** | $0.1575$ | $0.1823$ | 
+| No augmentations | $**0.787**$ | $0.1575$ | $0.1823$ | 
 
 
 **Table 4: Pre-trained Faster R-CNN Fine-tuned on PASCALVOC2012 Compared to Human Attention Masks**
 
 | Augmentation      | mAP (IoU=0.5)       | MAE | IoU |
 | :--:       |    :--:   |     :--:   |     :--:   | 
-| Selective Erasing      | $0.754$      |  **$0.1561$** | $0.2657$ |  
+| Selective Erasing      | $0.754$      |  $**0.1561**$ | $0.2657$ |  
 | Selective Inpainting   | $0.763$       | $0.1572$ | $0.2657$ | 
 | Non-Trivial Transformations   | $0.781$        | $0.1600$ | $0.2676$ | 
-| No augmentations | **$0.787$** | $0.1583$ | **$0.2688$** | 
+| No augmentations | $**0.787**$ | $0.1583$ | $**0.2688**$ | 
 
 
 ## Limitations
