@@ -151,7 +151,7 @@ We designed three different data augmentation techniques: ***selective erasing**
 
 
 
-The goal of selective erasing is to get rid of potential spurious patterns, patterns that the model has learned to associate with a label even though it does not represent that label [*CITATION*]. In order to augment images using selective erasing, we send the image through Faster R-CNN and use EigenCAM to generate the saliency map from layer 4 in the backbone. We then send the image through the DeepGazeIIE model to generated the predicted eye-fixations map. We calculate the intersection over union (IoU) between the two saliency maps. If the IoU is below 0.1, meaning the two saliency maps are significantly different from one another, then we erase the top 2.5% salient pixels identified from the Faster R-CNN saliency map from the original image. We identified 6476 images that met this criteria. An example of this process and the outcomes from each step are shown in Figure 1. We chose the top 2.5% because these pixels would most likely make up the core region of a potentially spurious region. 
+The goal of selective erasing is to get rid of potential spurious patterns, patterns that the model has learned to associate with a label even though it does not represent that label. In order to augment images using selective erasing, we send the image through Faster R-CNN and use EigenCAM to generate the saliency map from layer 4 in the backbone. We then send the image through the DeepGazeIIE model to generated the predicted eye-fixations map. We calculate the intersection over union (IoU) between the two saliency maps. If the IoU is below 0.1, meaning the two saliency maps are significantly different from one another, then we erase the top 2.5% salient pixels identified from the Faster R-CNN saliency map from the original image. We identified 6476 images that met this criteria. An example of this process and the outcomes from each step are shown in Figure 1. We chose the top 2.5% because these pixels would most likely make up the core region of a potentially spurious region. 
 
 <figure>
 <img src="/assets/img/selective_augment.png" alt="dataset augmentations" width="100%"/>
@@ -286,7 +286,7 @@ The Faster R-CNN generated saliency maps that were more similar to predicted eye
 | No augmentations | $**0.787**$ | $0.1575$ | $0.1823$ | 
 
 
-**Table 4: Pre-trained Faster R-CNN Fine-tuned on PASCALVOC2012 Compared to Human Attention Masks**
+**Table 5: Pre-trained Faster R-CNN Fine-tuned on PASCALVOC2012 Compared to Human Attention Masks**
 
 | Augmentation      | mAP (IoU=0.5)       | MAE | IoU |
 | :--:       |    :--:   |     :--:   |     :--:   | 
