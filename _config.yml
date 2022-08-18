@@ -102,6 +102,9 @@ collections:
   projects:
     output: true
     permalink: /projects/:path/
+  travel:
+    output: true
+    permalink: /travel/:path/
 
 news_limit: 5
 
