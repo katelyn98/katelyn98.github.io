@@ -40,10 +40,11 @@ This hike was by far my favorite. It actually came across my Instagram feed one 
     From left to right: Skyline Trail, Mount Rainier National Park, Washington, July 2022. Debbie's View, Cougar Mountain, Washington, June 2022. Colchuck Lake, Alpine Lakes Wilderness, Washington, July 2022.
 </div>
 
-<!-- You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, *bled* for your project, and then... you reveal it's glory in the next row of images. -->
+# Olympic National Park
 
+## Tide pools
+
+Of course there a lot of tide pools on the coast of Washington and Oregon, however I have never been to one before. The first tide pool I went to was at Rialto Beach which is a part of Olympic National Park. 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -57,6 +58,8 @@ You describe how you toiled, sweated, *bled* for your project, and then... you r
 <!-- You can also put regular text between your rows of images.
 Say you wanted to write a little bit about your project before you posted the rest of the images.
 You describe how you toiled, sweated, *bled* for your project, and then... you reveal it's glory in the next row of images. -->
+
+## The Trails
 
 <div class="row">
     <div class="col-sm mt-4 mt-3 mt-md-0">
