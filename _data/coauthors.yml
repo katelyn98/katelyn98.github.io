@@ -9,3 +9,15 @@
 "Clark":
   - firstname: ["William W", "Buddy", "William"]
     url: https://www.engineering.pitt.edu/people/faculty/william-buddy-clark/
+
+"Perer":
+  - firstname: ["Adam"]
+    url: https://perer.org/
+
+"Shin":
+  - firstname: ["Donghoon"]
+    url: https://donghoon.io/
+
+"Holstein":
+  - firstname: ["Ken"]
+    url: https://www.thecoalalab.com/kenholstein
