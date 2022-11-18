@@ -6,7 +6,7 @@ description: <a href="https://dig.cmu.edu/">DIG Lab</a> <img src="/assets/img/DI
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: prof_pic.png
   address: >
     <i class="far fa-file-alt"></i> <a href="/assets/pdf/Morrison_Katelyn_Resume.pdf">Current Resume</a>
 
