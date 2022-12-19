@@ -26,11 +26,16 @@ Biking to the largest lake in Catalunya:
 
 Pictures from our hikes and maps of our routes.
 
+<iframe class="alltrails" src="https://www.alltrails.com/widget/recording/day-hike-at-cadaques-cap-de-creus-0f9cafd?u=i" width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="AllTrails: Trail Guides and Maps for Hiking, Camping, and Running"></iframe>
+
 ## Dining
 
 Details about where we ate in Girona, Catalunya! 
 
 # Pre-Pyrnees
+
+
+## Hiking
 
 Hiking Route
 <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="7982321514"></div><script src="https://strava-embeds.com/embed.js"></script>
