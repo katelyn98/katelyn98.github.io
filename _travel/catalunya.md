@@ -13,6 +13,15 @@ category: Europe & UK
 
 Pictures from our bike rides and maps of our routes.
 
+Biking along the Mediterranean Coast in Catalunya:
+
+<div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="7993046201"></div><script src="https://strava-embeds.com/embed.js"></script>
+
+Biking to the largest lake in Catalunya:
+
+<div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="7977156613"></div><script src="https://strava-embeds.com/embed.js"></script>
+
+
 ## Hiking
 
 Pictures from our hikes and maps of our routes.
@@ -22,6 +31,9 @@ Pictures from our hikes and maps of our routes.
 Details about where we ate in Girona, Catalunya! 
 
 # Pre-Pyrnees
+
+Hiking Route
+<div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="7982321514"></div><script src="https://strava-embeds.com/embed.js"></script>
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">

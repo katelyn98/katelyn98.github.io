@@ -40,6 +40,11 @@ This hike was by far my favorite. It actually came across my Instagram feed one 
     From left to right: Skyline Trail, Mount Rainier National Park, Washington, July 2022. Debbie's View, Cougar Mountain, Washington, June 2022. Colchuck Lake, Alpine Lakes Wilderness, Washington, July 2022.
 </div>
 
+Here is our hiking route at Colchuck Lake: 
+
+<div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="7405848695"></div><script src="https://strava-embeds.com/embed.js"></script>
+
+
 # The Islands
 
 ## Whidbey Island
