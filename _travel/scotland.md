@@ -86,11 +86,11 @@ We were very lucky to be able to connect with the archivist at Skibo Castle for 
 
 ## Ullapool to Isle of Lewis and Harris
 
-The next part of the journey took the travelers from Ullapool to the Isle of Lewis and Harris. The journey was a long one, but the views of the rugged coastline and the Hebridean Sea were breathtaking. When they arrived on the islands, they were greeted by a picturesque landscape of golden beaches, rolling hills, and ancient standing stones. They explored the stunning beaches, and visited the Callanish Standing Stones, ancient ruins that date back to the Neolithic period. 
+The next part of the journey took us from Ullapool to the Isle of Lewis and Harris. The journey was a long one, but the views of the rugged coastline and the Hebridean Sea were breathtaking. We saw dolphins and whales while on the ferry, too! When we arrived to the ferry terminal at the Isle of Lewis, we were greeted by a picturesque landscape of rolling hills and a beautiful light house. Our main visit at Isle of Lewis was the Callanish Standing Stones, ancient ruins that date back to the Neolithic period. 
 
 ## Isle of Skye
 
-The final stop on the tour was the Isle of Skye. This beautiful island is home to rugged mountains, rolling hills, and stunning lochs. Visitors can explore the Fairy Pools, a series of crystal-clear pools and waterfalls set in a stunning valley. They can also take a boat trip or hike to the Old Man of Storr, a rocky peak with stunning views of the island. After taking in the sights of the Isle of Skye, the pair returned to Edinburgh, the starting point of their amazing journey.
+We drove from the top of Isle of Lewis down to Isle of Harris to catch our second ferry to North Uist which connected us to our last ferry to Isle of Skye. This beautiful island is home to rugged mountains, rolling hills, and stunning lochs. We drove past this crazy landscape called the Old Man of Storr, a rocky peak with stunning views of the island. We also stopped at Kilt Rock and Mealt Falls which was absolutely stunning. After taking in the sights of the Isle of Skye, we returned to Edinburgh.
 
 # What we learned about our family ancestry ...
 
