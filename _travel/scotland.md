@@ -92,7 +92,7 @@ The next part of the journey took us from Ullapool to the Isle of Lewis and Harr
 
 We drove from the top of Isle of Lewis down to Isle of Harris to catch our second ferry to North Uist which connected us to our last ferry to Isle of Skye. This beautiful island is home to rugged mountains, rolling hills, and stunning lochs. We drove past this crazy landscape called the Old Man of Storr, a rocky peak with stunning views of the island. We also stopped at Kilt Rock and Mealt Falls which was absolutely stunning. After taking in the sights of the Isle of Skye, we returned to Edinburgh.
 
-# What we learned about our family ancestry ...
+# What we learned about our family ancestry
 
 So here's what we can confirm about our ancestors...
 
