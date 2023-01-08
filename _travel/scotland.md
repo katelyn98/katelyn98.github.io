@@ -84,11 +84,21 @@ We were very lucky to be able to connect with the archivist at Skibo Castle for 
     Left: My dad and I on the main, beautiful staircase in Skibo. The glass-stained window at the top of the staircase has represents the many owners of Skibo Castle throughout the centuries. The boat along the top represents Andrew's immigration across the Atlantic. Right: Outside of Skibo. You can see the United State flag flying in the top left of the picture. On the other side of the flag is the Great Britain flag. This is to represent Andrew's ties to America and Great Britain.
 </div>
 
-### The Western Isles
+## Ullapool to Isle of Lewis and Harris
 
-## What We Know...
+The next part of the journey took the travelers from Ullapool to the Isle of Lewis and Harris. The journey was a long one, but the views of the rugged coastline and the Hebridean Sea were breathtaking. When they arrived on the islands, they were greeted by a picturesque landscape of golden beaches, rolling hills, and ancient standing stones. They explored the stunning beaches, and visited the Callanish Standing Stones, ancient ruins that date back to the Neolithic period. 
 
-So here's what we can confirm and what we cannot confirm about our ancestors...
+## Isle of Skye
+
+The final stop on the tour was the Isle of Skye. This beautiful island is home to rugged mountains, rolling hills, and stunning lochs. Visitors can explore the Fairy Pools, a series of crystal-clear pools and waterfalls set in a stunning valley. They can also take a boat trip or hike to the Old Man of Storr, a rocky peak with stunning views of the island. After taking in the sights of the Isle of Skye, the pair returned to Edinburgh, the starting point of their amazing journey.
+
+# What we learned about our family ancestry ...
+
+So here's what we can confirm about our ancestors...
+
+Thomas Morrison is Margaret Morrison's father. John Morrison is Thomas Morrison's brother. Following the line of John Morrison, we can lead it all the way back to me (unconfirmed). I say unconfirmed because Ancestry.com and Geni.com both have determined that Thomas and John are brothers without any official documents, and I could not find any records of Thomas and John being born nor could I find who their father and mother were (Margaret's grandmother and grandfather). However, under the assumption that Ancestry.com and Geni.com are corroborated, we can follow John's descendants all the way to me. 
+
+Something that was previously confusing with John was which Ann he married since Ann had spelled her name in two different ways (Humble and Humbell). John and Ann Humbell Morrison got married in Edinburgh, but belonged to a parish in Dunfermline which is why there are two marriage certificates for them (states this on the official marriage certificates). 
 
 *Notion AI Assistant generated some text for some of the sections in this blog post and were edited based on my preferences.*
 
