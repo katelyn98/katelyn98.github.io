@@ -4,8 +4,15 @@ title: Catalunya
 description: Exploring the nature of Catalunya.
 img: /assets/img/travel/catalunya/cover.gif
 importance: 1
-category: Europe
+category: Europe & UK
 ---
+
+# Pre-Pyrnees
+
+## Hiking
+
+Hiking Route
+<div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="7982321514"></div><script src="https://strava-embeds.com/embed.js"></script>
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -13,75 +20,30 @@ category: Europe
     </div>
 </div>
 <div class="caption">
-    Caption this. 
+    Pedraforca near Saldes, Catalunya. This region is known as the Pre-Pyrenees. Absolutely breath-taking!  
 </div>
 
-<!-- Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+# Costa Brava
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+## Biking
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+Pictures from our bike rides and maps of our routes.
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/1.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/3.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/5.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/5.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
+Biking along the Mediterranean Coast in Catalunya:
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, *bled* for your project, and then... you reveal it's glory in the next row of images.
+<div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="7993046201"></div><script src="https://strava-embeds.com/embed.js"></script>
+
+Biking to the largest lake in Catalunya:
+
+<div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="7977156613"></div><script src="https://strava-embeds.com/embed.js"></script>
 
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/6.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/11.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+## Hiking
 
+Pictures from our hikes and maps of our routes.
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+<iframe class="alltrails" src="https://www.alltrails.com/widget/recording/day-hike-at-cadaques-cap-de-creus-0f9cafd?u=i" width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="AllTrails: Trail Guides and Maps for Hiking, Camping, and Running"></iframe>
 
-```html
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/6.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/11.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-</div> -->
-```
+## Dining
+
+Details about where we ate in Girona, Catalunya! 

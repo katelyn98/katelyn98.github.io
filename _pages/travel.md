@@ -4,7 +4,7 @@ title: travel
 travel_blog: Explore the World
 permalink: /travel/
 description: photos and stories from places that I have visited
-display_categories: [North America, Central America, Europe]
+display_categories: [Europe & UK, Central America, North America]
 
 nav: true
 ---

@@ -40,7 +40,30 @@ This hike was by far my favorite. It actually came across my Instagram feed one 
     From left to right: Skyline Trail, Mount Rainier National Park, Washington, July 2022. Debbie's View, Cougar Mountain, Washington, June 2022. Colchuck Lake, Alpine Lakes Wilderness, Washington, July 2022.
 </div>
 
-# Olympic National Park
+Here is our hiking route at Colchuck Lake: 
+
+<div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="7405848695"></div><script src="https://strava-embeds.com/embed.js"></script>
+
+
+# The Islands
+
+## Whidbey Island
+
+Pictures from Ebey's Landing Hike, Deception Pass, South Whidbey State Park coming soon! 
+
+## Bainbridge Island
+
+Pictures from bike camping on Bainbridge! 
+
+## San Juan Island
+
+Pictures from my bioluminescence kayaking tour.
+
+## Orcas Island
+
+Pictures from car camping on Orcas Island! 
+
+# The Rainforest
 
 ## Tide pools
 
@@ -72,16 +95,4 @@ You describe how you toiled, sweated, *bled* for your project, and then... you r
 <div class="caption">
     Hall of Mosses Trail, Hoh Rainforest, Olympic National Park, Washington, August 2021.
 </div>
-
-<!-- <div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/travel/washington/hohrainforest1.jpeg' | relative_url }}" alt="" title="example image"/>
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/travel/washington/hohrainforest2.jpeg' | relative_url }}" alt="" title="example image"/>
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div> -->
 
