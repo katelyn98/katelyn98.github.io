@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Costa Rica
-description: Spring break study abroad trip to learn about sustainable business practices and tropical ecology
+description: Spring break study abroad trip in 2019 to learn about sustainable business practices and tropical ecology
 img: /assets/img/travel/costarica/costaricacovervideo.gif
 importance: 1
 category: Central America
