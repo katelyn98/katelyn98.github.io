@@ -3,7 +3,7 @@ layout: page
 title: Exploring XRAI Saliency Map
 description: Evaluating XRAI Saliency Map under different scenarios using different models.
 img: /assets/img/xrai.png
-importance: 1
+importance: 3
 tags: exploration
 categories: Explainability
 ---

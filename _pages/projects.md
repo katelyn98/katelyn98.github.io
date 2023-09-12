@@ -3,7 +3,7 @@ layout: page
 title: projects
 permalink: /projects/
 description: A collection of research, class, and personal projects.
-nav: true
+nav: false
 display_categories: [Explainable AI, Interactive Visualizations, Computer Vision]
 horizontal: false
 ---
