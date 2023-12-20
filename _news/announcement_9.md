@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2023-04-04 12:00:00-0000
+date: 2023-12-10 12:00:00-0000
 inline: true
 ---
 
-Workshop paper accepted to XAI4CV Workshop at CVPR 2023!
+Joining Justin Weisz's team at IBM this summer for as a Human-Centered Generative AI Research Scientist Intern! :sparkles: 
