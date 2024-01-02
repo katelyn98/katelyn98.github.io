@@ -1,9 +1,9 @@
 ---
 layout: default
 title: travel
-travel_blog: Explore the World
+travel_blog: Whispering my Wanderlust
 permalink: /travel/
-description: photos and stories from places that I have visited
+description: from places that I have visited
 display_categories: [Europe & UK, Central America, North America]
 
 nav: true
