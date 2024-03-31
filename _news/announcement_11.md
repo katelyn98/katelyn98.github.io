@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2023-07-05 07:59:00-0400
+date: 2024-03-30 07:59:00-0400
 inline: true
 ---
 
-Our workshop on Computational Sustainability accepted to NeurIPS 2023! :tada:
+Our paper in collaboration with Wild Me has been accepted to FAccT! :tada:
