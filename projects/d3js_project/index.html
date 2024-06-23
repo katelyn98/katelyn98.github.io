@@ -12,7 +12,7 @@
   Katelyn C. Morrison
 
 
-  | research
+  | Interactive Visualizations with D3.js
 
 </title>
 <meta name="description" content="Katelyn Morrison's personal website. Learn more about her latest research projects and more!
@@ -38,7 +38,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌌</text></svg>">
 
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/projects/d3js_project/">
 
 <!-- JQuery -->
 <!-- jQuery -->
@@ -112,7 +112,7 @@
           </li>
           
           <!-- Blog -->
-          <li class="nav-item active">
+          <li class="nav-item ">
             <a class="nav-link" href="/blog/">
               blog
               
@@ -120,8 +120,6 @@
           </li>
           
           <!-- Other pages -->
-          
-          
           
           
           
@@ -167,8 +165,8 @@
           
           
           
-            <div class = "toggle-container">
-              <a id = "light-toggle">
+            <div class="toggle-container">
+              <a id="light-toggle">
                   <i class="fas fa-moon"></i>
                   <i class="fas fa-sun"></i>
               </a>
@@ -187,107 +185,25 @@
     <div class="container mt-5">
       <div class="post">
 
-  <div class="header-bar">
-    <h1>Ph.D. Life with Kate</h1>
-    <h2>a series of research projects and stories</h2>
-  </div>
+  <header class="post-header">
+    <h1 class="post-title">Interactive Visualizations with D3.js</h1>
+    <p class="post-description">Exploring fires in the United States from 2000-2018. Collaboration with Swetha Kannan.</p>
+  </header>
+
+  <article>
+    <p>View our deployed web app of <strong><em><a href="https://cmu-vis-2021.github.io/assignment-3-environment-viz/" target="_blank" rel="noopener noreferrer">Visualizing Wildfires in the United States</a></em></strong>.</p>
+
+<p>In collaboration with Swetha Kannan, we create interaction visualizations for a subset of reported fires from the US Forest Service’s <a href="https://www.fs.usda.gov/rds/archive/Catalog/RDS-2013-0009.5" target="_blank" rel="noopener noreferrer">SpatialWildfire Occurrence Data for The United States</a>. This was done as a class project for <a href="https://dig.cmu.edu/courses/2021-fall-datavis.html" target="_blank" rel="noopener noreferrer">Data Visualizations class</a> at Carnegie Mellon University. To learn more about the development process and design decisions, check out our <a href="https://github.com/CMU-Vis-2021/assignment-3-environment-viz#readme" target="_blank" rel="noopener noreferrer"><code class="language-plaintext highlighter-rouge">README.md</code></a>.</p>
+
+<h3 id="exploratory-data-analysis">Exploratory Data Analysis</h3>
+
+<p>We retrieved our data from the US Forest Service’s Spatial Wildfire Occurence Data for The United States. The dataset was originally provided as an .sqlite file type and had over 2 million records of fires from 1992 - 2018. We created a subset of this dataset using SQL queries. Our filtered subset contains 259 records of fires from 2000 - 2018 that burned over 25,000 acres. However, I performed exploratory data analysis on this dataset for the previous assignment in this class. You can read my full report <a href="/assets/pdf/Data_Visualization_Assignment_2_Reported_Fires_Analysis.pdf">here</a>.</p>
 
 
-  <ul class="post-list">
-    
-
-    
-    
-    
-    
-
-    <li>
-      <h3>
-        
-          <a class="post-title" href="/blog/2022/vlr-project/">Towards Generating Human-Centered Saliency Maps without Sacrificing Accuracy</a>
-        
-      </h3>
-      <p></p>
-      <p class="post-meta"> 21 min read &nbsp; &middot; &nbsp;
-        May 9, 2022
-      </p>
-      <p class="post-tags">
-        <a href="/blog/2022">
-          <i class="fas fa-calendar fa-sm"></i> 2022 </a>
-
-          
-          &nbsp; &middot; &nbsp;
-            
-            <a href="/blog/tag/research">
-              <i class="fas fa-hashtag fa-sm"></i> research</a> &nbsp;
-              
-            <a href="/blog/tag/class">
-              <i class="fas fa-hashtag fa-sm"></i> class</a> &nbsp;
-              
-          
-
-          
-          &nbsp; &middot; &nbsp;
-            
-            <a href="/blog/category/Explainability">
-              <i class="fas fa-tag fa-sm"></i> Explainability</a> &nbsp;
-              
-            <a href="/blog/category/AI">
-              <i class="fas fa-tag fa-sm"></i> AI</a> &nbsp;
-              
-          
-    </p>
-    </li>
-
-    
-
-    
-    
-    
-    
-
-    <li>
-      <h3>
-        
-        <a class="post-title" href="https://pitthonors.blog/2021/03/05/embrace-the-unknown-becoming-a-researcher/">Embrace the Unknown – Becoming a Researcher</a>
-        
-      </h3>
-      <p>Interested in doing research? Want to learn how I got involved in research? Read more to find out!</p>
-      <p class="post-meta"> 1 min read &nbsp; &middot; &nbsp;
-        March 5, 2021
-      </p>
-      <p class="post-tags">
-        <a href="/blog/2021">
-          <i class="fas fa-calendar fa-sm"></i> 2021 </a>
-
-          
-          &nbsp; &middot; &nbsp;
-            
-            <a href="/blog/tag/research">
-              <i class="fas fa-hashtag fa-sm"></i> research</a> &nbsp;
-              
-            <a href="/blog/tag/advice">
-              <i class="fas fa-hashtag fa-sm"></i> advice</a> &nbsp;
-              
-          
-
-          
-          &nbsp; &middot; &nbsp;
-            
-            <a href="/blog/category/Advice">
-              <i class="fas fa-tag fa-sm"></i> Advice</a> &nbsp;
-              
-          
-    </p>
-    </li>
-
-    
-  </ul>
-
-  
-
+  </article>
 
 </div>
+
     </div>
 
     <!-- Footer -->
@@ -295,8 +211,8 @@
     
 <footer class="fixed-bottom">
   <div class="container mt-0">
-    &copy; Copyright 2024 Katelyn C. Morrison.
-    Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+    © Copyright 2024 Katelyn C. Morrison.
+    Powered by <a href="http://jekyllrb.com/" target="_blank" rel="noopener noreferrer">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="noopener noreferrer">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.
 
     
     
