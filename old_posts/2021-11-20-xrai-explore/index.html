@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <meta http-equiv="refresh" content="3; url=https://katelyn98.github.io//" />
+    
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,7 @@
   Katelyn C. Morrison
 
 
-  | Oops - Page Link Invalid
+  | Exploring XRAI Saliency Map
 
 </title>
 <meta name="description" content="Katelyn Morrison's personal website. Learn more about her latest research projects and more!
@@ -38,7 +38,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌌</text></svg>">
 
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="canonical" href="/404.html">
+<link rel="canonical" href="/old_posts/2021-11-20-xrai-explore/">
 
 <!-- JQuery -->
 <!-- jQuery -->
@@ -186,12 +186,92 @@
       <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Oops - Page Link Invalid</h1>
-    <p class="post-description">Looks like there has been a mistake. Nothing exists here.</p>
+    <h1 class="post-title">Exploring XRAI Saliency Map</h1>
+    <p class="post-description">Evaluating XRAI Saliency Map under different scenarios using different models.</p>
   </header>
 
   <article>
-    <p>You will be redirected to the main page within 3 seconds. If not redirected, please click <a href="https://katelyn98.github.io//">here</a>.</p>
+    <h2 id="tutorial-detailsnotes">Tutorial Details/Notes</h2>
+
+<p>Followed a Google PAIR tutorial on their saliency maps (including XRAI). The tutorial can be found <a href="https://github.com/PAIR-code/saliency/blob/master/Examples_pytorch.ipynb" target="_blank" rel="noopener noreferrer">here</a>. The tutorial is based on pytorch (what I am familiar with using). The tutorial is using a pretrained inception_v3 model from pytorch.</p>
+
+<h2 id="brief-introduction-to-xrai">Brief introduction to XRAI</h2>
+
+<p>View <a href="https://arxiv.org/pdf/1906.02825.pdf" target="_blank" rel="noopener noreferrer">this paper</a> and <a href="#">this code repository</a> to learn more about XRAI from Google PAIR team. Something unique about this method is that it can focus on multiple regions in an image.</p>
+
+<h2 id="experiments-and-outcomes">Experiments and Outcomes</h2>
+
+<p>More experiments that I did can be found in this <a href="https://drive.google.com/file/d/1JcLeXmbA68CO0hANTVFVv-jGBa61Kvk-/view?usp=sharing" target="_blank" rel="noopener noreferrer"><strong>Google Colab</strong></a> which is kinda messy at the moment. I think that code readability, reproducability, and documentation is extremely improtant for reserach to excel.</p>
+
+<p><em>Below are the outcomes of the tutorial along with further directions I investigated. These are all preliminary results. I am showcasing the experiments to highlight my ability to use these tools and ask interesting questions.</em></p>
+
+<h3 id="inception-v3-vs-vgg16">Inception V3 vs VGG16</h3>
+
+<p><strong><em>Inception V3</em></strong></p>
+
+<p><img src="/assets/img/inceptionv3top30.png" alt="drawing" width="100%"></p>
+
+<p>The tutorial uses a doberman image as their example. You can see based on the XRAI heatmap that the most important feature was the snout of the doberman to classify it specifically as a doberman. The top 30% is the most salient 30% of the image. It includes some portions of the sidewalk here. Below we can also so the most salient 10% of the image.</p>
+
+<p><img src="/assets/img/inceptionv3.png" alt="drawing" width="100%"></p>
+
+<p><strong><em>VGG-16</em></strong></p>
+
+<p><img src="/assets/img/vgg16.png" alt="drawing" width="100%"></p>
+
+<p>The VGG did predict that this was a doberman, but you can see that it is focusing on different features to get to its conclusion. It really highlights the whole shape of the dog in the XRAI heatmap as well whereas the inceptionv3 did not focus that strongly on shape of the dog, but primarily the snout.</p>
+
+<hr>
+
+<h3 id="human-vs-inception-v3--vgg16">Human vs Inception V3 &amp; VGG16</h3>
+
+<p>After seeing how these two models produced significantly different XRAI heatmaps, I wondered how humans would produce this heatmap for the same image. I conducted a very low-cost study to find some preliminary results. I drafted up some very <a href="https://drive.google.com/file/d/1CuVTnwA4-vSRJcl0fie9-BxVMut4GXo0/view?usp=sharing" target="_blank" rel="noopener noreferrer">simple directions</a> and sent it to four of my friends. Their results can be seen below.</p>
+
+<p><img src="/assets/img/humanresults.png" alt="drawing" width="100%"></p>
+
+<p><strong>Future Work</strong>. Running this study on a large scale and then averaging the color for every pixel from the study results would generate one final image which may or may not look similar to the model’s XRAI heatmap. If it does look similar, this can suggest that humans do use similar features that these models use when reasoning the classification of an image. The collected human-generated saliency maps can be used to fine tune a model to generate saliency maps that are human-like. It could be useful to just see the output of this expeirment regardless to identify future directions.</p>
+
+<p>(<em>View doberman <a href="/assets/img/dobermanorig.png" alt="doberman" width="100%">image</a> - for testing purposes</em>)</p>
+
+<hr>
+
+<h3 id="out-of-distribution-images">Out-of-distribution Images</h3>
+
+<p><strong>Corruptions</strong></p>
+
+<p>Different convolutional models perform slightly different when presented corrupted images. This can be determined by just reading the prediction from the model. For example, when you apply a glass blur of severity 2 on the image, an inception_v3 will predict it is an Airedale terrier. When you use a VGG it will predict that it is instead a Tibetan mastiff. All you can see is the prediction of each of these two models, but viewing the saliency map for both of these predictions will show how it deviates from the important features in the original image.</p>
+
+<p><img src="/assets/img/inceptionv3glassblur2.png" alt="drawing" width="100%"></p>
+
+<p><em>Corruption glass blur of severity 2 applied. Inception V3 predicted an Airedale terrier. Note: this image was obtained from <a href="https://github.com/hendrycks/robustness" target="_blank" rel="noopener noreferrer">ImageNet-C</a>.</em></p>
+
+<p>The model is looking at different features when the image is slightly corrupt with glass blur (severity level 2). It focuses more on the shape of the dogs body in the XRAI heatmap here, too.</p>
+
+<p><img src="/assets/img/vgg16glassblur2.png" alt="drawing" width="100%"></p>
+
+<p><em>Corruption glass blur of severity 2. VGG-16 predicted a Rottweiler. Note: this image was obtained from <a href="https://github.com/hendrycks/robustness" target="_blank" rel="noopener noreferrer">ImageNet-C</a>.</em></p>
+
+<p>Here, the model is looking again strongly at the shape of the image, but is focusing on different features to get to its decision.</p>
+
+<p><strong>Shape-Texture Bias</strong></p>
+
+<p>To learn more about shape bias and the texture cue-conflict dataset, please view this <a href="https://github.com/rgeirhos/texture-vs-shape" target="_blank" rel="noopener noreferrer">GitHub repository</a>. Looking at conflicting shapes/texture stylization where the shape is a dpg amd the texture is an elephant:</p>
+
+<p><img src="/assets/img/inceptionv3shapebias.png" alt="drawing" width="100%"></p>
+
+<p>Shape of dog stylized with texture of elephant. InceptionV3 prediction is ‘African elephant, Loxodonta africana’. We can see from XRAI that this model focuses heavily on the texture markings of the elephant instead of the general shape of the dog.</p>
+
+<p>Now looking at where the shape is a cat and the texture is an elephant:</p>
+
+<p><img src="/assets/img/inceptionv3shapebiascat.png" alt="drawing" width="100%"></p>
+
+<p>The InceptionV3 prediction was also ‘African elephant, Loxodonta africana’. We can see it is focusing on the creases in the elephant skin.</p>
+
+<hr>
+
+<h3 id="future-work">Future Work</h3>
+
+<p>These results are just preliminary experiments that I did. More work should be done on other models, other corruptions from ImageNet-C, and other texture cue-conflicts. Should continue this more on other severity levels, other corruptions, and other models.</p>
 
   </article>
 
