@@ -4,4 +4,4 @@ date: 2023-10-13 07:59:00-0400
 inline: true
 ---
 
-Our 👩🏻‍💼 + 🤖 for 🦜 paper was conditionally accepted to CSCW 2024! Stay tuned :tada:
+Our Imperfect XAI paper on 👩🏻‍💼 + 🤖 for 🦜 was accepted to CSCW 2024! :tada:
