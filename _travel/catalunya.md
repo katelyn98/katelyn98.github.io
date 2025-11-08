@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Catalunya
-description: Exploring the nature of Catalunya.
+title: Spain
+description: Exploring the nature of Spain.
 img: /assets/img/travel/catalunya/cover.gif
 importance: 1
 category: Europe & UK
