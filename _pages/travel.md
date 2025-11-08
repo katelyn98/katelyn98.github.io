@@ -31,7 +31,7 @@ nav: true
           </div>
         </div>
       {% else %}
-        <div class="grid">
+        <div class="grid grid-static">
           {% for project in sorted_projects %}
             {% include projects.html %}
           {% endfor %}
@@ -52,7 +52,7 @@ nav: true
         </div>
       </div>
     {% else %}
-      <div class="grid">
+      <div class="grid grid-static">
         {% for project in sorted_projects %}
           {% include projects.html %}
         {% endfor %}

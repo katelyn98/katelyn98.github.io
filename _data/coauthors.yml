@@ -19,5 +19,21 @@
     url: https://donghoon.io/
 
 "Holstein":
-  - firstname: ["Ken"]
+  - firstname: ["Kenneth"]
     url: https://www.thecoalalab.com/kenholstein
+
+"Morrison":
+  - firstname: ["Katelyn"]
+    url: https://katelyn98.github.io
+
+"Hammer":
+  - firstname: ["Jessica"]
+    url: http://replayable.net
+
+"Iqbal":
+  - firstname: ["Shamsi T"]
+    url: https://www.microsoft.com/en-us/research/people/shamsi/
+
+"Horvitz":
+  - firstname: ["Eric"]
+    url: https://erichorvitz.com

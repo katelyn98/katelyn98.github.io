@@ -108,6 +108,7 @@ $ git clone git@github.com:<your-username>/<your-repo-name>.git
 $ cd <your-repo-name>
 $ bundle install
 $ bundle exec jekyll serve
+python update_bib_from_scholar.py 'https://scholar.google.com/citations?user=rlW3dXcAAAAJ&hl=en&authuser=1'
 ```
 
 Now, feel free to customize the theme however you like (don't forget to change the name!).
@@ -250,6 +251,17 @@ If you have a different question, please ask using [Discussions](https://github.
 Your publications page is generated automatically from your BibTex bibliography.
 Simply edit `_bibliography/papers.bib`.
 You can also add new `*.bib` files and customize the look of your publications however you like by editing `_pages/publications.md`.
+
+#### Syncing with Google Scholar
+
+If you manage your publications on Google Scholar, you can export them directly into a BibTeX file with the helper script in `scripts/update_bib_from_scholar.py`:
+
+1. Install the scraper dependency once: `pip install scholarly`.
+2. Run `python scripts/update_bib_from_scholar.py <your-scholar-id-or-profile-url>`.
+   The script keeps your existing entries intact and appends only the new publications it finds on Scholar.
+3. If you prefer to review the export separately, use `--output _bibliography/papers.scholar.bib` and merge the pieces you need.
+
+The script accepts `--max-results` to limit how many items are downloaded and `--output` if you want to write to a different file than `_bibliography/papers.bib`.
 
 <p align="center"><img src="https://raw.githubusercontent.com/alshedivat/al-folio/master/assets/img/publications-screenshot.png" width=800></p>
 
