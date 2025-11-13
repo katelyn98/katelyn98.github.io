@@ -61,7 +61,7 @@ What initially started out as a group project for the Data Visualization class a
 ### Background on Human-Centered Explainable AI
 
 Although it is important to lecture on the theory of explainable AI methods, it is equally important to understand the key findings from the research field's enormous effort on the topic. That includes the (mis)alignment between human perception and AI explanation. There are several evaluations with and without humans on this topic, and I encourage you to read about them. The related works section 2.3 of my CSCW paper on [Evaluating the Interpretability of Explainable AI
-Techniques through a Game With a Purpose](https://dl.acm.org/doi/pdf/10.1145/3610064) and [this paper](https://arxiv.org/pdf/2107.09234) from Angie Boggust on measuring human-AI alignment through XAI.
+Techniques through a Game With a Purpose](https://dl.acm.org/doi/pdf/10.1145/3610064) and [this paper](https://arxiv.org/pdf/2107.09234) from Angie Boggust on measuring human-AI alignment through XAI are good resources on this topic.
 
 Ultimately, it is necessary to educate students about the potential for AI explanations to misalign with human perception. Lecturing on this and giving example images can of course help provide students an understand on this topic, but having them experience it themselves can really help them understand how exactly that misalignment manifests. 
 
