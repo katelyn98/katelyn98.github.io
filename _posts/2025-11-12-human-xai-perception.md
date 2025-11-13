@@ -76,7 +76,7 @@ For our class project, Swetha and I developed an interactive saliency maps inter
 
 ### Explain an Image
 
-In the current implementation of the 'Explain an Image' tab, students can explore how their own perception of classifying an image compares to how an AI systems classify that image. Here, we use an example of the Doberman Pincher from ImageNet-1K. The GIF below shows how students can select a color that maps to the color gradient of a saliency map, such as Grad-CAM or XRAI, to draw over the image. As they draw over the image with different colors reflecting different levels of importance, they are shown a side-by-side comparison between their reasoning and the model’s.
+In the current implementation of the 'Explain an Image' tab, students can explore how their own perception of classifying an image compares to how an AI systems classify that image. Here, we use an example of the Doberman Pincher from ImageNet-1K. The GIF below shows how students can select a color that maps to the color gradient of a saliency map, such as Grad-CAM or XRAI, to draw over the image. As they draw over the image with different colors reflecting different levels of importance, they are shown a side-by-side comparison between their reasoning and the model’s. 
 
 ![Animated walkthrough of the Human-XAI perception tool](/assets/img/human-XAI-perception.gif)
 
@@ -85,7 +85,7 @@ This hands-on approach highlights a key insight: humans and models have differen
 
 ## Using it in the Classroom
 
-This is an activity that I have integrated into guest lectures that I have given on transparency and interpretability at Carnegie Mellon University. This active learning approach can help the students better connect the theory to practice by letting them experience it first-hand. I have integrated this activity into my lectures by first introducing explainable AI and different types of XAI methods, such as feature importance and saliency maps. Then, I describe the activity and have the students go to this website to each draw what regions they think are most important to classifying this image as a doberman pincher. After 5 minutes, I have students upload their drawings to a google doc (or any shared communication platform you prefer) and we discuss as a class surprises in (mis)alignment with the AI's explanation. This discussion leads back nicely into the lecture where I introduce the pros and cons of saliency maps (grounded in XAI and HCI literature). 
+This is an activity that I have integrated into guest lectures that I have given on transparency and interpretability at Carnegie Mellon University. This active learning approach can help the students better connect the theory to practice by letting them experience it firsthand. I have integrated this activity into my lectures by first introducing explainable AI and different types of XAI methods, such as feature importance and saliency maps. Then, I describe the activity and have the students go to this website to each draw what regions they think are most important to classifying this image as a doberman pincher. After 5 minutes, I have students upload their drawings to a google doc (or any shared communication platform you prefer) and we discuss as a class surprises in (mis)alignment with the AI's explanation. This discussion leads back nicely into the lecture where I introduce the pros and cons of saliency maps (grounded in XAI and HCI literature). 
 
 ### Samples from Students 
 
