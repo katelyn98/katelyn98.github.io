@@ -1,9 +1,7 @@
 <!DOCTYPE html>
+<!-- _layouts/distill.html -->
 <html>
-
-  <head>
-    <meta http-equiv="refresh" content="3; url=https://katelyn98.github.io//" />
-    <meta charset="utf-8">
+  <head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -12,7 +10,7 @@
   Katelyn C. Morrison
 
 
-  | Oops - Page Link Invalid
+  | Human-Centered Saliency Maps without Sacrificing Accuracy?
 
 </title>
 <meta name="description" content="Katelyn Morrison's personal website. Learn more about her latest research projects and more!
@@ -38,7 +36,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌌</text></svg>">
 
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="canonical" href="/404.html">
+<link rel="canonical" href="/projects/vlr_project/">
 
 <!-- JQuery -->
 <!-- jQuery -->
@@ -65,6 +63,7 @@
 
 
 
+
     
 <!-- MathJax -->
 <script type="text/javascript">
@@ -78,13 +77,150 @@
 <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 
 
+    <!-- Distill js -->
+    <script src="/assets/js/distillpub/template.v2.js"></script>
+    <script src="/assets/js/distillpub/transforms.v2.js"></script>
+    
   </head>
 
-  <body class="fixed-top-nav ">
+  <d-front-matter>
+    <script async type="text/json">{
+      "title": "Human-Centered Saliency Maps without Sacrificing Accuracy?",
+      "description": "",
+      "published": "May 4, 2022",
+      "authors": [
+        
+      ],
+      "katex": {
+        "delimiters": [
+          {
+            "left": "$",
+            "right": "$",
+            "display": false
+          },
+          {
+            "left": "$$",
+            "right": "$$",
+            "display": true
+          }
+        ]
+      }
+    }</script>
 
-    <!-- Header -->
+    <style>      
+      d-article d-contents {
+        align-self: start;
+        grid-column: 1 / 4;
+        grid-row: auto / span 3;
+        width: max(70%, 300px);      
+        margin-right: 0px;
+        margin-top:  0em;
+        display: grid;      
+        grid-template-columns: 
+          minmax(8px, 1fr) [toc] auto 
+          minmax(8px, 1fr) [toc-line] 1px
+          minmax(32px, 2fr );      
+      }
+      d-article d-contents nav {      
+        grid-column: toc;
+      }
+      d-article d-contents .figcaption {
+        line-height: 1.4em;
+      }
+      d-article d-contents .toc-line {
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+        grid-column: toc-line;
+      } 
+  
+      b i {
+        display: inline;
+      }
+  
+      d-article d-contents {      
+        align-self: start;
+        grid-column: 1 / 4;
+        grid-row: auto / span 4;
+        justify-self: end;
+        margin-top: 0em;
+        padding-right: 3em;
+        padding-left: 2em;
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+      }
+  
+      d-contents nav h3 {
+        margin-top: 0;
+        margin-bottom: 1em;
+      }
+  
+      d-contents nav div {
+        color: rgba(0, 0, 0, 0.8);
+        font-weight: bold;
+      }
+  
+      d-contents nav a {
+        color: rgba(0, 0, 0, 0.8);
+        border-bottom: none;
+        text-decoration: none;
+      }
+  
+      d-contents ul {
+        padding-left: 1em;
+      }
+  
+      d-contents nav ul li {
+        margin-bottom: 0.25em;
+      }
+  
+      d-contents nav a:hover {
+        text-decoration: underline solid rgba(0, 0, 0, 0.6);
+      }
+  
+      d-contents nav ul {
+        margin-top: 0;
+        margin-bottom: 6px;
+      }
+  
+      d-contents nav > div {
+        display: block;
+        outline: none;
+        margin-bottom: 0.8em;
+      }
+  
+      d-contents nav > div > a {
+        font-size: 13px;
+        font-weight: 600;
+      }
+  
+      
+      d-contents nav > ul > li > a:hover {
+        text-decoration: none;
+      }
 
-    <header>
+      
+    @media (max-width: 1300px) {
+      d-article d-contents {      
+        justify-self: start;
+        align-self: start;        
+        grid-column-start: 3;
+        grid-column-end: -3;
+        padding-bottom: 0.5em;
+        margin-bottom: 1em;
+        padding-top: 0.5em;            
+        width: 100%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: rgba(0, 0, 0, 0.1);          
+      }
+    }
+    </style>
+  </d-front-matter>
+
+  <body class="fixed-top-nav">
+
+    <!-- Header --><header>
     <!-- Nav Bar -->
     <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
     <div class="container">
@@ -180,27 +316,30 @@
 
 
     <!-- Content -->
+    <div class="post distill">
 
-    <div class="container mt-5">
-      <div class="post">
+      <d-title>
+        <h1>Human-Centered Saliency Maps without Sacrificing Accuracy?</h1>
+        <p></p>
+      </d-title>
 
-  <header class="post-header">
-    <h1 class="post-title">Oops - Page Link Invalid</h1>
-    <p class="post-description">Looks like there has been a mistake. Nothing exists here.</p>
-  </header>
+      <d-byline></d-byline>
 
-  <article>
-    <p>You will be redirected to the main page within 3 seconds. If not redirected, please click <a href="https://katelyn98.github.io//">here</a>.</p>
+      <d-article>
+        
 
-  </article>
+        
 
-</div>
+      </d-article>
+
+      <d-appendix>
+        <d-footnote-list></d-footnote-list>
+        <d-citation-list></d-citation-list>
+      </d-appendix>
 
     </div>
 
     <!-- Footer -->
-
-    
 <footer class="fixed-bottom">
   <div class="container mt-0">
     © Copyright 2025 Katelyn C. Morrison.
@@ -217,33 +356,17 @@
 
   </body>
 
+  <d-bibliography src="/assets/bibliography/">
+  </d-bibliography>
+
+  <!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
   <!-- Bootsrap & MDB scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.4/umd/popper.min.js" integrity="sha512-eUQ9hGdLjBjY3F41CScH3UX+4JDSI9zXeroz7hJ+RteoCaY+GP/LDoM8AO+Pt+DRFw3nXqsjh9Zsts8hnYv8/A==" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha512-M5KW3ztuIICmVIhjSqXe01oV2bpe248gOxqmlcYrEzAvws7Pw3z6BK0iGbrwvdrUQUhi3eXgtxp5I8PDo9YfjQ==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js" integrity="sha512-Mug9KHKmroQFMLm93zGrjhibM2z2Obg9l6qFG2qKjXEXkMp/VDkI4uju9m4QKPjWSwQ6O2qzZEnJDEeCw0Blcw==" crossorigin="anonymous"></script>
 
-  
-<!-- Mansory & imagesLoaded -->
-<script defer src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-<script defer src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-<script defer src="/assets/js/mansory.js" type="text/javascript"></script>
-
-
-  
-<!-- Enable Tooltips -->
-<script type="text/javascript">
-$(function () {$('[data-toggle="tooltip"]').tooltip()})
-</script>
-
-
-
-<!-- Medium Zoom JS -->
-<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
-<script src="/assets/js/zoom.js"></script>
-
-
-<!-- Load Common JS -->
-<script src="/assets/js/common.js"></script>
-
+  <script src="/assets/js/distillpub/overrides.js"></script>
 
 </html>

@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://katelyn98.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://katelyn98.github.io//" rel="alternate" type="text/html" /><updated>2025-11-13T03:24:05+00:00</updated><id>https://katelyn98.github.io//feed.xml</id><title type="html">Katelyn C. Morrison</title><subtitle>Katelyn Morrison&apos;s personal website. Learn more about her latest research projects and more!
+</subtitle><entry><title type="html">Designing Learning Experiences to Teach About Human-Centered XAI</title><link href="https://katelyn98.github.io//blog/2025/human-xai-perception/" rel="alternate" type="text/html" title="Designing Learning Experiences to Teach About Human-Centered XAI" /><published>2025-11-12T00:00:00+00:00</published><updated>2025-11-12T00:00:00+00:00</updated><id>https://katelyn98.github.io//blog/2025/human-xai-perception</id><content type="html" xml:base="https://katelyn98.github.io//blog/2025/human-xai-perception/"><![CDATA[<h2 id="introduction">Introduction</h2>
+
+<p>What initially started out as a group project for the Data Visualization class at Carnegie Mellon University in Fall 2021 with Swetha Kannan quickly turned into a powerful educational tool to teach students about human-centered explainable AI. As I started doing research on Explainable AI at the start of my Ph.D., I realized that saliency maps from the same method will be different depending on the model architecture you use and similarly will align or misalign with human perception depending on the XAI method and architecture (see my <a href="https://openaccess.thecvf.com/content/CVPR2023W/XAI4CV/papers/Morrison_Shared_Interest...Sometimes_Understanding_the_Alignment_Between_Human_Perception_Vision_Architectures_CVPRW_2023_paper.pdf">spotlight workshop paper at CVPR</a> on this topic for an experimental evaluation). This inspired me to make an interactive tool that allows a user to compare how their perception aligns with an AI’s explanation.</p>
+
+<h3 id="background-on-human-centered-explainable-ai">Background on Human-Centered Explainable AI</h3>
+
+<p>Although it is important to lecture on the theory of explainable AI methods, it is equally important to understand the key findings from the research field’s enormous effort on the topic. That includes the (mis)alignment between human perception and AI explanation. There are several evaluations with and without humans on this topic, and I encourage you to read about them. The related works section 2.3 of my CSCW paper on <a href="https://dl.acm.org/doi/pdf/10.1145/3610064">Evaluating the Interpretability of Explainable AI
+Techniques through a Game With a Purpose</a> and <a href="https://arxiv.org/pdf/2107.09234">this paper</a> from Angie Boggust on measuring human-AI alignment through XAI are good resources on this topic.</p>
+
+<p>Ultimately, it is necessary to educate students about the potential for AI explanations to misalign with human perception. Lecturing on this and giving example images can of course help provide students an understand on this topic, but having them experience it themselves can really help them understand how exactly that misalignment manifests.</p>
+
+<h2 id="interactive-saliency-maps">Interactive Saliency Maps</h2>
+
+<p>For our class project, Swetha and I developed an interactive saliency maps interface that we called Insightful Saliency Maps. There are multiple components to the prototype, beyond capturing human-AI misalignment, that allow for unique visualizations of saliency maps from different architectures that people can explore if interested. However, the main focus of this short blog post is about the ‘Explain an Image’ tab.</p>
+
+<p><a href="https://cmu-vis-2021.github.io/Insightful-Saliency-Maps/" target="_blank" rel="noopener" style="display:inline-block; margin:12px 0; text-decoration:none;">
+  <span style="background:#1a73e8; color:#fff; padding:6px 12px; border-radius:4px; font-weight:600; font-size:0.95rem;">Launch Prototype ↗</span>
+</a></p>
+
+<h3 id="explain-an-image">Explain an Image</h3>
+
+<p>In the current implementation of the ‘Explain an Image’ tab, students can explore how their own perception of classifying an image compares to how an AI systems classify that image. Here, we use an example of the Doberman Pincher from ImageNet-1K. The GIF below shows how students can select a color that maps to the color gradient of a saliency map, such as Grad-CAM or XRAI, to draw over the image. As they draw over the image with different colors reflecting different levels of importance, they are shown a side-by-side comparison between their reasoning and the model’s.</p>
+
+<p><img src="/assets/img/human-XAI-perception.gif" alt="Animated walkthrough of the Human-XAI perception tool" /></p>
+
+<p>This hands-on approach highlights a key insight: humans and models have different perception and often rely on different cues. Surfacing those discrepancies helps learners reason about model behavior, understand the pros and cons of saliency maps in human-AI interactions, and think more critically about AI explanations. This activity also can help students internalize that saliency maps are not ground truth and may reflect biases in the dataset that a model was trained on. I encourage those interested in this topic to review this paper on <a href="https://proceedings.neurips.cc/paper_files/paper/2018/file/294a8ed24b1ad22ec2e7efea049b8737-Paper.pdf">Sanity Checks for Saliency Maps</a>.</p>
+
+<h2 id="using-it-in-the-classroom">Using it in the Classroom</h2>
+
+<p>This is an activity that I have integrated into guest lectures that I have given on transparency and interpretability at Carnegie Mellon University. This active learning approach can help the students better connect the theory to practice by letting them experience it firsthand. I have integrated this activity into my lectures by first introducing explainable AI and different types of XAI methods, such as feature importance and saliency maps. Then, I describe the activity and have the students go to this website to each draw what regions they think are most important to classifying this image as a doberman pincher. After 5 minutes, I have students upload their drawings to a google doc (or any shared communication platform you prefer) and we discuss as a class surprises in (mis)alignment with the AI’s explanation. This discussion leads back nicely into the lecture where I introduce the pros and cons of saliency maps (grounded in XAI and HCI literature).</p>
+
+<h3 id="samples-from-students">Samples from Students</h3>
+
+<p>Here is a collection of students’ annotated maps from the various guest lectures I gave. Each one reflects a distinct interpretation of what matters in the image. Visualizing all these responses together highlights a crucial point: human perception itself isn’t uniform—and comparing that variance to the model’s behavior helps students appreciate why explainability is a human-centered discipline.</p>
+
+<p><img src="/assets/img/human-xai-perception-samples.png" alt="Grid of student-generated saliency annotations" style="max-width:90%; display:block; margin:0 auto;" /></p>
+
+<h2 id="future-work">Future Work</h2>
+
+<p>This was just a quick group project that Swetha and I did during the first semester of my Ph.D.. Below are features I’m excited to explore and that others are welcome to build on:</p>
+
+<ul>
+  <li>Additional saliency techniques: Right now the interface uses XRAI for the ‘Explain an Image’ tab. In the future, I would like to add other saliency map techniques, such as Grad-CAM, Integrated Gradients, LIME, and SHAP.</li>
+  <li>More advanced drawing tools: Right now the interface is minimal in its drawing capabilities. You cannot erase or change the brush size. This would allow students more flexibility during their interactions.</li>
+  <li>Larger and more diverse image sets: Right now the only image to explain is the doberman. It would be great to have a bigger library of images that students can try out and explore.</li>
+  <li>Real-time inference: Right now, the AI explanation was pre-generated offline. Instead of using precomputed saliency maps, it would be great to integrate a live classification model.</li>
+</ul>
+
+<h2 id="code">Code</h2>
+
+<p><a href="https://github.com/CMU-Vis-2021/Insightful-Saliency-Maps"><img src="https://img.shields.io/badge/CMU--Vis--2021-Insightful--Saliency--Maps-181717?logo=github&amp;style=flat-square" alt="GitHub - Insightful Saliency Maps" /></a></p>
+
+<p>Explore the full prototype in the repository above.</p>
+
+<p><em>Portions of this blog post were written with the assistance of GPT-5. That content was modified and reviewed for accuracy.</em></p>]]></content><author><name>Katelyn Morrison</name></author><category term="Explainability" /><category term="AI" /><category term="teaching" /><summary type="html"><![CDATA[Introduction]]></summary></entry><entry><title type="html">Towards Generating Human-Centered Saliency Maps without Sacrificing Accuracy</title><link href="https://katelyn98.github.io//blog/2022/vlr-project/" rel="alternate" type="text/html" title="Towards Generating Human-Centered Saliency Maps without Sacrificing Accuracy" /><published>2022-05-09T00:00:00+00:00</published><updated>2022-05-09T00:00:00+00:00</updated><id>https://katelyn98.github.io//blog/2022/vlr-project</id><content type="html" xml:base="https://katelyn98.github.io//blog/2022/vlr-project/"><![CDATA[<h2 id="introduction">Introduction</h2>
+
+<p>Artificial intelligence (AI) is increasingly being built for and deployed in high-stakes domains such as detecting cancer from medical imagery <d-cite key="10.1145/3411763.3443435"></d-cite>, disaster relief efforts <d-cite key="DBLP:journals/corr/abs-1911-09296"></d-cite>, and self-driving cars. However, these models are “black-boxes” and not interpretable to people that collaborate or interact with them <d-cite key="10.1145/3377325.3377519"></d-cite>. Therefore, the interpretability and accuracy of these models are equally important to calibrate decision-makers reliance on AI and improve human-AI collaboration.</p>
+
+<p>With explainability and interpretability of AI becoming increasingly important, ML researchers designed a wide range of techniques from visualizing what the model has learned from an entire dataset, known as feature visualizations <d-cite key="olah2017feature"></d-cite>, to visualizing the pixels or region of an image that activated a particular class prediction, known as class activation maps <d-cite key="zhou2015cnnlocalization"></d-cite>. While these techniques are all derived quantitatively from the model, they are not always semantically meaningful to humans or even highlighting the correct region in the image despite a correct prediction, known as spurious correlations <d-cite key="DBLP:journals/corr/abs-2106-02112"></d-cite>. As a result, human-computer interaction (HCI) researchers have been investigating how to make explainability techniques more interpretable by humans known as human-centered explainable AI (HCXAI) <d-cite key="DBLP:journals/corr/abs-2110-10790"></d-cite>. However, few works have explored HCXAI techniques for object detection models. We present our main research questions and primary contributions for this work below.</p>
+
+<h3 id="research-questions--contributions">Research Questions &amp; Contributions</h3>
+
+<p>Our primary research questions are:</p>
+<ul>
+  <li>[<strong>RQ1</strong>] How do current state-of-the-art object detection models compare to human attention?
+    <ul>
+      <li>[<strong>H1</strong>] We hypothesize that current state-of-the-art object detection models do not nearly compare to human attention.</li>
+    </ul>
+  </li>
+  <li>[<strong>RQ2</strong>] Can data augmentation techniques make saliency maps more similar to human attention without significantly sacrificing model accuracy?
+    <ul>
+      <li>[<strong>H2</strong>] We hypothesize that some form of data augmentation that penalizes spurious patterns will result in more human-centered saliency maps.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>We address these two research questions through two studies. First conduct a small, empirical study to understand how current state-of-the-art object detection models compare to human attention. In the second study, we evaluate the impact of novel human-centered, data augmentations on DNNs saliency maps. Our novel contributions include:</p>
+<ul>
+  <li>We present two novel data augmentation techniques called <em>Selective Erasing</em> and <em>Selective Inpainting</em> along with the prevelant <em>non-trivial transforms</em> that can be used for augmenting images for image classification and object detection models</li>
+  <li>We evaluate the impact that different data augmentation techniques have on saliency maps generated by Faster R-CNN.</li>
+</ul>
+
+<h2 id="related-works">Related Works</h2>
+
+<p>Several explainable artificial intelligence (AI) techniques have been proposed as new ways to provide insights into the AI’s prediction. Such techniques for computer vision tasks traditionally are presented as a heat map, highlighting the regions that most contributed to the model’s prediction. However, several empirical studies in human-computer interaction literature have evaluated the interpretability of different techniques and their impact on decision-making. We present different saliency map techniques and perform empirical studies on different saliency map techniques.</p>
+
+<h3 id="dnn-saliency-maps-compared-to-human-attention">DNN Saliency Maps Compared to Human Attention</h3>
+
+<p>With novel interpretability techniques increasingly being developed, some researchers are taking a cognitive science approach to interpretability to understand how human attention compares to deep learning models. One study investigates if DNNs look at the same regions humans do in a visual question answering task <d-ccite key="DBLP:journals/corr/DasAZPB16"></d-ccite> while another study compares human attention to DNNs for segmentation, action recognition, and classification tasks <d-cite key="9133499,DBLP:journals/corr/abs-1906-08764"></d-cite>.</p>
+
+<h3 id="towards-dnns-with-human-centered-saliency-maps">Towards DNNs with Human-Centered Saliency Maps</h3>
+
+<p>Recently, papers have proposed various routes to make saliency maps more human-centered and semantically meaningful to humans. For example, Boyd et al., propose a novel loss function that uses human annotations <d-cite key="cyborg"></d-cite>. This loss function is designed to penalize the model during training for generating saliency maps that are significantly different from the human saliency maps. The same authors just recently show that human annotations can improve the generalization of a DNN <d-cite key="DBLP:journals/corr/abs-2105-03492"></d-cite>. For both of these studies, the authors had to collect ground truth annotations from human subjects in order to make this loss function which does not generalize well for other models or domains.</p>
+
+<p>Instead of continuously having to collect human annotations, the MIT/Tuebingen Saliency Benchmark has designed a challenge for saliency prediction models. This benchmark has yielded several techniques that can avoid the need for human subjects to obtain approximate ground truth human attention maps <d-cite key="kummererSaliencyBenchmarkingMade2018,salMetrics_Bylinskii,Judd_2012"></d-cite>. For example, the DeepGazeIIE saliency prediction model is currently the best performing saliency prediction technique compared to gold standard metrics <d-cite key="Linardos_2021_ICCV"></d-cite>.</p>
+
+<h2 id="methods">Methods</h2>
+
+<p>We conducted two studies to address our research questions. Below we describe each study and how the second study uses results from the first study.</p>
+
+<h3 id="empirical-study-">Empirical Study <a href="https://colab.research.google.com/drive/1IpOw3sfKtz_foSvRDy0nk7JyfdfDgZ23?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" /></a></h3>
+
+<p>We conducted an empirical study to gain an understanding of which state-of-the-art object detection models currently generate saliency maps similar to human attention. We evaluated and compared saliency maps generated by seven different object detection models available on PyTorch to human attention maps and predicted human eye-fixations. To obtain the human attention maps, we used the human attention maps for PASCAL2012 from the <a href="https://github.com/SinaMohseni/ML-Interpretability-Evaluation-Benchmark">ML-Interpretability-Evaluation-Benchmark</a> <d-cite key="mohseni2020benchmark"></d-cite>. To obtain predicted human eye-fixations, we used the DeepGazeIIE saliency prediction model <d-cite key="Linardos_2021_ICCV"></d-cite>. The specific state-of-the-art object detection models we evaluated and compared to the human attention maps and predicted eye-fixations include YOLOV5 <d-cite key="glenn_jocher_2022_6222936"></d-cite>, Faster R-CNN with a ResNet-50 backbone <d-cite key="DBLP:journals/corr/RenHG015"></d-cite>, SSD with a VGG backbone <d-cite key="DBLP:journals/corr/LiuAESR15"></d-cite>, SSD with a MobileNet backbone <d-cite key="DBLP:journals/corr/abs-1801-04381"></d-cite>, Mask R-CNN <d-cite key="DBLP:journals/corr/HeGDG17"></d-cite>, RetinaNet <d-cite key="DBLP:journals/corr/abs-1708-02002"></d-cite>, and DETR <d-cite key="DBLP:journals/corr/abs-2005-12872"></d-cite>.</p>
+
+<p><strong>Experiment Details</strong></p>
+
+<p>We generated a saliency map for every single image that had an associated human attention map (ground truth saliency) from the ML-Interpretability-Evaluation-Benchmark <d-cite key="mohseni2020benchmark"></d-cite> and for every image in the MIT1003 dataset <d-cite key="mit-saliency-benchmark"></d-cite>.</p>
+<figure>
+  <img src="/assets/img/emprical_study_pipeline.png" alt="visualization of evaluation pipeline described in text." width="100%" />
+  <figcaption> Figure 1: Visualization of evaluation pipeline for the empirical study. We generated the saliency map for an image of a dog using the SSD-VGG16 model as an example.</figcaption>
+</figure>
+
+<p>Each image was resized to \(512\) x \(512\) 
+before being evaluated on by the model. The saliency map for the object detection model is generated using the EigenCAM method (<d-cite key="DBLP:journals/corr/abs-2008-00299"></d-cite>) from the PyTorch library for CAM methods <d-cite key="jacobgilpytorchcam"></d-cite>. Once the saliency map from the object detection model is generated, the Mean Absolute Error (MAE) is calculated between the generated saliency map and the human attention map. The MAE is also calculated between the generated saliency map and the predicted human eye-fixations (produced from the DeepGazeIIE model).</p>
+
+<figure>
+  <img src="/assets/img/mae_visualization.png" alt="visualization of how we calculate mean absolute error." width="100%" />
+  <figcaption> Figure 2: Visualization of how Mean Absolute Error (MAE) is calculated.</figcaption>
+</figure>
+
+<p>While the MAE to some extent can reveal how similar the saliency maps are, we also calculate Intersection over Union (IoU) between the top \(90\%\) salient pixels of the generated saliency map and the top \(90\%\) salient pixels from the human attention map/predicted human eye-fixation. Calculating the IoU will help reveal if the most salient region identified by the model and the humans align <d-cite key="DBLP:journals/corr/abs-2107-09234"></d-cite>.</p>
+
+<figure>
+  <img src="/assets/img/iou_visualization.png" alt="visualization of how we calculate intersection over union." width="100%" />
+  <figcaption> Figure 3: Visualization of how Intersection over Union (IoU) is calculated.</figcaption>
+</figure>
+
+<h3 id="data-augmentations">Data Augmentations</h3>
+
+<p>Data augmentation for object detection is slightly more complex than data augmentation for image classification tasks because of the associated bounding boxes for each object <d-cite key="DBLP:journals/corr/abs-1906-11172"></d-cite>.</p>
+
+<p>We designed three different data augmentation techniques: <strong><em>selective erasing</em></strong>, <strong><em>selective inpainting</em></strong>, and <strong><em>non-trivial transformations</em></strong>. Below, we define and provide examples of each of these data augmentations.</p>
+
+<p><strong>Selective Erasing</strong> <a href="https://colab.research.google.com/drive/1xLAlGZHgBSIOXfWSuImUpdHBHngYmpmy?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" /></a></p>
+
+<p>The goal of selective erasing is to get rid of potential spurious patterns, patterns that the model has learned to associate with a label even though it does not represent that label. In order to augment images using selective erasing, we send the image through Faster R-CNN and use EigenCAM to generate the saliency map from layer 4 in the backbone. We then send the image through the DeepGazeIIE model to generated the predicted eye-fixations map. We calculate the intersection over union (IoU) between the two saliency maps. If the IoU is below 0.1, meaning the two saliency maps are significantly different from one another, then we erase the top 2.5% salient pixels identified from the Faster R-CNN saliency map from the original image. We identified 6476 images that met this criteria. An example of this process and the outcomes from each step are shown in Figure 4. We chose the top 2.5% because these pixels would most likely make up the core region of a potentially spurious region.</p>
+
+<figure>
+<img src="/assets/img/selective_augment.png" alt="dataset augmentations" width="100%" />
+<figcaption>Figure 4: Example of how the selective erasing and selective inpainting augmentation techniques work. If the IoU between the Faster R-CNN saliency map and DeepGaze saliency map is less than 0.1 than erase the top 2.5% salient pixels from the original image. Using an untrained neural network, inpaint the pixels that were erased. In this image, pixels along the border were most salient so they were erased and then inpainted. </figcaption>
+</figure>
+
+<p><strong>Selective Inpainting</strong>
+<a href="https://colab.research.google.com/drive/1oK3MZeY8cpVhd5jH-7C-yMj4N0igMmvt?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" /></a></p>
+
+<p>The selective inpainting augmentation process follows the same steps as selective erasing and then inpaints the erased image. To inpaint the top 2.5% salient pixels as denoted by Faster R-CNN, we send the selective erased image and mask into an untrained neural network and optimize on learning the pixels that minimize the chosen loss function. This idea is presented in the Deep Image Prior Paper <d-cite key="DBLP:journals/corr/abs-1711-10925"></d-cite>. We used $4001$ iterations with an untrained ResNet to inpaint the erased regions in each image. We augmented 6476 images and replaced those images in the original pascal dataset to make up the final augmented dataset.</p>
+
+<p><strong>Non-trivial Transformations</strong> <a href="https://drive.google.com/file/d/1z158yrypCbLhpOGYCzsYJGXJIlhrDTW7/view?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" /></a></p>
+
+<p>Data augmentation can improve performance and outcomes of models as it can add new and different examples to the training dataset. If the dataset in a model can be more rich and sufficient with the augmentation techniques, the model can perform better. To improve the model generalization, we apply the following augmentation techniques seen in Figure 5. In our experiment, we do experiments of bounding box geometric augmentation, color augmentation, and geometric augmentation. Augmentations considered in this experiment are from the PIL.ImageOps as well as torchvision.transforms libraries. The source codes are from the following repos: <a href="https://github.com/aleju/imgaug">imgaug</a> and <a href="https://github.com/Jasonlee1995/AutoAugment_Detection">AutoAugment for Detection Implementation with Pytorch</a>. Each image in the dataset was augmented only once with a random augmentation selected from Figure 5. This was to ensure we had the same amount of data to fine-tune on as the other augmentation techniques.</p>
+
+<figure>
+  <img src="/assets/img/non-trivial_firstpart.png" alt="dataset augmentations non-trivial" width="100%" />
+  <img src="/assets/img/non-trivial_secondpart.png" alt="dataset augmentations non-trivial" width="100%" />
+  <img src="/assets/img/non-trivial_thirdpart.png" alt="dataset augmentations non-trivial" width="100%" />
+  <figcaption>Figure 5: Sample of different augmentations used in the experiment. </figcaption>  
+</figure>
+
+<h3 id="experiment-design">Experiment Design</h3>
+
+<p>We gather a baseline to compare our three different data augmentations against. In Figure 6, we show the pipeline we used for the baseline. We fine-tuned Faster R-CNN on our PASCAL2012VOC training set and save the model to later evaluate it on our PASCALVOC2012 test set. During evaluation we calculate the mean average precision (mAP) at IoU of 0.5. We also calculate the MAE and IoU between the saliency maps generated by the saved model and the predicted eye-fixations. We again calculate those metrics for the saliency maps generated by the model and the human attention masks.</p>
+
+<figure>
+  <img src="/assets/img/baseline_pipeline.png" alt="visualization of main experiment pipeline described in text." width="100%" />
+  <figcaption> Figure 6: Visualization of the pipeline for the creating and evaluating the augmented models. </figcaption>
+</figure>
+
+<p>For evaluating the impact of data augmentation, we created three different augmented PASCALVOC2012 training sets, one for each augmentation. Then we separately fine-tuned the pre-trained Faster R-CNN on each augmented dataset (shown in Figure 7). We do the same metric calculations as we did for the baseline model (mAP, IoU, and MAE).</p>
+
+<figure>
+  <img src="/assets/img/experiment_pipeline.png" alt="visualization of main experiment pipeline described in text." width="100%" />
+  <figcaption> Figure 7: Visualization of the pipeline for the creating and evaluating the augmented models. </figcaption>
+</figure>
+
+<p>For all fine-tuning, we used the following training parameters: 5 epochs, learning rate of 0.005, SGD optimizer with momentum set to 0.9 and weight decay set to 5e-4, and the StepLR learning rate scheduler with a step size of 2 and a gamma of 0.1.</p>
+
+<h2 id="results">Results</h2>
+
+<p>We present results from our empirical study and our main experiment which evaluates the impact of different data augmentation techniques. The empirical study was done to get a glimpse at how current saliency maps from state-of-the-art models compare to predicted and ground truth human attention. The main experiment extends the empirical study by evaluating the impact of different data augmentation techniques on the saliency maps.</p>
+
+<h3 id="empirical-study">Empirical Study</h3>
+
+<p>Results for comparing the saliency maps generated by object detection models to the DeepGazeIIE’s predicted eye-fixations on the MIT1003 dataset <d-cite key="5459462"></d-cite> are shown in Table 1. We calculated the Mean Absolute Error (MAE) and Intersection over Union (IoU) for each model. The MAE is preferred to be close to 0.0; the IoU is preferred to be close to 1.0.</p>
+
+<p>We observed that the SSD with a VGG backbone generated saliency maps most similar to predicted eye-fixations in terms of the IoU metric with a value of $0.2379$. DETR, a transformer-based architecture,  generated saliency maps most similar to the predicted eye-fixations in terms of the MAE metric with a value of $0.1275$.</p>
+
+<p><strong>Table 1: Object Detection Models compared to DeepGazeIIE Predicted Eye-Fixations for MIT1003</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Model</th>
+      <th style="text-align: center">MAE</th>
+      <th style="text-align: center">IoU</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">YOLOV5</td>
+      <td style="text-align: center">$0.1799$</td>
+      <td style="text-align: center">$0.1895$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">SSD-VGG16</td>
+      <td style="text-align: center">$0.1643$</td>
+      <td style="text-align: center"><strong>0.2379</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">SSD-MobileNet</td>
+      <td style="text-align: center">$0.1553$</td>
+      <td style="text-align: center">$0.1670$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Faster R-CNN</td>
+      <td style="text-align: center">$0.1441$</td>
+      <td style="text-align: center">$0.1896$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">RetinaNet</td>
+      <td style="text-align: center">$0.2966$</td>
+      <td style="text-align: center">$0.1857$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Mask R-CNN</td>
+      <td style="text-align: center">$0.1550$</td>
+      <td style="text-align: center">$0.1678$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">DETR</td>
+      <td style="text-align: center"><strong>0.1275</strong></td>
+      <td style="text-align: center">$0.2136$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example Saliency Map Results</strong></p>
+
+<figure>
+  <img src="/assets/img/mit-saliency.png" alt="visualization of sample saliency maps." width="100%" />
+  <figcaption> Figure 8: Sample saliency maps from different models compared to the predicted eye-fixations (DeepGazeIIE) for MIT1003. </figcaption>
+</figure>
+
+<p>We also conducted the same study between the saliency maps from the models and the predicted eye-fixations as well as ground truth for a subset of PASCALVOC2012. This subset was determined based on the PASCALVOC2012 images that had a ground truth human attention map in the ML Interpretability Evaluation Benchmark. We observed that Faster R-CNN with a ResNet50 backbone generated saliency maps most similar to the predicted eye-fixations and the human attention masks in terms of MAE with values of $0.1700$ and $0.1145$ respectively. In terms of IoU, the SSD with a VGG backbone generated saliency maps most similar to the predicted eye-fixations and human attention masks with values of $0.2474$ and $0.3225$ respectively.</p>
+
+<p><strong>Table 2: Object Detection Models compared to DeepGazeIIE Predicted Eye-Fixations for PASCALVOC2012</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Model</th>
+      <th style="text-align: center">MAE</th>
+      <th style="text-align: center">IoU</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">YOLOV5</td>
+      <td style="text-align: center">$0.2147$</td>
+      <td style="text-align: center">$0.1837$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">SSD-VGG16</td>
+      <td style="text-align: center">$0.1731$</td>
+      <td style="text-align: center"><strong>0.2474</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">SSD-MobileNet</td>
+      <td style="text-align: center">$0.1737$</td>
+      <td style="text-align: center">$0.2086$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Faster R-CNN</td>
+      <td style="text-align: center"><strong>0.1700</strong></td>
+      <td style="text-align: center">$0.2382$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">RetinaNet</td>
+      <td style="text-align: center">$0.2578$</td>
+      <td style="text-align: center">$0.2158$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Mask R-CNN</td>
+      <td style="text-align: center">$0.1753$</td>
+      <td style="text-align: center">$0.2353$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">DETR</td>
+      <td style="text-align: center">$0.1913$</td>
+      <td style="text-align: center">$0.1664$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example Saliency Map Results</strong></p>
+
+<figure>
+  <img src="/assets/img/pascal-pred.png" alt="visualization of sample saliency maps." width="100%" />
+  <figcaption> Figure 9: Sample saliency maps from different models compared to the predicted eye-fixations (DeepGazeIIE) for PASCALVOC2012. </figcaption>
+</figure>
+
+<p><strong>Table 3: Object Detection Models compared to Human Attention Masks for PASCALVOC2012</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Model</th>
+      <th style="text-align: center">MAE</th>
+      <th style="text-align: center">IoU</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">YOLOV5</td>
+      <td style="text-align: center">$0.1571$</td>
+      <td style="text-align: center">$0.2400$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">SSD-VGG16</td>
+      <td style="text-align: center">$0.1277$</td>
+      <td style="text-align: center"><strong>0.3225</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">SSD-MobileNet</td>
+      <td style="text-align: center">$0.1765$</td>
+      <td style="text-align: center">$0.2086$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Faster R-CNN</td>
+      <td style="text-align: center"><strong>0.1145</strong></td>
+      <td style="text-align: center">$0.2438$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">RetinaNet</td>
+      <td style="text-align: center">$0.2073$</td>
+      <td style="text-align: center">$0.2313$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Mask R-CNN</td>
+      <td style="text-align: center">$0.1254$</td>
+      <td style="text-align: center">$0.2234$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">DETR</td>
+      <td style="text-align: center">$0.1519$</td>
+      <td style="text-align: center">$0.2100$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example Saliency Map Results</strong></p>
+
+<figure>
+  <img src="/assets/img/pascal-human.png" alt="visualization of sample saliency maps." width="100%" />
+  <figcaption> Figure 10: Sample saliency maps from different models compared to the human attention masks for PASCALVOC2012. </figcaption>
+</figure>
+
+<p>We identify a top preforming model in terms of MAE because this metric is not variable based on a threshold like IoU. We selected the top performing model for our main experiment to focus on the impact of the augmentations for one model instead of comparing the impact of augmentations across different models. Since Faster R-CNN performed the best for MAE on PASCALVOC2012, we use this model in our main experiment.</p>
+
+<h3 id="main-experiment">Main Experiment</h3>
+
+<p>We separately fine-tune a pre-trained Faster R-CNN on each data augmentation technique and with no data augmentation and then evaluate that model on the test images. We calculate mean average precision to understand the performance of each model and we calculate mean absolute error and intersection over union between the saliency maps generated by the model and the predicted eye-fixations or human attention masks.</p>
+
+<p>The Faster R-CNN generated saliency maps that were more similar to predicted eye-fixations in terms of MAE when using selective inpainting augmentation and in terms of IoU when using selective erasing. These augmentations impacted the mAP by at most 3%.</p>
+
+<p><strong>Table 4: Pre-trained Faster R-CNN Fine-tuned on PASCALVOC2012 Compared to Predicted Eye-Fixations</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Augmentation</th>
+      <th style="text-align: center">mAP (IoU=0.5)</th>
+      <th style="text-align: center">MAE</th>
+      <th style="text-align: center">IoU</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Selective Erasing</td>
+      <td style="text-align: center">$0.754$</td>
+      <td style="text-align: center">$0.1560$</td>
+      <td style="text-align: center"><strong>0.1878</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Selective Inpainting</td>
+      <td style="text-align: center">$0.763$</td>
+      <td style="text-align: center"><strong>0.1552</strong></td>
+      <td style="text-align: center">$0.1863$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Non-Trivial Transformations</td>
+      <td style="text-align: center">$0.781$</td>
+      <td style="text-align: center">$0.1581$</td>
+      <td style="text-align: center">$0.1762$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">No augmentations</td>
+      <td style="text-align: center"><strong>0.787</strong></td>
+      <td style="text-align: center">$0.1575$</td>
+      <td style="text-align: center">$0.1823$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Table 5: Pre-trained Faster R-CNN Fine-tuned on PASCALVOC2012 Compared to Human Attention Masks</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Augmentation</th>
+      <th style="text-align: center">mAP (IoU=0.5)</th>
+      <th style="text-align: center">MAE</th>
+      <th style="text-align: center">IoU</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Selective Erasing</td>
+      <td style="text-align: center">$0.754$</td>
+      <td style="text-align: center"><strong>0.1561</strong></td>
+      <td style="text-align: center">$0.2657$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Selective Inpainting</td>
+      <td style="text-align: center">$0.763$</td>
+      <td style="text-align: center">$0.1572$</td>
+      <td style="text-align: center">$0.2657$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Non-Trivial Transformations</td>
+      <td style="text-align: center">$0.781$</td>
+      <td style="text-align: center">$0.1600$</td>
+      <td style="text-align: center">$0.2676$</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">No augmentations</td>
+      <td style="text-align: center"><strong>0.787</strong></td>
+      <td style="text-align: center">$0.1583$</td>
+      <td style="text-align: center"><strong>0.2688</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="limitations">Limitations</h2>
+
+<p><strong>Access to Compute Power</strong></p>
+
+<p>We did this entire project on Google Colab which limited us in terms of the GPU that we could use and the amount of memory we had. We were able to use Colab Pro, but even then the GPUs we were using were limited to 16GB which forced us to use smaller batch sizes than normal.</p>
+
+<p><strong>Pre-trained models trained on COCO</strong></p>
+
+<p>The pre-trained models we used in our empirical study were from the PyTorch torchvision library <d-cite key="pytorchtorchvision"></d-cite> which are actually trained on the MSCOCO dataset, but we used PASCALVOC2012 for our study. We used PASCALVOC2012 because this is the dataset that the ML Interpretability Evaluation Benchmark <d-cite key="mohseni2020benchmark"></d-cite> uses for the object detection domain. Evaluating the pre-trained models on a different dataset could have impacted how we interpret our results. This is why we collect metrics for the pre-trained model when fine-tuned on the original PASCALVOC2012 without any augmentations.</p>
+
+<p><strong>Selective Erasing/Inpainted Derived from DeepGazeIIE</strong></p>
+
+<p>The selective erasing and selective inpainting augmentations only used the predicted eye fixations to create the dataset which could explain the null results shown in Table 4. Future work should create a separate augmented dataset using the human attention masks instead of predicted eye-fixations.</p>
+
+<h2 id="future-work--conclusion">Future Work &amp; Conclusion</h2>
+
+<p>Future work should explore these questions for just image classification instead of the task of object detection. Another possibility would be to create a novel loss function that incorporates the IoU between the saliency map generated from the model and the saliency map of the DeepGazeIIE or similar saliency prediction model. This will train the model to focus on semantically meaningful regions of the image with ground truth labels as shown by <d-cite key="cyborg"></d-cite>. Also, more in-depth analysis for tuning the threshold is helpful for selective erasing/inpainting to optimize on amount of pixels that are deleted/inpainted. This may change the metrics obtained for better or for worse. Additionally, a user survey can be conducted to see if the more human centered saliency maps make a significant impact on interpretability to humans.</p>
+
+<p>Overall, we conduct two studies to understand how current object detection models compare to human attention and what techniques might improve them. We evaluate two novel data augmentation pipelines in addition to non-trivial transforms to see if they help saliency maps become more human centered without significantly sacrificing accuracy. With at most 3% mAP difference, we observe that data augmentations that are derived from predicted human attention can improve the mean absolute error and intersection over union between the model saliency and predicted attention. We do not observe anything significant for the human attention mask, primarily because the dataset was derived from predicted eye-fixations which could be slightly different from the human attention masks.</p>
+
+<h2 id="code">Code</h2>
+
+<p><img src="/assets/img/github-brands.svg" alt="logo" width="3%" /> <a href="https://github.com/Gkao03/Saliency-Map-Visualization">GitHub Repository</a></p>
+
+<p><img src="/assets/img/google-drive-brands.svg" alt="logo" width="3%" /> <a href="https://drive.google.com/drive/folders/1BW068VgVoj0_CVFCGED3E61sekw-1R74?usp=sharing">Augmented Models</a></p>
+
+<p><em>We completed this project to satisfy the project requirement for <a href="https://visual-learning.cs.cmu.edu/index.html">16-824: Visual Learning &amp; Recognition</a>. We want to thank the TAs and Professor for their hard work and dedication to the class throughout the semester.</em></p>]]></content><author><name>Vivek Aswal</name></author><category term="Explainability" /><category term="AI" /><category term="research" /><category term="class" /><summary type="html"><![CDATA[Introduction]]></summary></entry><entry><title type="html">Exploring XRAI Saliency Map</title><link href="https://katelyn98.github.io//blog/2021/xrai-explore/" rel="alternate" type="text/html" title="Exploring XRAI Saliency Map" /><published>2021-11-20T00:00:00+00:00</published><updated>2021-11-20T00:00:00+00:00</updated><id>https://katelyn98.github.io//blog/2021/xrai-explore</id><content type="html" xml:base="https://katelyn98.github.io//blog/2021/xrai-explore/"><![CDATA[<h2 id="tutorial-details--notes">Tutorial Details &amp; Notes</h2>
+
+<p>Followed a Google PAIR tutorial on their saliency maps (including XRAI). The tutorial can be found <a href="https://github.com/PAIR-code/saliency/blob/master/Examples_pytorch.ipynb">here</a>. The tutorial is based on PyTorch (what I am familiar with using). The tutorial is using a pretrained inception_v3 model from PyTorch.</p>
+
+<h2 id="brief-introduction-to-xrai">Brief Introduction to XRAI</h2>
+
+<p>View <a href="https://arxiv.org/pdf/1906.02825.pdf">this paper</a> and <a href="#">this code repository</a> to learn more about XRAI from Google PAIR team. Something unique about this method is that it can focus on multiple regions in an image.</p>
+
+<h2 id="experiments--outcomes">Experiments &amp; Outcomes</h2>
+
+<p>More experiments that I did can be found in this <a href="https://drive.google.com/file/d/1JcLeXmbA68CO0hANTVFVv-jGBa61Kvk-/view?usp=sharing"><strong>Google Colab</strong></a> which is kinda messy at the moment. I think that code readability, reproducibility, and documentation are extremely important for research to excel.</p>
+
+<p><em>Below are the outcomes of the tutorial along with further directions I investigated. These are all preliminary results. I am showcasing the experiments to highlight my ability to use these tools and ask interesting questions.</em></p>
+
+<h3 id="inception-v3-vs-vgg16">Inception V3 vs VGG16</h3>
+
+<h4 id="inception-v3">Inception V3</h4>
+
+<p><img src="/assets/img/inceptionv3top30.png" alt="drawing" width="100%" /></p>
+
+<p>The tutorial uses a doberman image as their example. You can see based on the XRAI heatmap that the most important feature was the snout of the doberman to classify it specifically as a doberman. The top 30% is the most salient 30% of the image. It includes some portions of the sidewalk here. Below we can also so the most salient 10% of the image.</p>
+
+<p><img src="/assets/img/inceptionv3.png" alt="drawing" width="100%" /></p>
+
+<h4 id="vgg-16">VGG-16</h4>
+
+<p><img src="/assets/img/vgg16.png" alt="drawing" width="100%" /></p>
+
+<p>The VGG did predict that this was a doberman, but you can see that it is focusing on different features to get to its conclusion. It really highlights the whole shape of the dog in the XRAI heatmap as well whereas the inception_v3 did not focus that strongly on shape of the dog, but primarily the snout.</p>
+
+<h3 id="human-vs-inception-v3--vgg16">Human vs Inception V3 &amp; VGG16</h3>
+
+<p>After seeing how these two models produced significantly different XRAI heatmaps, I wondered how humans would produce this heatmap for the same image. I conducted a very low-cost study to find some preliminary results. I drafted up some very <a href="https://drive.google.com/file/d/1CuVTnwA4-vSRJcl0fie9-BxVMut4GXo0/view?usp=sharing">simple directions</a> and sent it to four of my friends. Their results can be seen below.</p>
+
+<p><img src="/assets/img/humanresults.png" alt="drawing" width="100%" /></p>
+
+<p><em>Future Work</em>. Running this study on a large scale and then averaging the color for every pixel from the study results would generate one final image which may or may not look similar to the model’s XRAI heatmap. If it does look similar, this can suggest that humans do use similar features that these models use when reasoning the classification of an image. The collected human-generated saliency maps can be used to fine tune a model to generate saliency maps that are human-like. It could be useful to just see the output of this experiment regardless to identify future directions.</p>
+
+<p>(<em>View doberman <a href="/assets/img/dobermanorig.png" alt="doberman" width="100%">image</a> - for testing purposes</em>)</p>
+
+<h3 id="out-of-distribution-images">Out-of-distribution Images</h3>
+
+<h4 id="corruptions">Corruptions</h4>
+
+<p>Different convolutional models perform slightly differently when presented corrupted images. This can be determined by just reading the prediction from the model. For example, when you apply a glass blur of severity 2 on the image, an inception_v3 will predict it is an Airedale terrier. When you use a VGG it will predict that it is instead a Tibetan mastiff. All you can see is the prediction of each of these two models, but viewing the saliency map for both of these predictions will show how it deviates from the important features in the original image.</p>
+
+<p><img src="/assets/img/inceptionv3glassblur2.png" alt="drawing" width="100%" /></p>
+
+<p><em>Corruption glass blur of severity 2 applied. Inception V3 predicted an Airedale terrier. Note: this image was obtained from <a href="https://github.com/hendrycks/robustness">ImageNet-C</a>.</em></p>
+
+<p>The model is looking at different features when the image is slightly corrupt with glass blur (severity level 2). It focuses more on the shape of the dog’s body in the XRAI heatmap here, too.</p>
+
+<p><img src="/assets/img/vgg16glassblur2.png" alt="drawing" width="100%" /></p>
+
+<p><em>Corruption glass blur of severity 2. VGG-16 predicted a Rottweiler. Note: this image was obtained from <a href="https://github.com/hendrycks/robustness">ImageNet-C</a>.</em></p>
+
+<p>Here, the model is looking again strongly at the shape of the image, but is focusing on different features to get to its decision.</p>
+
+<h4 id="shape-texture-bias">Shape-Texture Bias</h4>
+
+<p>To learn more about shape bias and the texture cue-conflict dataset, please view this <a href="https://github.com/rgeirhos/texture-vs-shape">GitHub repository</a>. Looking at conflicting shapes/texture stylization where the shape is a dog and the texture is an elephant:</p>
+
+<p><img src="/assets/img/inceptionv3shapebias.png" alt="drawing" width="100%" /></p>
+
+<p>Shape of dog stylized with texture of elephant. InceptionV3 prediction is ‘African elephant, Loxodonta africana’. We can see from XRAI that this model focuses heavily on the texture markings of the elephant instead of the general shape of the dog.</p>
+
+<p>Now looking at where the shape is a cat and the texture is an elephant:</p>
+
+<p><img src="/assets/img/inceptionv3shapebiascat.png" alt="drawing" width="100%" /></p>
+
+<p>The InceptionV3 prediction was also ‘African elephant, Loxodonta africana’. We can see it is focusing on the creases in the elephant skin.</p>
+
+<h2 id="future-work">Future Work</h2>
+
+<p>These results are just preliminary experiments that I did. More work should be done on other models, other corruptions from ImageNet-C, and other texture cue-conflicts. This should continue across more severity levels, other corruptions, and additional models.</p>]]></content><author><name>Katelyn Morrison</name></author><category term="Explainability" /><category term="exploration" /><summary type="html"><![CDATA[Evaluating the XRAI saliency map under different scenarios using different models.]]></summary></entry><entry><title type="html">Embrace the Unknown – Becoming a Researcher</title><link href="https://katelyn98.github.io//blog/2021/becoming-researcher/" rel="alternate" type="text/html" title="Embrace the Unknown – Becoming a Researcher" /><published>2021-03-05T00:00:00+00:00</published><updated>2021-03-05T00:00:00+00:00</updated><id>https://katelyn98.github.io//blog/2021/becoming-researcher</id><content type="html" xml:base="https://katelyn98.github.io//blog/2021/becoming-researcher/"><![CDATA[]]></content><author><name></name></author><category term="Advice" /><category term="research" /><category term="advice" /><summary type="html"><![CDATA[Interested in doing research? Want to learn how I got involved in research? Read more to find out!]]></summary></entry></feed>

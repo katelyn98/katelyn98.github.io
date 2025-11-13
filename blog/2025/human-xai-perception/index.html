@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<!-- _layouts/distill.html -->
+<html>
+  <head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>
+
+  Katelyn C. Morrison
+
+
+  | Designing Learning Experiences to Teach About Human-Centered XAI
+
+</title>
+<meta name="description" content="Katelyn Morrison's personal website. Learn more about her latest research projects and more!
+">
+
+<!-- Open Graph -->
+
+
+<!-- Bootstrap & MDB -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" integrity="sha512-RO38pBRxYH3SoOprtPTD86JFOclM51/XTIdEPh5j8sj4tp8jmQIx26twG52UaLi//hQldfrh7e51WzP9wuP32Q==" crossorigin="anonymous" />
+
+<!-- Fonts & Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"  integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+<!-- Code Syntax Highlighting -->
+<!-- <link rel="stylesheet" href="https://gitcdn.link/repo/jwarby/jekyll-pygments-themes/master/github.css" /> -->
+
+<!-- Styles -->
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌌</text></svg>">
+
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="canonical" href="/blog/2025/human-xai-perception/">
+
+<!-- JQuery -->
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+
+<!-- Theming-->
+
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/dark_mode.js"></script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-XXXXXXXXX');
+</script>
+
+
+
+
+
+    
+<!-- MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex: {
+      tags: 'ams'
+    }
+  };
+</script>
+<script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+<script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+
+    <!-- Distill js -->
+    <script src="/assets/js/distillpub/template.v2.js"></script>
+    <script src="/assets/js/distillpub/transforms.v2.js"></script>
+    
+    <!-- Page/Post style -->
+    <style type="text/css">
+      .fake-img {
+  background: #bbb;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 12px;
+} .fake-img p {
+  font-family: monospace;
+  color: white;
+  text-align: left;
+  margin: 12px 0;
+  text-align: center;
+  font-size: 16px;
+}
+
+    </style>
+  </head>
+
+  <d-front-matter>
+    <script async type="text/json">{
+      "title": "Designing Learning Experiences to Teach About Human-Centered XAI",
+      "description": "",
+      "published": "November 12, 2025",
+      "authors": [
+        {
+          "author": "Katelyn Morrison",
+          "authorURL": "https://cs.cmu.edu/~kcmorris",
+          "affiliations": [
+            {
+              "name": "HCII, CMU",
+              "url": ""
+            }
+          ]
+        }
+        
+      ],
+      "katex": {
+        "delimiters": [
+          {
+            "left": "$",
+            "right": "$",
+            "display": false
+          },
+          {
+            "left": "$$",
+            "right": "$$",
+            "display": true
+          }
+        ]
+      }
+    }</script>
+
+    <style>      
+      d-article d-contents {
+        align-self: start;
+        grid-column: 1 / 4;
+        grid-row: auto / span 3;
+        width: max(70%, 300px);      
+        margin-right: 0px;
+        margin-top:  0em;
+        display: grid;      
+        grid-template-columns: 
+          minmax(8px, 1fr) [toc] auto 
+          minmax(8px, 1fr) [toc-line] 1px
+          minmax(32px, 2fr );      
+      }
+      d-article d-contents nav {      
+        grid-column: toc;
+      }
+      d-article d-contents .figcaption {
+        line-height: 1.4em;
+      }
+      d-article d-contents .toc-line {
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+        grid-column: toc-line;
+      } 
+  
+      b i {
+        display: inline;
+      }
+  
+      d-article d-contents {      
+        align-self: start;
+        grid-column: 1 / 4;
+        grid-row: auto / span 4;
+        justify-self: end;
+        margin-top: 0em;
+        padding-right: 3em;
+        padding-left: 2em;
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+      }
+  
+      d-contents nav h3 {
+        margin-top: 0;
+        margin-bottom: 1em;
+      }
+  
+      d-contents nav div {
+        color: rgba(0, 0, 0, 0.8);
+        font-weight: bold;
+      }
+  
+      d-contents nav a {
+        color: rgba(0, 0, 0, 0.8);
+        border-bottom: none;
+        text-decoration: none;
+      }
+  
+      d-contents ul {
+        padding-left: 1em;
+      }
+  
+      d-contents nav ul li {
+        margin-bottom: 0.25em;
+      }
+  
+      d-contents nav a:hover {
+        text-decoration: underline solid rgba(0, 0, 0, 0.6);
+      }
+  
+      d-contents nav ul {
+        margin-top: 0;
+        margin-bottom: 6px;
+      }
+  
+      d-contents nav > div {
+        display: block;
+        outline: none;
+        margin-bottom: 0.8em;
+      }
+  
+      d-contents nav > div > a {
+        font-size: 13px;
+        font-weight: 600;
+      }
+  
+      
+      d-contents nav > ul > li > a:hover {
+        text-decoration: none;
+      }
+
+      
+    @media (max-width: 1300px) {
+      d-article d-contents {      
+        justify-self: start;
+        align-self: start;        
+        grid-column-start: 3;
+        grid-column-end: -3;
+        padding-bottom: 0.5em;
+        margin-bottom: 1em;
+        padding-top: 0.5em;            
+        width: 100%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: rgba(0, 0, 0, 0.1);          
+      }
+    }
+    </style>
+  </d-front-matter>
+
+  <body class="fixed-top-nav">
+
+    <!-- Header --><header>
+    <!-- Nav Bar -->
+    <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+    <div class="container">
+      
+      <a class="navbar-brand title font-weight-lighter" href="https://katelyn98.github.io//">
+       Katelyn C. Morrison
+      </a>
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/">
+              about
+              
+            </a>
+          </li>
+          
+          <!-- Blog -->
+          <li class="nav-item active">
+            <a class="nav-link" href="/blog/">
+              blog
+              
+            </a>
+          </li>
+          
+          <!-- Other pages -->
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <li class="nav-item ">
+              <a class="nav-link" href="/publications/">
+                publications
+                
+              </a>
+          </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <li class="nav-item ">
+              <a class="nav-link" href="/travel/">
+                travel
+                
+              </a>
+          </li>
+          
+          
+          
+          
+            <div class="toggle-container">
+              <a id="light-toggle">
+                  <i class="fas fa-moon"></i>
+                  <i class="fas fa-sun"></i>
+              </a>
+            </div>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</header>
+
+
+    <!-- Content -->
+    <div class="post distill">
+
+      <d-title>
+        <h1>Designing Learning Experiences to Teach About Human-Centered XAI</h1>
+        <p></p>
+      </d-title>
+
+      <d-byline></d-byline>
+
+      <d-article>
+        <d-contents>
+          <nav class="l-text figcaption">
+          <h3>Contents</h3>
+            <div><a href="#introduction">Introduction</a></div>
+            <ul>
+              <li><a href="#background-on-human-centered-explainable-ai">Background on Human-Centered Explainable AI</a></li>
+              
+            </ul>
+<div><a href="#interactive-saliency-maps">Interactive Saliency Maps</a></div>
+            <ul>
+              <li><a href="#explain-an-image">Explain an Image</a></li>
+              
+            </ul>
+<div><a href="#using-it-in-the-classroom">Using it in the Classroom</a></div>
+            <ul>
+              <li><a href="#samples-from-students">Samples from Students</a></li>
+              
+            </ul>
+<div><a href="#future-work">Future Work</a></div>
+            <div><a href="#code">Code</a></div>
+            
+          </nav>
+        </d-contents>
+
+        <h2 id="introduction">Introduction</h2>
+
+<p>What initially started out as a group project for the Data Visualization class at Carnegie Mellon University in Fall 2021 with Swetha Kannan quickly turned into a powerful educational tool to teach students about human-centered explainable AI. As I started doing research on Explainable AI at the start of my Ph.D., I realized that saliency maps from the same method will be different depending on the model architecture you use and similarly will align or misalign with human perception depending on the XAI method and architecture (see my <a href="https://openaccess.thecvf.com/content/CVPR2023W/XAI4CV/papers/Morrison_Shared_Interest...Sometimes_Understanding_the_Alignment_Between_Human_Perception_Vision_Architectures_CVPRW_2023_paper.pdf" target="_blank" rel="noopener noreferrer">spotlight workshop paper at CVPR</a> on this topic for an experimental evaluation). This inspired me to make an interactive tool that allows a user to compare how their perception aligns with an AI’s explanation.</p>
+
+<h3 id="background-on-human-centered-explainable-ai">Background on Human-Centered Explainable AI</h3>
+
+<p>Although it is important to lecture on the theory of explainable AI methods, it is equally important to understand the key findings from the research field’s enormous effort on the topic. That includes the (mis)alignment between human perception and AI explanation. There are several evaluations with and without humans on this topic, and I encourage you to read about them. The related works section 2.3 of my CSCW paper on <a href="https://dl.acm.org/doi/pdf/10.1145/3610064" target="_blank" rel="noopener noreferrer">Evaluating the Interpretability of Explainable AI
+Techniques through a Game With a Purpose</a> and <a href="https://arxiv.org/pdf/2107.09234" target="_blank" rel="noopener noreferrer">this paper</a> from Angie Boggust on measuring human-AI alignment through XAI are good resources on this topic.</p>
+
+<p>Ultimately, it is necessary to educate students about the potential for AI explanations to misalign with human perception. Lecturing on this and giving example images can of course help provide students an understand on this topic, but having them experience it themselves can really help them understand how exactly that misalignment manifests.</p>
+
+<h2 id="interactive-saliency-maps">Interactive Saliency Maps</h2>
+
+<p>For our class project, Swetha and I developed an interactive saliency maps interface that we called Insightful Saliency Maps. There are multiple components to the prototype, beyond capturing human-AI misalignment, that allow for unique visualizations of saliency maps from different architectures that people can explore if interested. However, the main focus of this short blog post is about the ‘Explain an Image’ tab.</p>
+
+<p><a href="https://cmu-vis-2021.github.io/Insightful-Saliency-Maps/" target="_blank" rel="noopener noopener noreferrer" style="display:inline-block; margin:12px 0; text-decoration:none;">
+  <span style="background:#1a73e8; color:#fff; padding:6px 12px; border-radius:4px; font-weight:600; font-size:0.95rem;">Launch Prototype ↗</span>
+</a></p>
+
+<h3 id="explain-an-image">Explain an Image</h3>
+
+<p>In the current implementation of the ‘Explain an Image’ tab, students can explore how their own perception of classifying an image compares to how an AI systems classify that image. Here, we use an example of the Doberman Pincher from ImageNet-1K. The GIF below shows how students can select a color that maps to the color gradient of a saliency map, such as Grad-CAM or XRAI, to draw over the image. As they draw over the image with different colors reflecting different levels of importance, they are shown a side-by-side comparison between their reasoning and the model’s.</p>
+
+<p><img src="/assets/img/human-XAI-perception.gif" alt="Animated walkthrough of the Human-XAI perception tool"></p>
+
+<p>This hands-on approach highlights a key insight: humans and models have different perception and often rely on different cues. Surfacing those discrepancies helps learners reason about model behavior, understand the pros and cons of saliency maps in human-AI interactions, and think more critically about AI explanations. This activity also can help students internalize that saliency maps are not ground truth and may reflect biases in the dataset that a model was trained on. I encourage those interested in this topic to review this paper on <a href="https://proceedings.neurips.cc/paper_files/paper/2018/file/294a8ed24b1ad22ec2e7efea049b8737-Paper.pdf" target="_blank" rel="noopener noreferrer">Sanity Checks for Saliency Maps</a>.</p>
+
+<h2 id="using-it-in-the-classroom">Using it in the Classroom</h2>
+
+<p>This is an activity that I have integrated into guest lectures that I have given on transparency and interpretability at Carnegie Mellon University. This active learning approach can help the students better connect the theory to practice by letting them experience it firsthand. I have integrated this activity into my lectures by first introducing explainable AI and different types of XAI methods, such as feature importance and saliency maps. Then, I describe the activity and have the students go to this website to each draw what regions they think are most important to classifying this image as a doberman pincher. After 5 minutes, I have students upload their drawings to a google doc (or any shared communication platform you prefer) and we discuss as a class surprises in (mis)alignment with the AI’s explanation. This discussion leads back nicely into the lecture where I introduce the pros and cons of saliency maps (grounded in XAI and HCI literature).</p>
+
+<h3 id="samples-from-students">Samples from Students</h3>
+
+<p>Here is a collection of students’ annotated maps from the various guest lectures I gave. Each one reflects a distinct interpretation of what matters in the image. Visualizing all these responses together highlights a crucial point: human perception itself isn’t uniform—and comparing that variance to the model’s behavior helps students appreciate why explainability is a human-centered discipline.</p>
+
+<p><img src="/assets/img/human-xai-perception-samples.png" alt="Grid of student-generated saliency annotations" style="max-width:90%; display:block; margin:0 auto;"></p>
+
+<h2 id="future-work">Future Work</h2>
+
+<p>This was just a quick group project that Swetha and I did during the first semester of my Ph.D.. Below are features I’m excited to explore and that others are welcome to build on:</p>
+
+<ul>
+  <li>Additional saliency techniques: Right now the interface uses XRAI for the ‘Explain an Image’ tab. In the future, I would like to add other saliency map techniques, such as Grad-CAM, Integrated Gradients, LIME, and SHAP.</li>
+  <li>More advanced drawing tools: Right now the interface is minimal in its drawing capabilities. You cannot erase or change the brush size. This would allow students more flexibility during their interactions.</li>
+  <li>Larger and more diverse image sets: Right now the only image to explain is the doberman. It would be great to have a bigger library of images that students can try out and explore.</li>
+  <li>Real-time inference: Right now, the AI explanation was pre-generated offline. Instead of using precomputed saliency maps, it would be great to integrate a live classification model.</li>
+</ul>
+
+<h2 id="code">Code</h2>
+
+<p><a href="https://github.com/CMU-Vis-2021/Insightful-Saliency-Maps" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/CMU--Vis--2021-Insightful--Saliency--Maps-181717?logo=github&amp;style=flat-square" alt="GitHub - Insightful Saliency Maps"></a></p>
+
+<p>Explore the full prototype in the repository above.</p>
+
+<p><em>Portions of this blog post were written with the assistance of GPT-5. That content was modified and reviewed for accuracy.</em></p>
+
+      </d-article>
+
+      <d-appendix>
+        <d-footnote-list></d-footnote-list>
+        <d-citation-list></d-citation-list>
+      </d-appendix>
+
+    </div>
+
+    <!-- Footer -->
+<footer class="fixed-bottom">
+  <div class="container mt-0">
+    © Copyright 2025 Katelyn C. Morrison.
+    Powered by <a href="http://jekyllrb.com/" target="_blank" rel="noopener noreferrer">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="noopener noreferrer">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.
+
+    
+    
+    Last updated: November 13, 2025.
+    
+  </div>
+</footer>
+
+
+
+  </body>
+
+  <d-bibliography src="/assets/bibliography/2025-11-12-human-xai-perception.bib">
+  </d-bibliography>
+
+  <!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+  <!-- Bootsrap & MDB scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.4/umd/popper.min.js" integrity="sha512-eUQ9hGdLjBjY3F41CScH3UX+4JDSI9zXeroz7hJ+RteoCaY+GP/LDoM8AO+Pt+DRFw3nXqsjh9Zsts8hnYv8/A==" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha512-M5KW3ztuIICmVIhjSqXe01oV2bpe248gOxqmlcYrEzAvws7Pw3z6BK0iGbrwvdrUQUhi3eXgtxp5I8PDo9YfjQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js" integrity="sha512-Mug9KHKmroQFMLm93zGrjhibM2z2Obg9l6qFG2qKjXEXkMp/VDkI4uju9m4QKPjWSwQ6O2qzZEnJDEeCw0Blcw==" crossorigin="anonymous"></script>
+
+  <script src="/assets/js/distillpub/overrides.js"></script>
+
+</html>
