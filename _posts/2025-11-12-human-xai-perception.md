@@ -1,6 +1,6 @@
 ---
 layout: distill
-title: "Designing Learning Experiences for Human-Centered XAI"
+title: "Designing Learning Experiences to Teach About Human-Centered XAI"
 date: 2025-11-12
 img: /assets/img/placeholderpicture.png
 importance: 1
