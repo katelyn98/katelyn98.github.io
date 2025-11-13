@@ -56,7 +56,7 @@ _styles: >
 
 ## Introduction
 
-What initially started out as a group project for the Data Visualization class at Carnegie Mellon University in Fall 2021 with Swetha Kannan quickly turned into a powerful educational tool to teach students about human-centered explainable AI. As I started doing research on Explainable AI at the start of my Ph.D., I realized that saliency maps from the same method will be different depending on the model architecture you use (see my [spotlight workshop paper at CVPR](https://openaccess.thecvf.com/content/CVPR2023W/XAI4CV/papers/Morrison_Shared_Interest...Sometimes_Understanding_the_Alignment_Between_Human_Perception_Vision_Architectures_CVPRW_2023_paper.pdf) on this topic for an experimental evaluation).
+What initially started out as a group project for the Data Visualization class at Carnegie Mellon University in Fall 2021 with Swetha Kannan quickly turned into a powerful educational tool to teach students about human-centered explainable AI. As I started doing research on Explainable AI at the start of my Ph.D., I realized that saliency maps from the same method will be different depending on the model architecture you use and similarly will align or misalign with human perception depending on the XAI method and architecture (see my [spotlight workshop paper at CVPR](https://openaccess.thecvf.com/content/CVPR2023W/XAI4CV/papers/Morrison_Shared_Interest...Sometimes_Understanding_the_Alignment_Between_Human_Perception_Vision_Architectures_CVPRW_2023_paper.pdf) on this topic for an experimental evaluation). This inspired me to make an interactive tool that allows a user to compare how their perception aligns with an AI's explanation. 
 
 ### Background on Human-Centered Explainable AI
 
