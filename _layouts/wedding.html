@@ -63,14 +63,12 @@
         position: absolute;
         top: var(--hero-top-padding);
         bottom: var(--hero-bottom-padding);
-        left: min(-1.5rem, calc(50% - 42rem));
-        height: calc(100% - var(--hero-top-padding) - var(--hero-bottom-padding));
+        left: min(-0.25rem, calc(50% - 50.75rem));
         width: auto;
-        opacity: 0.88;
+        height: calc(100% - var(--hero-top-padding) - var(--hero-bottom-padding));
+        opacity: 0.9;
         pointer-events: none;
-        z-index: 0;
-        transform: rotate(-8deg);
-        transform-origin: top left;
+        z-index: 3;
       }
       .wedding-hero-grid {
         display: grid;
@@ -80,7 +78,7 @@
         max-width: 1200px;
         margin: 0 auto;
         position: relative;
-        z-index: 1;
+        z-index: 2;
       }
       .wedding-hero-copy,
       .wedding-hero-photo {
@@ -248,21 +246,21 @@
         margin-top: 2rem;
       }
       .wedding-content.with-side-decor {
+        --page-decor-width: clamp(8.5rem, 12vw, 10.5rem);
         position: relative;
         z-index: 1;
-        padding-left: clamp(10rem, 15vw, 16rem);
+        padding-left: calc(var(--page-decor-width) + 1.25rem);
+        margin-top: 2rem;
       }
       .page-side-ornament {
         position: absolute;
-        top: 6.5rem;
-        left: 0;
-        height: min(44rem, calc(100vh - 9rem));
-        width: auto;
-        opacity: 0.92;
+        top: 2rem;
+        left: 0.25rem;
+        width: var(--page-decor-width);
+        height: auto;
+        opacity: 0.9;
         pointer-events: none;
-        z-index: 0;
-        transform: rotate(-8deg);
-        transform-origin: top left;
+        z-index: 2;
       }
       .wedding-grid {
         display: grid;
@@ -460,15 +458,20 @@
           margin-top: 1.5rem;
         }
         .wedding-hero-wrapper .hero-ornament {
-          left: -3rem;
-          height: min(32rem, calc(100% - var(--hero-top-padding) - var(--hero-bottom-padding)));
+          left: -5.75rem;
+          height: min(24rem, calc(100% - var(--hero-top-padding) - var(--hero-bottom-padding)));
+          width: auto;
           opacity: 0.8;
         }
         .wedding-content.with-side-decor {
-          padding-left: clamp(8rem, 10vw, 11rem);
+          --page-decor-width: clamp(7rem, 11vw, 8.5rem);
+          padding-left: calc(var(--page-decor-width) + 0.9rem);
+          margin-top: 2rem;
         }
         .page-side-ornament {
-          height: min(34rem, calc(100vh - 9rem));
+          top: 2.5rem;
+          left: 0;
+          width: var(--page-decor-width);
         }
       }
       @media (max-width: 768px) {
@@ -565,7 +568,7 @@
           margin-bottom: 2rem;
         }
         .wedding-content.with-side-decor {
-          padding-left: 0.75rem;
+          margin-top: 2rem;
         }
         .wedding-card {
           padding: 1.35rem;
