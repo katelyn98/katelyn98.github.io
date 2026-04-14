@@ -10,7 +10,7 @@ show_side_decor: true
   <h2>RSVP</h2>
   <p class="rsvp-instructions">Please begin with the phone number associated with your invitation. Once we find your party, we will show the guests listed and the number of seats reserved for the ceremony and reception. If your plans change, you can submit again with the same phone number to update your RSVP.</p>
 
-  <form class="rsvp-form" action="https://script.google.com/macros/s/AKfycbwFeOHQZpZ07IN41hvGBsZ-lyD2u10A55CAB3yetB4orXByyVKTG5UzwU13m_Qrdvuz/exec" method="POST">
+  <form class="rsvp-form" id="rsvp-form" action="https://script.google.com/macros/s/AKfycbwFeOHQZpZ07IN41hvGBsZ-lyD2u10A55CAB3yetB4orXByyVKTG5UzwU13m_Qrdvuz/exec" method="POST">
     <div class="rsvp-step">
       <div class="form-group">
         <label for="lookup-phone">Phone number</label>
@@ -64,21 +64,23 @@ show_side_decor: true
 
       <div class="rsvp-actions">
         <button type="button" class="secondary" id="start-over">Back</button>
-        <button type="submit">Submit RSVP</button>
+        <button type="submit" id="submit-rsvp">Submit RSVP</button>
       </div>
+      <p class="rsvp-processing" id="rsvp-processing" hidden>Submitting your RSVP. Please wait...</p>
     </div>
   </form>
-
-  <p class="rsvp-notice">Replace the form action with your Google Apps Script web app URL so responses are written to your Google Sheet.</p>
 </section>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var parties = {{ site.data.wedding_rsvp_parties | jsonify }};
+    var rsvpForm = document.getElementById('rsvp-form');
     var phoneInput = document.getElementById('lookup-phone');
     var lookupButton = document.getElementById('lookup-button');
     var lookupError = document.getElementById('lookup-error');
     var startOverButton = document.getElementById('start-over');
+    var submitButton = document.getElementById('submit-rsvp');
+    var processingMessage = document.getElementById('rsvp-processing');
     var detailsStep = document.getElementById('rsvp-details');
     var invitedNames = document.getElementById('invited-names');
     var ceremonySeats = document.getElementById('ceremony-seats');
@@ -90,6 +92,7 @@ show_side_decor: true
     var hiddenCeremonyAllowed = document.getElementById('ceremony-allowed-hidden');
     var hiddenReceptionAllowed = document.getElementById('reception-allowed-hidden');
     var attendanceStatus = document.getElementById('attendance-status');
+    var isSubmitting = false;
 
     function normalizePhone(value) {
       var digits = value.replace(/\D/g, '');
@@ -226,6 +229,22 @@ show_side_decor: true
     });
     ceremonyCount.addEventListener('change', updateAttendanceStatus);
     receptionCount.addEventListener('change', updateAttendanceStatus);
+    rsvpForm.addEventListener('submit', function (event) {
+      if (isSubmitting) {
+        event.preventDefault();
+        return;
+      }
+
+      isSubmitting = true;
+      submitButton.disabled = true;
+      submitButton.textContent = 'Submitting...';
+      startOverButton.disabled = true;
+      lookupButton.disabled = true;
+      phoneInput.readOnly = true;
+      ceremonyCount.disabled = true;
+      receptionCount.disabled = true;
+      processingMessage.hidden = false;
+    });
 
     resetDetails();
   });
