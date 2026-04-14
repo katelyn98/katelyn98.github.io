@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Wedding hero placeholder">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f3e6dc"/>
+      <stop offset="100%" stop-color="#f9f2ec"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <g fill="none" stroke="#c9b7a8" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M280 590c90-120 190-170 270-170s190 60 280 180"/>
+    <path d="M380 385c90-80 170-115 240-115s150 40 220 125"/>
+  </g>
+  <circle cx="480" cy="330" r="85" fill="#ffffff" opacity="0.85"/>
+  <circle cx="760" cy="320" r="90" fill="#ffffff" opacity="0.85"/>
+  <path d="M460 280c0 55-28 100-62 100s-62-45-62-100 28-100 62-100 62 45 62 100z" fill="#d9c0b0"/>
+  <path d="M740 270c0 58-28 105-62 105s-62-47-62-105 28-105 62-105 62 47 62 105z" fill="#d9c0b0"/>
+  <path d="M426 380c30 20 60 20 90 0" stroke="#b08d78" stroke-width="18" stroke-linecap="round"/>
+  <path d="M706 360c30 18 60 18 90 0" stroke="#b08d78" stroke-width="18" stroke-linecap="round"/>
+  <text x="50%" y="710" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="42" fill="#9d8371">Add your photo here</text>
+</svg>

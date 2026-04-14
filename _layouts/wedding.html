@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    {% if page.redirect %}<meta http-equiv="refresh" content="3; url={{ site.baseurl | prepend: site.url }}/" />{% endif %}
+    {% include head.html %}
+    {% include scripts/mathjax.html %}
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Raleway:wght@400;600&display=swap');
+      body.wedding-page {
+        padding-bottom: 2.25rem;
+        background: #f9f5f0;
+        color: #2b2720;
+        font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+      .wedding-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+        padding: 1rem 1.5rem;
+        background: #fff8f2;
+        border-bottom: 1px solid rgba(205, 194, 178, 0.85);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .wedding-tabs a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.85rem 1.4rem;
+        border-radius: 999px;
+        background: #ffffff;
+        border: 1px solid rgba(205, 194, 178, 0.8);
+        color: #4a3f36;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+      }
+      .wedding-tabs a:hover,
+      .wedding-tabs a:focus {
+        background: #f1e8de;
+        color: #3b3129;
+        transform: translateY(-1px);
+      }
+      .wedding-tabs a.active {
+        background: #8c6f59;
+        color: white;
+        border-color: transparent;
+      }
+      .wedding-hero-wrapper {
+        --hero-top-padding: 2rem;
+        --hero-bottom-padding: 3rem;
+        position: relative;
+        padding: var(--hero-top-padding) 1rem var(--hero-bottom-padding);
+        background: linear-gradient(180deg, #f8f1ea 0%, #f7efe8 48%, #f1e8df 100%);
+      }
+      .wedding-hero-wrapper .hero-ornament {
+        position: absolute;
+        top: var(--hero-top-padding);
+        bottom: var(--hero-bottom-padding);
+        left: 1rem;
+        height: calc(100% - var(--hero-top-padding) - var(--hero-bottom-padding));
+        width: auto;
+        opacity: 0.92;
+        pointer-events: none;
+        z-index: 0;
+        transform: rotate(-8deg);
+        transform-origin: top left;
+      }
+      .wedding-hero-grid {
+        display: grid;
+        grid-template-columns: minmax(20rem, 1.2fr) minmax(20rem, 1fr);
+        gap: 2rem;
+        align-items: stretch;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .wedding-hero-copy,
+      .wedding-hero-photo {
+        border-radius: 32px;
+        overflow: hidden;
+        background: #fff;
+        border: 1px solid rgba(194, 159, 104, 0.3);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.06);
+      }
+      .wedding-hero-copy {
+        display: grid;
+        place-content: center;
+        padding: 4rem 3.5rem;
+      }
+      .wedding-hero-copy .wedding-accent {
+        font-size: 0.95rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 1.25rem;
+        color: #9a734d;
+      }
+      .wedding-hero-copy .wedding-accent.has-carousel {
+        margin-bottom: 1rem;
+      }
+      .wedding-hero-copy h1 {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: clamp(3.7rem, 4vw, 5.2rem);
+        margin: 0;
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+        text-transform: none;
+        color: #1f1b18;
+      }
+      .wedding-hero-copy p.lead {
+        margin: 1.75rem 0 0;
+        max-width: 32rem;
+        font-size: 1.05rem;
+        color: #5f5750;
+        line-height: 1.9;
+      }
+      .hero-copy-carousel {
+        margin-top: 1.6rem;
+      }
+      .hero-copy-slide,
+      .hero-photo-slide {
+        display: none;
+      }
+      .hero-copy-slide.active,
+      .hero-photo-slide.active {
+        display: block;
+      }
+      .hero-slide-title {
+        margin: 0;
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: clamp(2rem, 2.8vw, 2.8rem);
+        line-height: 1.05;
+        color: #241e19;
+      }
+      .hero-copy-slide .lead:first-of-type {
+        margin-top: 1rem;
+      }
+      .hero-carousel-controls {
+        margin-top: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      .hero-carousel-nav {
+        display: flex;
+        gap: 0.75rem;
+      }
+      .hero-carousel-nav button {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 999px;
+        border: 1px solid rgba(166, 135, 103, 0.35);
+        background: #fff5f0;
+        color: #7a5e42;
+        font-size: 1.2rem;
+        line-height: 1;
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+      }
+      .hero-carousel-nav button:hover {
+        background: #f1e4d5;
+        transform: translateY(-1px);
+      }
+      .hero-carousel-dots {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+      .hero-carousel-dots button {
+        width: 0.85rem;
+        height: 0.85rem;
+        padding: 0;
+        border-radius: 999px;
+        border: none;
+        background: rgba(140, 111, 89, 0.28);
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.2s ease;
+      }
+      .hero-carousel-dots button.active {
+        background: #8c6f59;
+        transform: scale(1.12);
+      }
+      .wedding-hero-copy .hero-meta {
+        margin-top: 2.5rem;
+        display: grid;
+        gap: 0.75rem;
+        justify-items: start;
+      }
+      .wedding-hero-copy .hero-meta span {
+        display: inline-flex;
+        padding: 0.85rem 1.4rem;
+        border-radius: 999px;
+        background: #fff5f0;
+        border: 1px solid rgba(166, 135, 103, 0.35);
+        color: #7a5e42;
+        font-size: 0.95rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .wedding-hero-photo {
+        min-height: 100%;
+        position: relative;
+        background: linear-gradient(180deg, #fff7f1 0%, #f6eee5 100%);
+      }
+      .wedding-hero-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .hero-photo-carousel {
+        height: 100%;
+      }
+      .hero-photo-slide,
+      .hero-photo-slide img {
+        height: 100%;
+      }
+      .wedding-hero-photo::before {
+        content: "";
+        position: absolute;
+        inset: 1.25rem;
+        border-radius: 28px;
+        border: 2px solid rgba(173, 132, 89, 0.35);
+        pointer-events: none;
+      }
+      .wedding-card {
+        background: #fff;
+        border: 1px solid rgba(205, 194, 178, 0.8);
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 26px 60px rgba(43, 36, 27, 0.08);
+        scroll-margin-top: 110px;
+      }
+      .wedding-content {
+        max-width: 84rem;
+        margin: 0 auto 4rem;
+        padding: 0 1.5rem;
+      }
+      .wedding-content.heroless {
+        margin-top: 2rem;
+      }
+      .wedding-content.with-side-decor {
+        position: relative;
+        z-index: 1;
+        padding-left: clamp(10rem, 15vw, 16rem);
+      }
+      .page-side-ornament {
+        position: absolute;
+        top: 6.5rem;
+        left: 0;
+        height: min(44rem, calc(100vh - 9rem));
+        width: auto;
+        opacity: 0.92;
+        pointer-events: none;
+        z-index: 0;
+        transform: rotate(-8deg);
+        transform-origin: top left;
+      }
+      .wedding-grid {
+        display: grid;
+        gap: 1.5rem;
+      }
+      .wedding-card {
+        background: #fff;
+        border: 1px solid rgba(205, 194, 178, 0.8);
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 26px 60px rgba(43, 36, 27, 0.08);
+      }
+      .wedding-card h2 {
+        margin-top: 0;
+        font-size: 1.35rem;
+        letter-spacing: 0.04em;
+      }
+      .wedding-card p {
+        margin: 1rem 0 0;
+        color: #51463f;
+      }
+      .wedding-grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .wedding-accent {
+        color: #8c6f59;
+        font-weight: 600;
+      }
+      .wedding-quote {
+        font-size: 1.1rem;
+        line-height: 1.9;
+        color: #4e433b;
+        border-left: 4px solid rgba(140, 111, 89, 0.45);
+        margin: 0;
+        padding-left: 1rem;
+      }
+      .rsvp-form {
+        display: grid;
+        gap: 1rem;
+      }
+      .rsvp-step {
+        display: grid;
+        gap: 1rem;
+      }
+      .rsvp-grid {
+        display: grid;
+        gap: 1rem;
+      }
+      .rsvp-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+      }
+      .rsvp-grid .form-group {
+        display: grid;
+        gap: 0.35rem;
+      }
+      .rsvp-form label {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #3a322d;
+      }
+      .rsvp-form input,
+      .rsvp-form select,
+      .rsvp-form textarea {
+        width: 100%;
+        min-height: 3rem;
+        padding: 0.95rem 1rem;
+        border-radius: 18px;
+        border: 1px solid rgba(170, 154, 136, 0.35);
+        background: rgba(255,255,255,0.95);
+        font-size: 1rem;
+        color: #2b2720;
+      }
+      .rsvp-form textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+      .rsvp-form button {
+        width: fit-content;
+        padding: 0.95rem 1.65rem;
+        border-radius: 999px;
+        border: none;
+        background: #8c6f59;
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.2s ease;
+      }
+      .rsvp-form button:hover {
+        background: #755944;
+        transform: translateY(-1px);
+      }
+      .rsvp-form button.secondary {
+        background: #f3e7da;
+        color: #755944;
+        border: 1px solid rgba(166, 135, 103, 0.35);
+      }
+      .rsvp-form button.secondary:hover {
+        background: #eadbca;
+      }
+      .rsvp-notice {
+        font-size: 0.95rem;
+        color: #5f5750;
+      }
+      .rsvp-error {
+        margin: 0;
+        color: #8a3b2b;
+        font-size: 0.95rem;
+      }
+      .rsvp-instructions {
+        margin: 0 0 1.5rem;
+        color: #5f5750;
+      }
+      .rsvp-summary {
+        padding: 1.25rem 1.35rem;
+        border-radius: 20px;
+        background: #fbf6f1;
+        border: 1px solid rgba(166, 135, 103, 0.24);
+      }
+      .rsvp-summary-label {
+        margin: 0;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #8c6f59;
+      }
+      .rsvp-summary-names {
+        margin: 0.5rem 0 0;
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: #2f2823;
+      }
+      .rsvp-summary-seats {
+        margin: 0.45rem 0 0;
+        color: #51463f;
+      }
+      .rsvp-help {
+        margin: 0.2rem 0 0;
+        font-size: 0.9rem;
+        color: #6d645d;
+      }
+      @media (max-width: 992px) {
+        .wedding-hero-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-carousel-controls {
+          margin-top: 1.5rem;
+        }
+        .wedding-hero-wrapper .hero-ornament {
+          height: min(32rem, calc(100% - var(--hero-top-padding) - var(--hero-bottom-padding)));
+          opacity: 0.8;
+        }
+        .wedding-content.with-side-decor {
+          padding-left: clamp(8rem, 10vw, 11rem);
+        }
+        .page-side-ornament {
+          height: min(34rem, calc(100vh - 9rem));
+        }
+      }
+      @media (max-width: 768px) {
+        .wedding-tabs {
+          justify-content: center;
+        }
+        .wedding-card,
+        .wedding-hero-copy,
+        .wedding-hero-photo {
+          border-radius: 24px;
+        }
+        .wedding-hero-wrapper .hero-ornament {
+          display: none;
+        }
+        .hero-carousel-controls {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .page-side-ornament {
+          display: none;
+        }
+        .wedding-content.with-side-decor {
+          padding-left: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="wedding-page">
+
+    <nav class="wedding-tabs" aria-label="Wedding page navigation">
+      <a class="{% if page.url == '/a-k-wedding2026/' %}active{% endif %}" href="{{ '/a-k-wedding2026/' | relative_url }}">Welcome</a>
+      <a class="{% if page.url == '/a-k-wedding2026/location/' %}active{% endif %}" href="{{ '/a-k-wedding2026/location/' | relative_url }}">Location</a>
+      <a class="{% if page.url == '/a-k-wedding2026/story/' %}active{% endif %}" href="{{ '/a-k-wedding2026/story/' | relative_url }}">Our Story</a>
+      <a class="{% if page.url == '/a-k-wedding2026/rsvp/' %}active{% endif %}" href="{{ '/a-k-wedding2026/rsvp/' | relative_url }}">RSVP</a>
+    </nav>
+
+    {% unless page.hide_hero %}
+      <main class="wedding-hero-wrapper">
+        <img class="hero-ornament" src="{{ '/assets/img/wedding/side-decor.png' | relative_url }}" alt="Stargazer lily decoration">
+        <div class="wedding-hero-grid">
+          <div class="wedding-hero-copy">
+            <p class="wedding-accent{% if page.hero_slides %} has-carousel{% endif %}">{{ page.hero_accent | default: "A celebration of love" }}</p>
+            <h1>{{ page.title | newline_to_br }}</h1>
+            {% if page.hero_slides %}
+              <div class="hero-copy-carousel" data-hero-carousel>
+                {% for slide in page.hero_slides %}
+                  <div class="hero-copy-slide{% if forloop.first %} active{% endif %}" data-hero-copy-slide>
+                    {% if slide.title %}
+                      <h2 class="hero-slide-title">{{ slide.title }}</h2>
+                    {% endif %}
+                    {% if slide.text %}
+                      <p class="lead">{{ slide.text }}</p>
+                    {% endif %}
+                    {% if slide.text_secondary %}
+                      <p class="lead">{{ slide.text_secondary }}</p>
+                    {% endif %}
+                  </div>
+                {% endfor %}
+                <div class="hero-carousel-controls">
+                  <div class="hero-carousel-nav">
+                    <button type="button" data-hero-prev aria-label="Previous story slide">&#8592;</button>
+                    <button type="button" data-hero-next aria-label="Next story slide">&#8594;</button>
+                  </div>
+                  <div class="hero-carousel-dots" role="tablist" aria-label="Story slides">
+                    {% for slide in page.hero_slides %}
+                      <button type="button" class="{% if forloop.first %}active{% endif %}" data-hero-dot data-hero-index="{{ forloop.index0 }}" aria-label="Go to story slide {{ forloop.index }}"></button>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            {% else %}
+              <p class="lead">{{ page.hero_lead_primary | default: "La familia de Álvaro habla español, la familia de Katelyn habla inglés — todos juntos por amor." }}</p>
+              <p class="lead">{{ page.hero_lead_secondary | default: "Alvaro's family speaks Spanish, Katelyn's family speaks English — everyone together for love." }}</p>
+            {% endif %}
+            {% unless page.hide_hero_meta %}
+              <div class="hero-meta">
+                <span>{{ page.hero_date | default: "May 9, 2026" }}</span>
+                <span>{{ page.hero_location | default: "Pittsburgh, PA" }}</span>
+              </div>
+            {% endunless %}
+          </div>
+          <div class="wedding-hero-photo">
+            {% if page.hero_slides %}
+              <div class="hero-photo-carousel">
+                {% for slide in page.hero_slides %}
+                  <div class="hero-photo-slide{% if forloop.first %} active{% endif %}" data-hero-photo-slide>
+                    <img src="{{ slide.image }}" alt="{{ slide.alt | default: page.title }}">
+                  </div>
+                {% endfor %}
+              </div>
+            {% elsif page.hero_image %}
+              <img src="{{ page.hero_image }}" alt="Wedding photo of the couple">
+            {% else %}
+              <div style="width:100%;height:100%;border-radius:28px;background:linear-gradient(135deg,#f5e8df,#f7f1eb);display:flex;align-items:center;justify-content:center;color:#8c6f59;font-weight:700;min-height:420px;">Add your couple photo via page front matter</div>
+            {% endif %}
+          </div>
+        </div>
+      </main>
+    {% endunless %}
+
+    {% assign wedding_content = content | strip %}
+    {% if wedding_content != "" %}
+      {% if page.show_side_decor %}
+        <img class="page-side-ornament" src="{{ '/assets/img/wedding/side-decor.png' | relative_url }}" alt="">
+      {% endif %}
+      <div class="wedding-content{% if page.hide_hero %} heroless{% endif %}{% if page.show_side_decor %} with-side-decor{% endif %}">
+        {{ content }}
+      </div>
+    {% endif %}
+
+    {% include footer.html %}
+
+  </body>
+
+  {% if page.hero_slides %}
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var copySlides = Array.prototype.slice.call(document.querySelectorAll('[data-hero-copy-slide]'));
+        var photoSlides = Array.prototype.slice.call(document.querySelectorAll('[data-hero-photo-slide]'));
+        var dots = Array.prototype.slice.call(document.querySelectorAll('[data-hero-dot]'));
+        var prevButton = document.querySelector('[data-hero-prev]');
+        var nextButton = document.querySelector('[data-hero-next]');
+        var currentIndex = 0;
+
+        function setSlide(nextIndex) {
+          currentIndex = (nextIndex + copySlides.length) % copySlides.length;
+
+          copySlides.forEach(function (slide, index) {
+            slide.classList.toggle('active', index === currentIndex);
+          });
+
+          photoSlides.forEach(function (slide, index) {
+            slide.classList.toggle('active', index === currentIndex);
+          });
+
+          dots.forEach(function (dot, index) {
+            var isActive = index === currentIndex;
+            dot.classList.toggle('active', isActive);
+            dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          });
+        }
+
+        if (!copySlides.length || copySlides.length !== photoSlides.length) {
+          return;
+        }
+
+        if (prevButton) {
+          prevButton.addEventListener('click', function () {
+            setSlide(currentIndex - 1);
+          });
+        }
+
+        if (nextButton) {
+          nextButton.addEventListener('click', function () {
+            setSlide(currentIndex + 1);
+          });
+        }
+
+        dots.forEach(function (dot) {
+          dot.addEventListener('click', function () {
+            setSlide(parseInt(dot.getAttribute('data-hero-index'), 10));
+          });
+        });
+
+        setSlide(0);
+      });
+    </script>
+  {% endif %}
+
+  {% include scripts/bootstrap.html %}
+  {% include scripts/mansory.html %}
+  {% include scripts/misc.html %}
+</html>
