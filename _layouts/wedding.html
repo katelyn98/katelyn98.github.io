@@ -55,6 +55,7 @@
         --hero-top-padding: 2rem;
         --hero-bottom-padding: 3rem;
         position: relative;
+        overflow: hidden;
         padding: var(--hero-top-padding) 1rem var(--hero-bottom-padding);
         background: linear-gradient(180deg, #f8f1ea 0%, #f7efe8 48%, #f1e8df 100%);
       }
@@ -62,10 +63,10 @@
         position: absolute;
         top: var(--hero-top-padding);
         bottom: var(--hero-bottom-padding);
-        left: 1rem;
+        left: min(-1.5rem, calc(50% - 42rem));
         height: calc(100% - var(--hero-top-padding) - var(--hero-bottom-padding));
         width: auto;
-        opacity: 0.92;
+        opacity: 0.88;
         pointer-events: none;
         z-index: 0;
         transform: rotate(-8deg);
@@ -78,6 +79,8 @@
         align-items: stretch;
         max-width: 1200px;
         margin: 0 auto;
+        position: relative;
+        z-index: 1;
       }
       .wedding-hero-copy,
       .wedding-hero-photo {
@@ -431,13 +434,33 @@
         color: #6d645d;
       }
       @media (max-width: 992px) {
+        .wedding-hero-wrapper {
+          --hero-top-padding: 1.5rem;
+          --hero-bottom-padding: 2rem;
+          padding-left: 0.9rem;
+          padding-right: 0.9rem;
+        }
         .wedding-hero-grid {
           grid-template-columns: 1fr;
+          gap: 1.35rem;
+        }
+        .wedding-hero-copy {
+          padding: 3rem 2.5rem;
+        }
+        .wedding-hero-copy h1 {
+          font-size: clamp(3rem, 9vw, 4.2rem);
+        }
+        .wedding-hero-copy p.lead {
+          max-width: none;
+        }
+        .wedding-hero-photo {
+          min-height: 26rem;
         }
         .hero-carousel-controls {
           margin-top: 1.5rem;
         }
         .wedding-hero-wrapper .hero-ornament {
+          left: -3rem;
           height: min(32rem, calc(100% - var(--hero-top-padding) - var(--hero-bottom-padding)));
           opacity: 0.8;
         }
@@ -450,12 +473,73 @@
       }
       @media (max-width: 768px) {
         .wedding-tabs {
-          justify-content: center;
+          flex-wrap: nowrap;
+          justify-content: flex-start;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+          padding: 0.85rem 0.9rem;
+          gap: 0.6rem;
+        }
+        .wedding-tabs::-webkit-scrollbar {
+          display: none;
+        }
+        .wedding-tabs a {
+          flex: 0 0 auto;
+          padding: 0.8rem 1.15rem;
+          font-size: 0.9rem;
         }
         .wedding-card,
         .wedding-hero-copy,
         .wedding-hero-photo {
           border-radius: 24px;
+        }
+        .wedding-hero-wrapper {
+          --hero-top-padding: 1rem;
+          --hero-bottom-padding: 1.35rem;
+          padding-left: 0.75rem;
+          padding-right: 0.75rem;
+        }
+        .wedding-hero-grid {
+          gap: 1rem;
+        }
+        .wedding-hero-copy {
+          padding: 2.15rem 1.35rem 2rem;
+        }
+        .wedding-hero-copy .wedding-accent {
+          font-size: 0.82rem;
+          letter-spacing: 0.14em;
+          margin-bottom: 0.9rem;
+        }
+        .wedding-hero-copy h1 {
+          font-size: clamp(2.4rem, 13vw, 3.35rem);
+          line-height: 0.98;
+        }
+        .wedding-hero-copy p.lead {
+          margin-top: 1.15rem;
+          font-size: 1rem;
+          line-height: 1.75;
+        }
+        .hero-slide-title {
+          font-size: clamp(1.75rem, 8vw, 2.25rem);
+        }
+        .wedding-hero-copy .hero-meta {
+          margin-top: 1.6rem;
+          width: 100%;
+        }
+        .wedding-hero-copy .hero-meta span {
+          width: 100%;
+          justify-content: center;
+          text-align: center;
+          font-size: 0.88rem;
+          letter-spacing: 0.06em;
+        }
+        .wedding-hero-photo {
+          min-height: 19rem;
+        }
+        .wedding-hero-photo::before {
+          inset: 0.85rem;
+          border-radius: 22px;
         }
         .wedding-hero-wrapper .hero-ornament {
           display: none;
@@ -463,12 +547,77 @@
         .hero-carousel-controls {
           flex-direction: column;
           align-items: flex-start;
+          margin-top: 1.2rem;
+          gap: 0.85rem;
+        }
+        .hero-carousel-nav {
+          width: 100%;
+        }
+        .hero-carousel-nav button {
+          width: 2.8rem;
+          height: 2.8rem;
         }
         .page-side-ornament {
           display: none;
         }
+        .wedding-content {
+          padding: 0 0.75rem;
+          margin-bottom: 2rem;
+        }
         .wedding-content.with-side-decor {
-          padding-left: 1.5rem;
+          padding-left: 0.75rem;
+        }
+        .wedding-card {
+          padding: 1.35rem;
+        }
+        .wedding-card h2 {
+          font-size: 1.2rem;
+        }
+        .wedding-card p {
+          font-size: 0.98rem;
+          line-height: 1.7;
+        }
+        .wedding-quote {
+          font-size: 1rem;
+          line-height: 1.75;
+          padding-left: 0.85rem;
+        }
+        .rsvp-form input,
+        .rsvp-form select,
+        .rsvp-form textarea {
+          font-size: 16px;
+        }
+        .rsvp-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .rsvp-form button,
+        .hero-carousel-nav button {
+          touch-action: manipulation;
+        }
+        .rsvp-form button {
+          width: 100%;
+          justify-content: center;
+        }
+        .rsvp-processing {
+          display: flex;
+        }
+      }
+      @media (max-width: 480px) {
+        body.wedding-page {
+          padding-bottom: 1.5rem;
+        }
+        .wedding-hero-copy h1 {
+          font-size: clamp(2.15rem, 12vw, 2.85rem);
+        }
+        .wedding-hero-copy p.lead {
+          font-size: 0.96rem;
+        }
+        .wedding-hero-photo {
+          min-height: 16rem;
+        }
+        .wedding-card {
+          padding: 1.1rem;
         }
       }
     </style>

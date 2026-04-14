@@ -44,7 +44,8 @@
   ceremony_allowed: 1
   reception_allowed: 1
 - invited_party: Lauren, Ryan
-  phone_numbers: []
+  phone_numbers:
+    - "3015251257"
   ceremony_allowed: 2
   reception_allowed: 2
 - invited_party: Paco, partner, child
@@ -60,27 +61,33 @@
   ceremony_allowed: 4
   reception_allowed: 4
 - invited_party: Alejandro
-  phone_numbers: []
+  phone_numbers:
+    - "4125129640"
   ceremony_allowed: 1
   reception_allowed: 1
 - invited_party: Felipe
-  phone_numbers: []
+  phone_numbers:
+    - "945266879"
   ceremony_allowed: 1
   reception_allowed: 1
 - invited_party: Mayra
-  phone_numbers: []
+  phone_numbers:
+    - "4126088574"
   ceremony_allowed: 1
   reception_allowed: 1
 - invited_party: Diego
-  phone_numbers: []
+  phone_numbers:
+    - "4124507032"
   ceremony_allowed: 1
   reception_allowed: 1
 - invited_party: Lucas
-  phone_numbers: []
+  phone_numbers:
+    - "4123300579"
   ceremony_allowed: 1
   reception_allowed: 1
 - invited_party: Ben + GF
-  phone_numbers: []
+  phone_numbers:
+    - "6504416777"
   ceremony_allowed: 2
   reception_allowed: 2
 - invited_party: Noah & Girlfriend
@@ -88,15 +95,19 @@
   ceremony_allowed: 2
   reception_allowed: 2
 - invited_party: Emanuel + Gokchen
-  phone_numbers: []
+  phone_numbers:
+    - "4129096310"
+    - "4126239723"
   ceremony_allowed: 2
   reception_allowed: 2
 - invited_party: Juan
-  phone_numbers: []
+  phone_numbers:
+    - "4129096310"
   ceremony_allowed: 1
   reception_allowed: 1
 - invited_party: Tomas
-  phone_numbers: []
+  phone_numbers:
+    - "4124301424"
   ceremony_allowed: 1
   reception_allowed: 1
 - invited_party: Maya
@@ -108,70 +119,88 @@
   ceremony_allowed: 2
   reception_allowed: 2
 - invited_party: Emin Barker
-  phone_numbers: []
+  phone_numbers:
+    - "5350267023"
   ceremony_allowed: 1
   reception_allowed: 1
 - invited_party: Daniel Ovalle Varela + GF
-  phone_numbers: []
+  phone_numbers:
+    - "4126451858"
   ceremony_allowed: 2
   reception_allowed: 2
 - invited_party: Santiago + GF
-  phone_numbers: []
+  phone_numbers:
+    - "3004120332"
   ceremony_allowed: 2
   reception_allowed: 2
 - invited_party: Daniel Gaytan
-  phone_numbers: []
+  phone_numbers:
+    - "8788349413"
   ceremony_allowed: 1
   reception_allowed: 1
 - invited_party: Gerard
-  phone_numbers: []
+  phone_numbers:
+    - "611261465"
   ceremony_allowed: 1
   reception_allowed: 1
 - invited_party: Venkatesh, Parents
-  phone_numbers: []
+  phone_numbers:
+    - "3187732585"
   ceremony_allowed: 3
   reception_allowed: 3
 - invited_party: Will Epperson, Zoey, Will’s parents, Sister
-  phone_numbers: []
+  phone_numbers:
+    - "7706330485"
+    - "6782064840"
   ceremony_allowed: 5
   reception_allowed: 5
 - invited_party: Arpit and Radhika
-  phone_numbers: []
+  phone_numbers:
+    - "3129982517"
   ceremony_allowed: 2
   reception_allowed: 2
 - invited_party: Sanika Moharana
-  phone_numbers: []
+  phone_numbers:
+    - "4085719884"
   ceremony_allowed: 1
   reception_allowed: 1
 - invited_party: Lisa Egede
-  phone_numbers: []
+  phone_numbers:
+    - "9188518532"
   ceremony_allowed: 1
   reception_allowed: 1
 - invited_party: Adinawa
-  phone_numbers: []
+  phone_numbers:
+    - "9404428290"
   ceremony_allowed: 1
   reception_allowed: 1
 - invited_party: Yi Fei Cheng
-  phone_numbers: []
+  phone_numbers:
+    - "6105498226"
   ceremony_allowed: 1
   reception_allowed: 1
 - invited_party: Luke Guerdan
-  phone_numbers: []
+  phone_numbers:
+    - "3142396711"
   ceremony_allowed: 1
   reception_allowed: 1
 - invited_party: Anna Kawakami + BF
-  phone_numbers: []
+  phone_numbers:
+    - "7143315556"
   ceremony_allowed: 2
   reception_allowed: 2
 - invited_party: Wesley Deng
-  phone_numbers: []
+  phone_numbers:
+    - "4088931312"
   ceremony_allowed: 1
   reception_allowed: 1
 - invited_party: Eric Mason
-  phone_numbers: []
+  phone_numbers:
+    - "4159647323"
   ceremony_allowed: 1
   reception_allowed: 1
 - invited_party: Jordan Taylor & Rose
-  phone_numbers: []
+  phone_numbers:
+    - "7708963043"
   ceremony_allowed: 2
   reception_allowed: 2
