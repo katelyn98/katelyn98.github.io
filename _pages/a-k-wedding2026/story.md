@@ -16,7 +16,7 @@ hero_slides:
     text: "We have been salsa dancing together since day one."
     text_secondary: "It has always felt like such a joyful part of us: playful, energetic, and something we keep coming back to together."
   - image: "/assets/img/wedding/foto_3.JPG"
-    alt: "Katelyn and Alvaro at a CMU semi-formal"
+    alt: "Katelyn and Alvaro at the CMU Grad Student formal"
     title: "Our favorite photo pose"
     text: "This is our favorite pose for photos, and this one was taken at a semi-formal at CMU."
     text_secondary: "Somehow this pose keeps following us through the years, and we still love it every time."
