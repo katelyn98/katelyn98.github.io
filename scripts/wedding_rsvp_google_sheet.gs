@@ -380,10 +380,13 @@ function clampCount_(value, maxAllowed) {
 
 function findExistingResponseRow_(sheet, lookupPhone, invitedParty) {
   const lastRow = sheet.getLastRow();
+  const normalizedInvitedParty = normalizePartyName_(invitedParty);
   let values;
   let i;
   let rowPhone;
   let rowParty;
+  let phoneMatches = [];
+  let exactMatches = [];
 
   if (!lookupPhone || lastRow < 2) {
     return null;
@@ -393,11 +396,36 @@ function findExistingResponseRow_(sheet, lookupPhone, invitedParty) {
 
   for (i = 0; i < values.length; i += 1) {
     rowPhone = normalizePhone_(values[i][2]);
-    rowParty = String(values[i][3] || '');
+    rowParty = normalizePartyName_(values[i][3]);
 
-    if (rowPhone === lookupPhone && (!invitedParty || rowParty === invitedParty)) {
-      return i + 2;
+    if (rowPhone === lookupPhone) {
+      phoneMatches.push({
+        rowIndex: i + 2,
+        rowValues: values[i]
+      });
+
+      if (normalizedInvitedParty && rowParty === normalizedInvitedParty) {
+        exactMatches.push({
+          rowIndex: i + 2,
+          rowValues: values[i]
+        });
+      }
     }
+  }
+
+  // Best case: exact phone + party match (even if spacing/case changed).
+  if (exactMatches.length > 0) {
+    return getLatestMatchRow_(exactMatches);
+  }
+
+  // If only one row has this phone, safely update it.
+  if (phoneMatches.length === 1) {
+    return phoneMatches[0].rowIndex;
+  }
+
+  // Fallback: update latest row for this phone.
+  if (phoneMatches.length > 1 && !normalizedInvitedParty) {
+    return getLatestMatchRow_(phoneMatches);
   }
 
   return null;
@@ -445,6 +473,41 @@ function toCount_(value) {
   }
 
   return parsed;
+}
+
+function normalizePartyName_(value) {
+  return String(value || '')
+    .trim()
+    .replace(/\s+/g, ' ')
+    .toLowerCase();
+}
+
+function getLatestMatchRow_(matches) {
+  let latest = matches[0];
+  let i;
+
+  for (i = 1; i < matches.length; i += 1) {
+    if (getRowTimestamp_(matches[i].rowValues) >= getRowTimestamp_(latest.rowValues)) {
+      latest = matches[i];
+    }
+  }
+
+  return latest.rowIndex;
+}
+
+function getRowTimestamp_(row) {
+  const submittedAt = row[0];
+  const lastUpdated = row[1];
+
+  if (lastUpdated instanceof Date) {
+    return lastUpdated.getTime();
+  }
+
+  if (submittedAt instanceof Date) {
+    return submittedAt.getTime();
+  }
+
+  return 0;
 }
 
 function migrateOldResponsesSheet_(sheet) {
