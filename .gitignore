@@ -8,5 +8,4 @@ _site
 .tweet-cache
 Gemfile.lock
 vendor
-
 _data/wedding_rsvp_parties.yml
