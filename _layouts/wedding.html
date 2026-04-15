@@ -80,6 +80,9 @@
         position: relative;
         z-index: 2;
       }
+      .wedding-hero-grid.has-story-carousel {
+        align-items: start;
+      }
       .wedding-hero-copy,
       .wedding-hero-photo {
         border-radius: 32px;
@@ -122,12 +125,10 @@
       .hero-copy-carousel {
         margin-top: 1.6rem;
       }
-      .hero-copy-slide,
-      .hero-photo-slide {
+      .hero-copy-slide {
         display: none;
       }
-      .hero-copy-slide.active,
-      .hero-photo-slide.active {
+      .hero-copy-slide.active {
         display: block;
       }
       .hero-slide-title {
@@ -147,11 +148,13 @@
         justify-content: space-between;
         gap: 1rem;
       }
-      .hero-carousel-nav {
+      .hero-carousel-nav,
+      .hero-image-carousel-nav {
         display: flex;
         gap: 0.75rem;
       }
-      .hero-carousel-nav button {
+      .hero-carousel-nav button,
+      .hero-image-carousel-nav button {
         width: 3rem;
         height: 3rem;
         border-radius: 999px;
@@ -163,16 +166,19 @@
         cursor: pointer;
         transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
       }
-      .hero-carousel-nav button:hover {
+      .hero-carousel-nav button:hover,
+      .hero-image-carousel-nav button:hover {
         background: #f1e4d5;
         transform: translateY(-1px);
       }
-      .hero-carousel-dots {
+      .hero-carousel-dots,
+      .hero-image-carousel-dots {
         display: flex;
         flex-wrap: wrap;
         gap: 0.6rem;
       }
-      .hero-carousel-dots button {
+      .hero-carousel-dots button,
+      .hero-image-carousel-dots button {
         width: 0.85rem;
         height: 0.85rem;
         padding: 0;
@@ -182,9 +188,21 @@
         cursor: pointer;
         transition: transform 0.2s ease, background 0.2s ease;
       }
-      .hero-carousel-dots button.active {
+      .hero-carousel-dots button.active,
+      .hero-image-carousel-dots button.active {
         background: #8c6f59;
         transform: scale(1.12);
+      }
+      .hero-image-carousel-controls {
+        position: absolute;
+        left: 1.15rem;
+        right: 1.15rem;
+        bottom: 1.15rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        z-index: 3;
       }
       .wedding-hero-copy .hero-meta {
         margin-top: 2.5rem;
@@ -208,6 +226,10 @@
         position: relative;
         background: linear-gradient(180deg, #fff7f1 0%, #f6eee5 100%);
       }
+      .wedding-hero-grid.has-story-carousel .wedding-hero-photo {
+        height: clamp(30rem, 42vw, 40rem);
+        min-height: clamp(30rem, 42vw, 40rem);
+      }
       .wedding-hero-photo img {
         width: 100%;
         height: 100%;
@@ -215,11 +237,26 @@
         display: block;
       }
       .hero-photo-carousel {
+        position: relative;
         height: 100%;
+        min-height: 100%;
       }
-      .hero-photo-slide,
+      .hero-photo-slide {
+        position: absolute;
+        inset: 0;
+        display: block;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.38s ease;
+      }
+      .hero-photo-slide.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
       .hero-photo-slide img {
+        width: 100%;
         height: 100%;
+        object-fit: cover;
       }
       .wedding-hero-photo::before {
         content: "";
@@ -454,6 +491,10 @@
         .wedding-hero-photo {
           min-height: 26rem;
         }
+        .wedding-hero-grid.has-story-carousel .wedding-hero-photo {
+          height: 26rem;
+          min-height: 26rem;
+        }
         .hero-carousel-controls {
           margin-top: 1.5rem;
         }
@@ -540,6 +581,10 @@
         .wedding-hero-photo {
           min-height: 19rem;
         }
+        .wedding-hero-grid.has-story-carousel .wedding-hero-photo {
+          height: 19rem;
+          min-height: 19rem;
+        }
         .wedding-hero-photo::before {
           inset: 0.85rem;
           border-radius: 22px;
@@ -556,9 +601,15 @@
         .hero-carousel-nav {
           width: 100%;
         }
-        .hero-carousel-nav button {
+        .hero-carousel-nav button,
+        .hero-image-carousel-nav button {
           width: 2.8rem;
           height: 2.8rem;
+        }
+        .hero-image-carousel-controls {
+          left: 0.85rem;
+          right: 0.85rem;
+          bottom: 0.85rem;
         }
         .page-side-ornament {
           display: none;
@@ -595,7 +646,8 @@
           align-items: stretch;
         }
         .rsvp-form button,
-        .hero-carousel-nav button {
+        .hero-carousel-nav button,
+        .hero-image-carousel-nav button {
           touch-action: manipulation;
         }
         .rsvp-form button {
@@ -619,6 +671,10 @@
         .wedding-hero-photo {
           min-height: 16rem;
         }
+        .wedding-hero-grid.has-story-carousel .wedding-hero-photo {
+          height: 16rem;
+          min-height: 16rem;
+        }
         .wedding-card {
           padding: 1.1rem;
         }
@@ -638,7 +694,7 @@
     {% unless page.hide_hero %}
       <main class="wedding-hero-wrapper">
         <img class="hero-ornament" src="{{ '/assets/img/wedding/side-decor.png' | relative_url }}" alt="Stargazer lily decoration">
-        <div class="wedding-hero-grid">
+        <div class="wedding-hero-grid{% if page.hero_slides %} has-story-carousel{% endif %}">
           <div class="wedding-hero-copy">
             <p class="wedding-accent{% if page.hero_slides %} has-carousel{% endif %}">{{ page.hero_accent | default: "A celebration of love" }}</p>
             <h1>{{ page.title | newline_to_br }}</h1>
@@ -689,6 +745,28 @@
                   </div>
                 {% endfor %}
               </div>
+            {% elsif page.hero_image_slides %}
+              <div class="hero-photo-carousel" data-hero-image-carousel>
+                {% for slide in page.hero_image_slides %}
+                  {% assign slide_image = slide.image | default: slide %}
+                  <div class="hero-photo-slide{% if forloop.first %} active{% endif %}" data-hero-image-slide>
+                    <img src="{{ slide_image }}" alt="{{ slide.alt | default: page.title }}">
+                  </div>
+                {% endfor %}
+              </div>
+              {% if page.hero_image_slides.size > 1 %}
+                <div class="hero-image-carousel-controls" data-hero-image-controls>
+                  <div class="hero-image-carousel-nav">
+                    <button type="button" data-hero-image-prev aria-label="Previous photo">&#8592;</button>
+                    <button type="button" data-hero-image-next aria-label="Next photo">&#8594;</button>
+                  </div>
+                  <div class="hero-image-carousel-dots" role="tablist" aria-label="Welcome photos">
+                    {% for slide in page.hero_image_slides %}
+                      <button type="button" class="{% if forloop.first %}active{% endif %}" data-hero-image-dot data-hero-image-index="{{ forloop.index0 }}" aria-label="Go to photo {{ forloop.index }}"></button>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endif %}
             {% elsif page.hero_image %}
               <img src="{{ page.hero_image }}" alt="Wedding photo of the couple">
             {% else %}
@@ -713,57 +791,138 @@
 
   </body>
 
-  {% if page.hero_slides %}
+  {% if page.hero_slides or page.hero_image_slides %}
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        var copySlides = Array.prototype.slice.call(document.querySelectorAll('[data-hero-copy-slide]'));
-        var photoSlides = Array.prototype.slice.call(document.querySelectorAll('[data-hero-photo-slide]'));
-        var dots = Array.prototype.slice.call(document.querySelectorAll('[data-hero-dot]'));
-        var prevButton = document.querySelector('[data-hero-prev]');
-        var nextButton = document.querySelector('[data-hero-next]');
-        var currentIndex = 0;
+        function initStoryCarousel() {
+          var copySlides = Array.prototype.slice.call(document.querySelectorAll('[data-hero-copy-slide]'));
+          var photoSlides = Array.prototype.slice.call(document.querySelectorAll('[data-hero-photo-slide]'));
+          var dots = Array.prototype.slice.call(document.querySelectorAll('[data-hero-dot]'));
+          var prevButton = document.querySelector('[data-hero-prev]');
+          var nextButton = document.querySelector('[data-hero-next]');
+          var currentIndex = 0;
 
-        function setSlide(nextIndex) {
-          currentIndex = (nextIndex + copySlides.length) % copySlides.length;
+          function setSlide(nextIndex) {
+            currentIndex = (nextIndex + copySlides.length) % copySlides.length;
 
-          copySlides.forEach(function (slide, index) {
-            slide.classList.toggle('active', index === currentIndex);
+            copySlides.forEach(function (slide, index) {
+              slide.classList.toggle('active', index === currentIndex);
+            });
+
+            photoSlides.forEach(function (slide, index) {
+              slide.classList.toggle('active', index === currentIndex);
+            });
+
+            dots.forEach(function (dot, index) {
+              var isActive = index === currentIndex;
+              dot.classList.toggle('active', isActive);
+              dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            });
+          }
+
+          if (!copySlides.length || copySlides.length !== photoSlides.length) {
+            return;
+          }
+
+          if (prevButton) {
+            prevButton.addEventListener('click', function () {
+              setSlide(currentIndex - 1);
+            });
+          }
+
+          if (nextButton) {
+            nextButton.addEventListener('click', function () {
+              setSlide(currentIndex + 1);
+            });
+          }
+
+          dots.forEach(function (dot) {
+            dot.addEventListener('click', function () {
+              setSlide(parseInt(dot.getAttribute('data-hero-index'), 10));
+            });
           });
 
-          photoSlides.forEach(function (slide, index) {
-            slide.classList.toggle('active', index === currentIndex);
-          });
-
-          dots.forEach(function (dot, index) {
-            var isActive = index === currentIndex;
-            dot.classList.toggle('active', isActive);
-            dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
-          });
+          setSlide(0);
         }
 
-        if (!copySlides.length || copySlides.length !== photoSlides.length) {
-          return;
+        function initImageOnlyCarousel() {
+          var slides = Array.prototype.slice.call(document.querySelectorAll('[data-hero-image-slide]'));
+          var dots = Array.prototype.slice.call(document.querySelectorAll('[data-hero-image-dot]'));
+          var prevButton = document.querySelector('[data-hero-image-prev]');
+          var nextButton = document.querySelector('[data-hero-image-next]');
+          var carousel = document.querySelector('[data-hero-image-carousel]');
+          var timerId = null;
+          var currentIndex = 0;
+
+          function setSlide(nextIndex) {
+            currentIndex = (nextIndex + slides.length) % slides.length;
+
+            slides.forEach(function (slide, index) {
+              slide.classList.toggle('active', index === currentIndex);
+            });
+
+            dots.forEach(function (dot, index) {
+              var isActive = index === currentIndex;
+              dot.classList.toggle('active', isActive);
+              dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            });
+          }
+
+          function stopAutoplay() {
+            if (timerId) {
+              window.clearInterval(timerId);
+              timerId = null;
+            }
+          }
+
+          function startAutoplay() {
+            stopAutoplay();
+
+            if (slides.length < 2) {
+              return;
+            }
+
+            timerId = window.setInterval(function () {
+              setSlide(currentIndex + 1);
+            }, 5500);
+          }
+
+          if (!slides.length) {
+            return;
+          }
+
+          if (prevButton) {
+            prevButton.addEventListener('click', function () {
+              setSlide(currentIndex - 1);
+              startAutoplay();
+            });
+          }
+
+          if (nextButton) {
+            nextButton.addEventListener('click', function () {
+              setSlide(currentIndex + 1);
+              startAutoplay();
+            });
+          }
+
+          dots.forEach(function (dot) {
+            dot.addEventListener('click', function () {
+              setSlide(parseInt(dot.getAttribute('data-hero-image-index'), 10));
+              startAutoplay();
+            });
+          });
+
+          if (carousel) {
+            carousel.addEventListener('mouseenter', stopAutoplay);
+            carousel.addEventListener('mouseleave', startAutoplay);
+          }
+
+          setSlide(0);
+          startAutoplay();
         }
 
-        if (prevButton) {
-          prevButton.addEventListener('click', function () {
-            setSlide(currentIndex - 1);
-          });
-        }
-
-        if (nextButton) {
-          nextButton.addEventListener('click', function () {
-            setSlide(currentIndex + 1);
-          });
-        }
-
-        dots.forEach(function (dot) {
-          dot.addEventListener('click', function () {
-            setSlide(parseInt(dot.getAttribute('data-hero-index'), 10));
-          });
-        });
-
-        setSlide(0);
+        initStoryCarousel();
+        initImageOnlyCarousel();
       });
     </script>
   {% endif %}
