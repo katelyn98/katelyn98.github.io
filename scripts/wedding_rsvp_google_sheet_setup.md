@@ -1,7 +1,8 @@
 # Wedding RSVP Google Sheet Setup
 
-This setup keeps your custom RSVP page and sends each response into one Google Sheet with three tabs:
+This setup keeps your custom RSVP page and sends each response into one Google Sheet with four tabs:
 
+- `Invites`: private guest list used for phone lookup (not stored in GitHub)
 - `Responses`: every RSVP submission
 - `Summary`: live totals for ceremony, reception, full accepts, partials, declines, and dietary notes, based on the latest RSVP for each phone number
 - `Dietary`: only the latest responses with notes or dietary restrictions
@@ -43,9 +44,27 @@ If the script is attached directly to the Google Sheet you want to use, you can 
 1. In Apps Script, run `setupWeddingRsvpSheet`.
 2. Approve the permissions Google asks for.
 3. Confirm the Sheet now has:
+   - `Invites`
    - `Responses`
    - `Summary`
    - `Dietary`
+
+## 3b. Fill the Invites tab (private lookup source)
+
+In `Invites`, add one row per invitation:
+
+- Column A (`Invited Party`): e.g. `Seba and Maka`
+- Column B (`Phone Numbers`): one or more numbers, separated by commas
+- Column C (`Ceremony Allowed`): allowed ceremony count
+- Column D (`Reception Allowed`): allowed reception count
+
+Example row:
+
+```text
+Seba and Maka | 4126991909, 4125550000 | 2 | 2
+```
+
+The website now checks this private `Invites` tab through Apps Script when guests enter their phone number.
 
 ## 4. Deploy the script as a web app
 
@@ -82,10 +101,11 @@ Share the Google Sheet with your wedding party helpers so they can:
 
 - The RSVP page already sends:
   - phone number used for lookup
-  - invited party
+  - invited party (resolved from `Invites` when possible)
   - ceremony allowed / attending
   - reception allowed / attending
   - attendance status
   - dietary notes / message
 - The `Responses` tab keeps both `Submitted At` and `Last Updated` so you can tell when a guest changed their RSVP.
+- Keep phone numbers out of this repo; store them only in the private Google Sheet `Invites` tab.
 - If you update the script later, redeploy the web app so the latest version is live.

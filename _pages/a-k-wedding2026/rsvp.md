@@ -10,7 +10,7 @@ show_side_decor: false
   <h2>RSVP</h2>
   <p class="rsvp-instructions">Please begin with the phone number associated with your invitation. Once we find your party, we will show the guests listed and the number of seats reserved for the ceremony and reception. If your plans change, you can submit again with the same phone number to update your RSVP.</p>
 
-  <form class="rsvp-form" id="rsvp-form" action="https://script.google.com/macros/s/AKfycbwFeOHQZpZ07IN41hvGBsZ-lyD2u10A55CAB3yetB4orXByyVKTG5UzwU13m_Qrdvuz/exec" method="POST">
+  <form class="rsvp-form" id="rsvp-form" action="https://script.google.com/macros/s/AKfycbxPeGn9_NasHMpYWGvC0kicH_vdeplxKCRmFxOGdrxEpcq30JqBzW1wnzPUj-_hytkE/exec" method="POST">
     <div class="rsvp-step">
       <div class="form-group">
         <label for="lookup-phone">Phone number</label>
@@ -74,11 +74,13 @@ show_side_decor: false
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    var parties = {{ site.data.wedding_rsvp_parties | jsonify }};
     var rsvpForm = document.getElementById('rsvp-form');
+    var rsvpEndpoint = rsvpForm.getAttribute('action');
     var phoneInput = document.getElementById('lookup-phone');
     var lookupButton = document.getElementById('lookup-button');
+    var defaultLookupButtonText = lookupButton.textContent;
     var lookupError = document.getElementById('lookup-error');
+    var defaultLookupErrorMessage = lookupError.textContent;
     var startOverButton = document.getElementById('start-over');
     var submitButton = document.getElementById('submit-rsvp');
     var processingMessage = document.getElementById('rsvp-processing');
@@ -103,6 +105,59 @@ show_side_decor: false
       }
 
       return digits;
+    }
+
+    function buildLookupUrl(normalizedPhone, callbackName) {
+      var separator = rsvpEndpoint.indexOf('?') === -1 ? '?' : '&';
+
+      return rsvpEndpoint +
+        separator +
+        'action=lookup&phone=' +
+        encodeURIComponent(normalizedPhone) +
+        '&callback=' +
+        encodeURIComponent(callbackName);
+    }
+
+    function lookupPartyByPhone(normalizedPhone) {
+      return new Promise(function (resolve, reject) {
+        var callbackName = 'rsvpLookup_' + Date.now() + '_' + Math.floor(Math.random() * 1000000);
+        var script = document.createElement('script');
+        var timeoutId;
+
+        function cleanup() {
+          if (timeoutId) {
+            window.clearTimeout(timeoutId);
+          }
+
+          if (script.parentNode) {
+            script.parentNode.removeChild(script);
+          }
+
+          try {
+            delete window[callbackName];
+          } catch (error) {
+            window[callbackName] = undefined;
+          }
+        }
+
+        window[callbackName] = function (payload) {
+          cleanup();
+          resolve(payload || {});
+        };
+
+        script.onerror = function () {
+          cleanup();
+          reject(new Error('lookup_request_failed'));
+        };
+
+        timeoutId = window.setTimeout(function () {
+          cleanup();
+          reject(new Error('lookup_timeout'));
+        }, 10000);
+
+        script.src = buildLookupUrl(normalizedPhone, callbackName);
+        document.body.appendChild(script);
+      });
     }
 
     function renderAttendanceOptions(select, count, label) {
@@ -159,33 +214,37 @@ show_side_decor: false
     }
 
     function renderParty(party, normalizedPhone) {
+      var ceremonyAllowed = Number(party.ceremony_allowed || 0);
+      var receptionAllowed = Number(party.reception_allowed || 0);
+
+      if (isNaN(ceremonyAllowed) || ceremonyAllowed < 0) {
+        ceremonyAllowed = 0;
+      }
+
+      if (isNaN(receptionAllowed) || receptionAllowed < 0) {
+        receptionAllowed = 0;
+      }
+
       hiddenPhone.value = normalizedPhone;
       hiddenParty.value = party.invited_party;
-      hiddenCeremonyAllowed.value = String(party.ceremony_allowed);
-      hiddenReceptionAllowed.value = String(party.reception_allowed);
+      hiddenCeremonyAllowed.value = String(ceremonyAllowed);
+      hiddenReceptionAllowed.value = String(receptionAllowed);
 
       invitedNames.textContent = 'Please indicate attendance for: ' + party.invited_party;
-      ceremonySeats.textContent = 'We have reserved ' + party.ceremony_allowed + ' seat' + (party.ceremony_allowed === 1 ? '' : 's') + ' at the ceremony in your honor.';
-      receptionSeats.textContent = 'We have reserved ' + party.reception_allowed + ' seat' + (party.reception_allowed === 1 ? '' : 's') + ' at the reception in your honor.';
+      ceremonySeats.textContent = 'We have reserved ' + ceremonyAllowed + ' seat' + (ceremonyAllowed === 1 ? '' : 's') + ' at the ceremony in your honor.';
+      receptionSeats.textContent = 'We have reserved ' + receptionAllowed + ' seat' + (receptionAllowed === 1 ? '' : 's') + ' at the reception in your honor.';
 
-      renderAttendanceOptions(ceremonyCount, party.ceremony_allowed, 'the ceremony');
-      renderAttendanceOptions(receptionCount, party.reception_allowed, 'the reception');
+      renderAttendanceOptions(ceremonyCount, ceremonyAllowed, 'the ceremony');
+      renderAttendanceOptions(receptionCount, receptionAllowed, 'the reception');
 
       detailsStep.hidden = false;
       lookupError.hidden = true;
       updateAttendanceStatus();
     }
 
-    function findPartyByPhone(normalizedPhone) {
-      return parties.find(function (party) {
-        return Array.isArray(party.phone_numbers) && party.phone_numbers.some(function (phone) {
-          return normalizePhone(String(phone || '')) === normalizedPhone;
-        });
-      });
-    }
-
-    function handleLookup() {
+    async function handleLookup() {
       var normalizedPhone;
+      var lookupResult;
       var party;
 
       if (!phoneInput.value.trim()) {
@@ -194,6 +253,8 @@ show_side_decor: false
       }
 
       normalizedPhone = normalizePhone(phoneInput.value);
+      lookupError.textContent = defaultLookupErrorMessage;
+      lookupError.hidden = true;
 
       if (!normalizedPhone) {
         lookupError.hidden = false;
@@ -202,9 +263,36 @@ show_side_decor: false
         return;
       }
 
-      party = findPartyByPhone(normalizedPhone);
+      lookupButton.disabled = true;
+      lookupButton.textContent = 'Looking up...';
+
+      try {
+        lookupResult = await lookupPartyByPhone(normalizedPhone);
+      } catch (error) {
+        lookupError.textContent = 'We could not check that phone number right now. Please try again or reach out to Katelyn.';
+        lookupError.hidden = false;
+        detailsStep.hidden = true;
+        resetDetails();
+        return;
+      } finally {
+        if (!isSubmitting) {
+          lookupButton.disabled = false;
+          lookupButton.textContent = defaultLookupButtonText;
+        }
+      }
+
+      party = lookupResult && lookupResult.found ? lookupResult.party : null;
+
+      if (lookupResult && lookupResult.ok === false) {
+        lookupError.textContent = 'We could not check that phone number right now. Please try again or reach out to Katelyn.';
+        lookupError.hidden = false;
+        detailsStep.hidden = true;
+        resetDetails();
+        return;
+      }
 
       if (!party) {
+        lookupError.textContent = defaultLookupErrorMessage;
         lookupError.hidden = false;
         detailsStep.hidden = true;
         resetDetails();
@@ -218,6 +306,7 @@ show_side_decor: false
     startOverButton.addEventListener('click', function () {
       phoneInput.value = '';
       lookupError.hidden = true;
+      lookupError.textContent = defaultLookupErrorMessage;
       detailsStep.hidden = true;
       resetDetails();
       phoneInput.focus();
@@ -242,8 +331,6 @@ show_side_decor: false
       startOverButton.disabled = true;
       lookupButton.disabled = true;
       phoneInput.readOnly = true;
-      ceremonyCount.disabled = true;
-      receptionCount.disabled = true;
       processingMessage.hidden = false;
     });
 

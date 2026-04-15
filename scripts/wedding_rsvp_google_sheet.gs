@@ -1,34 +1,94 @@
 const SHEET_ID = 'PASTE_YOUR_GOOGLE_SHEET_ID_HERE';
 const WEBSITE_HOME_URL = 'https://YOUR_DOMAIN/a-k-wedding2026/';
 const SHEET_ID_PROPERTY = 'WEDDING_RSVP_SHEET_ID';
+const INVITES_SHEET = 'Invites';
 const RESPONSES_SHEET = 'Responses';
 const SUMMARY_SHEET = 'Summary';
 const DIETARY_SHEET = 'Dietary';
 
 function setupWeddingRsvpSheet() {
   const spreadsheet = getSpreadsheetForSetup_();
+  const invites = getOrCreateSheet_(spreadsheet, INVITES_SHEET);
   const responses = getOrCreateSheet_(spreadsheet, RESPONSES_SHEET);
   const summary = getOrCreateSheet_(spreadsheet, SUMMARY_SHEET);
   const dietary = getOrCreateSheet_(spreadsheet, DIETARY_SHEET);
 
   PropertiesService.getScriptProperties().setProperty(SHEET_ID_PROPERTY, spreadsheet.getId());
+  ensureInvitesSheet_(invites);
   ensureResponsesSheet_(responses);
   const latestResponses = getLatestResponses_(responses);
   refreshSummarySheet_(summary, latestResponses);
   refreshDietarySheet_(dietary, latestResponses);
 }
 
+function doGet(e) {
+  const data = e && e.parameter ? e.parameter : {};
+  const action = String(data.action || '').toLowerCase();
+
+  if (action !== 'lookup') {
+    return ContentService.createTextOutput('Wedding RSVP web app is running.');
+  }
+
+  try {
+    const spreadsheet = getSpreadsheetForWebApp_();
+    const invites = getOrCreateSheet_(spreadsheet, INVITES_SHEET);
+    const normalizedPhone = normalizePhone_(data.phone || '');
+    let invite = null;
+
+    ensureInvitesSheet_(invites);
+
+    if (normalizedPhone) {
+      invite = findInviteByPhone_(invites, normalizedPhone);
+    }
+
+    if (!invite) {
+      return buildLookupResponse_(
+        {
+          ok: true,
+          found: false
+        },
+        data.callback
+      );
+    }
+
+    return buildLookupResponse_(
+      {
+        ok: true,
+        found: true,
+        party: invite
+      },
+      data.callback
+    );
+  } catch (error) {
+    return buildLookupResponse_(
+      {
+        ok: false,
+        found: false,
+        error: error && error.message ? error.message : 'Lookup failed.'
+      },
+      data.callback
+    );
+  }
+}
+
 function doPost(e) {
   try {
     const spreadsheet = getSpreadsheetForWebApp_();
+    const invites = getOrCreateSheet_(spreadsheet, INVITES_SHEET);
     const responses = getOrCreateSheet_(spreadsheet, RESPONSES_SHEET);
     const summary = getOrCreateSheet_(spreadsheet, SUMMARY_SHEET);
     const dietary = getOrCreateSheet_(spreadsheet, DIETARY_SHEET);
+    ensureInvitesSheet_(invites);
     ensureResponsesSheet_(responses);
 
     const data = e && e.parameter ? e.parameter : {};
     const lookupPhone = normalizePhone_(data.lookup_phone || data.lookup_phone_display || '');
-    const invitedParty = data.invited_party || '';
+    const invite = lookupPhone ? findInviteByPhone_(invites, lookupPhone) : null;
+    const invitedParty = invite ? invite.invited_party : (data.invited_party || '');
+    const ceremonyAllowed = invite ? invite.ceremony_allowed : Number(data.ceremony_allowed || 0);
+    const receptionAllowed = invite ? invite.reception_allowed : Number(data.reception_allowed || 0);
+    const ceremonyAttending = clampCount_(Number(data.ceremony_attending || 0), ceremonyAllowed);
+    const receptionAttending = clampCount_(Number(data.reception_attending || 0), receptionAllowed);
     const existingRow = findExistingResponseRow_(responses, lookupPhone, invitedParty);
     const now = new Date();
     let submittedAt = now;
@@ -44,10 +104,10 @@ function doPost(e) {
       now,
       lookupPhone,
       invitedParty,
-      Number(data.ceremony_allowed || 0),
-      Number(data.ceremony_attending || 0),
-      Number(data.reception_allowed || 0),
-      Number(data.reception_attending || 0),
+      ceremonyAllowed,
+      ceremonyAttending,
+      receptionAllowed,
+      receptionAttending,
       data.attendance_status || '',
       data.message || '',
       'Wedding website'
@@ -132,6 +192,40 @@ function buildRsvpResponsePage_(message, details) {
   );
 }
 
+function buildLookupResponse_(payload, callbackName) {
+  const body = JSON.stringify(payload || {});
+  const callback = String(callbackName || '').trim();
+
+  if (isSafeCallbackName_(callback)) {
+    return ContentService.createTextOutput(callback + '(' + body + ');')
+      .setMimeType(ContentService.MimeType.JAVASCRIPT);
+  }
+
+  return ContentService.createTextOutput(body)
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function isSafeCallbackName_(value) {
+  return /^[A-Za-z_$][A-Za-z0-9_$]{0,64}$/.test(String(value || ''));
+}
+
+function ensureInvitesSheet_(sheet) {
+  const headers = [[
+    'Invited Party',
+    'Phone Numbers',
+    'Ceremony Allowed',
+    'Reception Allowed'
+  ]];
+
+  if (sheet.getLastRow() === 0) {
+    sheet.getRange(1, 1, 1, headers[0].length).setValues(headers);
+  } else {
+    sheet.getRange(1, 1, 1, headers[0].length).setValues(headers);
+  }
+
+  sheet.setFrozenRows(1);
+}
+
 function ensureResponsesSheet_(sheet) {
   const headers = [[
     'Submitted At',
@@ -164,10 +258,10 @@ function ensureResponsesSheet_(sheet) {
 
 function refreshSummarySheet_(sheet, latestResponses) {
   const ceremonyTotal = latestResponses.reduce(function (sum, row) {
-    return sum + Number(row[5] || 0);
+    return sum + toCount_(row[5]);
   }, 0);
   const receptionTotal = latestResponses.reduce(function (sum, row) {
-    return sum + Number(row[7] || 0);
+    return sum + toCount_(row[7]);
   }, 0);
   const fullAccepts = latestResponses.filter(function (row) {
     return row[8] === 'accepts';
@@ -232,6 +326,58 @@ function normalizePhone_(value) {
   return digits;
 }
 
+function findInviteByPhone_(sheet, normalizedPhone) {
+  const lastRow = sheet.getLastRow();
+  const rows = lastRow > 1
+    ? sheet.getRange(2, 1, lastRow - 1, 4).getValues()
+    : [];
+  let i;
+
+  if (!normalizedPhone) {
+    return null;
+  }
+
+  for (i = 0; i < rows.length; i += 1) {
+    const invitedParty = String(rows[i][0] || '').trim();
+    const phones = parsePhoneList_(rows[i][1]);
+    const ceremonyAllowed = Number(rows[i][2] || 0);
+    const receptionAllowed = Number(rows[i][3] || 0);
+    const hasPhoneMatch = phones.some(function (phone) {
+      return phone === normalizedPhone;
+    });
+
+    if (invitedParty && hasPhoneMatch) {
+      return {
+        invited_party: invitedParty,
+        ceremony_allowed: isNaN(ceremonyAllowed) ? 0 : ceremonyAllowed,
+        reception_allowed: isNaN(receptionAllowed) ? 0 : receptionAllowed
+      };
+    }
+  }
+
+  return null;
+}
+
+function parsePhoneList_(value) {
+  return String(value || '')
+    .split(/[\n,;]+/)
+    .map(function (part) {
+      return normalizePhone_(part);
+    })
+    .filter(function (phone) {
+      return phone !== '';
+    });
+}
+
+function clampCount_(value, maxAllowed) {
+  const normalizedMax = Number(maxAllowed || 0);
+  const normalizedValue = Number(value || 0);
+  const safeMax = isNaN(normalizedMax) || normalizedMax < 0 ? 0 : normalizedMax;
+  const safeValue = isNaN(normalizedValue) || normalizedValue < 0 ? 0 : normalizedValue;
+
+  return Math.min(safeValue, safeMax);
+}
+
 function findExistingResponseRow_(sheet, lookupPhone, invitedParty) {
   const lastRow = sheet.getLastRow();
   let values;
@@ -268,8 +414,13 @@ function getLatestResponses_(sheet) {
     const submittedAt = row[0];
     const lastUpdated = row[1];
     const lookupPhone = normalizePhone_(row[2]);
-    const invitedParty = String(row[3] || '');
-    const key = lookupPhone || ('row-' + index + '-' + invitedParty);
+    const invitedParty = String(row[3] || '').trim();
+    const normalizedParty = invitedParty.toLowerCase();
+    // Keep the latest response per invitation identity.
+    // This avoids undercounting when two different parties share one phone number.
+    const key = lookupPhone
+      ? (normalizedParty ? (lookupPhone + '|' + normalizedParty) : lookupPhone)
+      : (normalizedParty ? ('party-' + normalizedParty) : ('row-' + index));
     const candidateTime = (lastUpdated instanceof Date ? lastUpdated : submittedAt instanceof Date ? submittedAt : new Date(0)).getTime();
     const existing = latestByKey[key];
     const existingTime = existing
@@ -284,6 +435,16 @@ function getLatestResponses_(sheet) {
   return Object.keys(latestByKey).map(function (key) {
     return latestByKey[key];
   });
+}
+
+function toCount_(value) {
+  const parsed = Number(value);
+
+  if (isNaN(parsed) || parsed < 0) {
+    return 0;
+  }
+
+  return parsed;
 }
 
 function migrateOldResponsesSheet_(sheet) {
