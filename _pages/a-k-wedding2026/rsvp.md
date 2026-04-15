@@ -3,7 +3,7 @@ layout: wedding
 permalink: /a-k-wedding2026/rsvp/
 title: RSVP
 hide_hero: true
-show_side_decor: true
+show_side_decor: false
 ---
 
 <section class="wedding-card">

@@ -701,10 +701,10 @@
 
     {% assign wedding_content = content | strip %}
     {% if wedding_content != "" %}
-      {% if page.show_side_decor %}
-        <img class="page-side-ornament" src="{{ '/assets/img/wedding/side-decor.png' | relative_url }}" alt="">
-      {% endif %}
       <div class="wedding-content{% if page.hide_hero %} heroless{% endif %}{% if page.show_side_decor %} with-side-decor{% endif %}">
+        {% if page.show_side_decor %}
+          <img class="page-side-ornament" src="{{ '/assets/img/wedding/side-decor.png' | relative_url }}" alt="">
+        {% endif %}
         {{ content }}
       </div>
     {% endif %}
