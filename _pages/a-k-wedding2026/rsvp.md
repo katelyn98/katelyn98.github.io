@@ -16,13 +16,14 @@ show_side_decor: false
         <label for="lookup-phone">Phone number</label>
         <input type="tel" id="lookup-phone" name="lookup_phone_display" placeholder="Enter your phone number" inputmode="tel" autocomplete="tel" required>
         <p class="rsvp-help">Use the phone number we have on file for your invitation, and please leave off the country code.</p>
+        <p class="rsvp-help">If your phone number does not work, please reach out to Katelyn.</p>
       </div>
 
       <div class="rsvp-actions">
         <button type="button" id="lookup-button">Next</button>
       </div>
 
-      <p class="rsvp-error" id="lookup-error" hidden>We could not find that phone number. Please try again or reach out to us if you need help with your RSVP.</p>
+      <p class="rsvp-error" id="lookup-error" hidden>We could not find that phone number. Please try again or reach out to Katelyn if you need help with your RSVP.</p>
     </div>
 
     <div class="rsvp-step" id="rsvp-details" hidden>
