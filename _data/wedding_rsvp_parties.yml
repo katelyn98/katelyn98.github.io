@@ -85,13 +85,14 @@
     - "4123300579"
   ceremony_allowed: 1
   reception_allowed: 1
-- invited_party: Ben + GF
+- invited_party: Ben
   phone_numbers:
     - "6504416777"
-  ceremony_allowed: 2
-  reception_allowed: 2
-- invited_party: Noah & Girlfriend
-  phone_numbers: []
+  ceremony_allowed: 1
+  reception_allowed: 1
+- invited_party: Noah and Elise
+  phone_numbers:
+    - "6039784899"
   ceremony_allowed: 2
   reception_allowed: 2
 - invited_party: Emanuel + Gokchen
@@ -143,12 +144,12 @@
     - "611261465"
   ceremony_allowed: 1
   reception_allowed: 1
-- invited_party: Venkatesh, Parents
+- invited_party: Venkatesh and Parents
   phone_numbers:
     - "3187732585"
   ceremony_allowed: 3
   reception_allowed: 3
-- invited_party: Will Epperson, Zoey, Will’s parents, Sister
+- invited_party: Will Epperson, Zoey, Will’s parents, and Ellie
   phone_numbers:
     - "7706330485"
     - "6782064840"
@@ -184,7 +185,7 @@
     - "3142396711"
   ceremony_allowed: 1
   reception_allowed: 1
-- invited_party: Anna Kawakami + BF
+- invited_party: Anna Kawakami and Luis
   phone_numbers:
     - "7143315556"
   ceremony_allowed: 2
@@ -202,5 +203,10 @@
 - invited_party: Jordan Taylor & Rose
   phone_numbers:
     - "7708963043"
+  ceremony_allowed: 2
+  reception_allowed: 2
+- invited_party: Seba and Maka
+  phone_numbers:
+    - "4126991909"
   ceremony_allowed: 2
   reception_allowed: 2

@@ -9,3 +9,4 @@ _site
 Gemfile.lock
 vendor
 
+_data/wedding_rsvp_parties.yml
