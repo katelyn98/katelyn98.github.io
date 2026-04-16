@@ -15,7 +15,7 @@ hero_timeline:
     event: "Processional"
   - time: "5:15 PM"
     event: "Ceremony"
-  - time: "5:25 PM"
+  - time: "5:35 PM"
     event: "End of Ceremony"
   - time: "5:45 PM"
     event: "Dinner"
