@@ -20,7 +20,7 @@ hero_timeline:
   - time: "5:45 PM"
     event: "Dinner"
   - time: "6:45 PM"
-    event: "Cake"
+    event: "Dessert"
   - time: "7:00 PM - 9:00 PM"
     event: "Evening Celebration"
 ---
