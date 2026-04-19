@@ -10,7 +10,7 @@ show_side_decor: false
   <h2>RSVP</h2>
   <p class="rsvp-instructions">Please begin with the phone number associated with your invitation. Once we find your party, we will show the guests listed and the number of seats reserved for the ceremony and reception. If your plans change, you can submit again with the same phone number to update your RSVP.</p>
 
-  <form class="rsvp-form" id="rsvp-form" action="https://script.google.com/macros/s/AKfycbwu59aHFdHtYvGmKgw0kQnMlmIQdc-yLojwzw2eqacV7BktPub1kPRReXXyCs_Jte8c/exec" method="POST">
+  <form class="rsvp-form" id="rsvp-form" action="https://script.google.com/macros/s/AKfycbwoHRQt-aUzwZ3sgYHkTklanwrY7_3hkHQBMXIPeNcVM0kzdL1_2l7Yutr5-IvUXNZA/exec" method="POST">
     <div class="rsvp-step">
       <div class="form-group">
         <label for="lookup-phone">Phone number</label>

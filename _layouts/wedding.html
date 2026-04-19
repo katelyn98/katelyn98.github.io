@@ -59,17 +59,6 @@
         padding: var(--hero-top-padding) 1rem var(--hero-bottom-padding);
         background: linear-gradient(180deg, #f8f1ea 0%, #f7efe8 48%, #f1e8df 100%);
       }
-      .wedding-hero-wrapper .hero-ornament {
-        position: absolute;
-        top: var(--hero-top-padding);
-        bottom: var(--hero-bottom-padding);
-        left: min(-0.25rem, calc(50% - 50.75rem));
-        width: auto;
-        height: calc(100% - var(--hero-top-padding) - var(--hero-bottom-padding));
-        opacity: 0.9;
-        pointer-events: none;
-        z-index: 3;
-      }
       .wedding-hero-grid {
         display: grid;
         grid-template-columns: minmax(20rem, 1.2fr) minmax(20rem, 1fr);
@@ -79,6 +68,13 @@
         margin: 0 auto;
         position: relative;
         z-index: 2;
+      }
+      .wedding-hero-grid.no-photo {
+        grid-template-columns: minmax(20rem, 1fr);
+        max-width: 760px;
+      }
+      .wedding-hero-grid.no-photo.has-trio-highlights {
+        max-width: 1280px;
       }
       .wedding-hero-grid.has-story-carousel {
         align-items: start;
@@ -148,6 +144,120 @@
         font-size: 1rem;
         color: #2f2823;
         line-height: 1.5;
+      }
+      .hero-highlight-card {
+        margin-top: 1.35rem;
+        max-width: 32rem;
+        padding: 1.15rem 1.2rem;
+        border-radius: 18px;
+        background: #fbf6f1;
+        border: 1px solid rgba(166, 135, 103, 0.25);
+      }
+      .hero-highlight-grid {
+        margin-top: 1.35rem;
+        display: grid;
+        gap: 0.9rem;
+        max-width: 64rem;
+      }
+      .hero-highlight-grid.has-pair {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .hero-highlight-grid.has-trio {
+        grid-template-columns: 1.05fr 1.05fr 1.2fr;
+        max-width: none;
+      }
+      .hero-highlight-grid .hero-highlight-card {
+        margin-top: 0;
+        max-width: none;
+        height: 100%;
+      }
+      .hero-highlight-kicker {
+        margin: 0;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: #8c6f59;
+      }
+      .hero-highlight-title {
+        margin: 0.55rem 0 0;
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: clamp(1.55rem, 2.6vw, 2rem);
+        line-height: 1.1;
+        color: #1f1b18;
+      }
+      .hero-highlight-goal {
+        margin: 0.65rem 0 0;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #7a5e42;
+      }
+      .hero-highlight-progress {
+        margin-top: 0.8rem;
+      }
+      .hero-highlight-progress-track {
+        width: 100%;
+        height: 0.62rem;
+        border-radius: 999px;
+        background: rgba(166, 135, 103, 0.24);
+        overflow: hidden;
+      }
+      .hero-highlight-progress-fill {
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #8c6f59 0%, #a68367 100%);
+      }
+      .hero-highlight-progress-meta {
+        margin: 0.45rem 0 0;
+        font-size: 0.9rem;
+        color: #5f5750;
+      }
+      .hero-highlight-text {
+        margin: 0.6rem 0 0;
+        font-size: 0.98rem;
+        color: #51463f;
+        line-height: 1.6;
+      }
+      .hero-highlight-method-list {
+        margin-top: 0.45rem;
+        display: grid;
+        gap: 0.45rem;
+      }
+      .hero-highlight-method-item {
+        margin: 0;
+        font-size: 0.95rem;
+        color: #51463f;
+        line-height: 1.45;
+      }
+      .hero-highlight-method-item strong {
+        color: #2f2823;
+        font-weight: 700;
+      }
+      .hero-highlight-method-item a {
+        color: #7a5e42;
+      }
+      .hero-track-form {
+        margin-top: 0.65rem;
+      }
+      .hero-track-form .rsvp-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-track-form .rsvp-form label {
+        font-size: 0.88rem;
+      }
+      .hero-track-form .rsvp-form input,
+      .hero-track-form .rsvp-form select {
+        min-height: 2.8rem;
+      }
+      .hero-track-form .rsvp-form button {
+        width: 100%;
+        justify-content: center;
+      }
+      .hero-track-note {
+        margin: 0.35rem 0 0;
+        color: #5f5750;
+        font-size: 0.92rem;
+        line-height: 1.55;
       }
       .hero-copy-carousel {
         margin-top: 1.6rem;
@@ -308,23 +418,6 @@
       }
       .wedding-content.heroless {
         margin-top: 2rem;
-      }
-      .wedding-content.with-side-decor {
-        --page-decor-width: clamp(8.5rem, 12vw, 10.5rem);
-        position: relative;
-        z-index: 1;
-        padding-left: calc(var(--page-decor-width) + 1.25rem);
-        margin-top: 2rem;
-      }
-      .page-side-ornament {
-        position: absolute;
-        top: 2rem;
-        left: 0.25rem;
-        width: var(--page-decor-width);
-        height: auto;
-        opacity: 0.9;
-        pointer-events: none;
-        z-index: 2;
       }
       .wedding-grid {
         display: grid;
@@ -525,21 +618,8 @@
         .hero-carousel-controls {
           margin-top: 1.5rem;
         }
-        .wedding-hero-wrapper .hero-ornament {
-          left: -5.75rem;
-          height: min(24rem, calc(100% - var(--hero-top-padding) - var(--hero-bottom-padding)));
-          width: auto;
-          opacity: 0.8;
-        }
-        .wedding-content.with-side-decor {
-          --page-decor-width: clamp(7rem, 11vw, 8.5rem);
-          padding-left: calc(var(--page-decor-width) + 0.9rem);
-          margin-top: 2rem;
-        }
-        .page-side-ornament {
-          top: 2.5rem;
-          left: 0;
-          width: var(--page-decor-width);
+        .hero-highlight-grid.has-trio {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
       @media (max-width: 768px) {
@@ -606,6 +686,31 @@
         .hero-timeline-label {
           font-size: 0.98rem;
         }
+        .hero-highlight-card {
+          margin-top: 1rem;
+          padding: 1rem;
+        }
+        .hero-highlight-grid,
+        .hero-highlight-grid.has-pair {
+          margin-top: 1rem;
+          grid-template-columns: 1fr;
+        }
+        .hero-highlight-grid.has-trio {
+          margin-top: 1rem;
+          grid-template-columns: 1fr;
+        }
+        .hero-highlight-title {
+          font-size: clamp(1.35rem, 7vw, 1.75rem);
+        }
+        .hero-highlight-goal {
+          font-size: 0.96rem;
+        }
+        .hero-highlight-progress-meta {
+          font-size: 0.88rem;
+        }
+        .hero-highlight-text {
+          font-size: 0.95rem;
+        }
         .hero-slide-title {
           font-size: clamp(1.75rem, 8vw, 2.25rem);
         }
@@ -631,9 +736,6 @@
           inset: 0.85rem;
           border-radius: 22px;
         }
-        .wedding-hero-wrapper .hero-ornament {
-          display: none;
-        }
         .hero-carousel-controls {
           flex-direction: column;
           align-items: flex-start;
@@ -653,15 +755,9 @@
           right: 0.85rem;
           bottom: 0.85rem;
         }
-        .page-side-ornament {
-          display: none;
-        }
         .wedding-content {
           padding: 0 0.75rem;
           margin-bottom: 2rem;
-        }
-        .wedding-content.with-side-decor {
-          margin-top: 2rem;
         }
         .wedding-card {
           padding: 1.35rem;
@@ -731,13 +827,13 @@
       <a class="{% if page.url == '/a-k-wedding2026/location/' %}active{% endif %}" href="{{ '/a-k-wedding2026/location/' | relative_url }}">Location</a>
       <a class="{% if page.url == '/a-k-wedding2026/schedule/' %}active{% endif %}" href="{{ '/a-k-wedding2026/schedule/' | relative_url }}">Schedule</a>
       <a class="{% if page.url == '/a-k-wedding2026/story/' %}active{% endif %}" href="{{ '/a-k-wedding2026/story/' | relative_url }}">Our Story</a>
+      <a class="{% if page.url == '/a-k-wedding2026/registry/' %}active{% endif %}" href="{{ '/a-k-wedding2026/registry/' | relative_url }}">Registry</a>
       <a class="{% if page.url == '/a-k-wedding2026/rsvp/' %}active{% endif %}" href="{{ '/a-k-wedding2026/rsvp/' | relative_url }}">RSVP</a>
     </nav>
 
     {% unless page.hide_hero %}
       <main class="wedding-hero-wrapper">
-        <img class="hero-ornament" src="{{ '/assets/img/wedding/side-decor.png' | relative_url }}" alt="Stargazer lily decoration">
-        <div class="wedding-hero-grid{% if page.hero_slides %} has-story-carousel{% endif %}">
+        <div class="wedding-hero-grid{% if page.hero_slides %} has-story-carousel{% endif %}{% if page.hide_hero_photo %} no-photo{% endif %}{% if page.show_registry_methods_highlight and page.show_registry_track_highlight %} has-trio-highlights{% endif %}">
           <div class="wedding-hero-copy">
             <p class="wedding-accent{% if page.hero_slides %} has-carousel{% endif %}">{{ page.hero_accent | default: "A celebration of love" }}</p>
             <h1>{{ page.title | newline_to_br }}</h1>
@@ -770,7 +866,9 @@
               </div>
             {% else %}
               <p class="lead">{{ page.hero_lead_primary | default: "La familia de Álvaro habla español, la familia de Katelyn habla inglés — todos juntos por amor." }}</p>
-              <p class="lead">{{ page.hero_lead_secondary | default: "Alvaro's family speaks Spanish, Katelyn's family speaks English — everyone together for love." }}</p>
+              {% unless page.hide_hero_lead_secondary %}
+                <p class="lead">{{ page.hero_lead_secondary | default: "Alvaro's family speaks Spanish, Katelyn's family speaks English — everyone together for love." }}</p>
+              {% endunless %}
               {% if page.hero_timeline %}
                 <div class="hero-timeline" role="list" aria-label="Wedding day timeline">
                   {% for item in page.hero_timeline %}
@@ -781,6 +879,124 @@
                   {% endfor %}
                 </div>
               {% endif %}
+              {% if page.hero_highlight or page.show_registry_methods_highlight or page.show_registry_track_highlight %}
+                <div class="hero-highlight-grid{% if page.show_registry_methods_highlight and page.show_registry_track_highlight %} has-trio{% elsif page.show_registry_methods_highlight or page.show_registry_track_highlight %} has-pair{% endif %}">
+                  {% if page.hero_highlight %}
+                    <article class="hero-highlight-card">
+                      {% if page.hero_highlight.kicker %}
+                        <p class="hero-highlight-kicker">{{ page.hero_highlight.kicker }}</p>
+                      {% endif %}
+                      {% if page.hero_highlight.title %}
+                        <h2 class="hero-highlight-title">{{ page.hero_highlight.title }}</h2>
+                      {% endif %}
+                      {% if page.hero_highlight.goal %}
+                        <p class="hero-highlight-goal">{{ page.hero_highlight.goal }}</p>
+                      {% endif %}
+                      {% assign goal_amount = page.hero_highlight.goal_amount | plus: 0 %}
+                      {% assign contributed_amount = page.hero_highlight.contributed_amount | plus: 0 %}
+                      {% if goal_amount > 0 %}
+                        {% assign progress_percent = contributed_amount | times: 100 | divided_by: goal_amount %}
+                        {% if progress_percent < 0 %}
+                          {% assign progress_percent = 0 %}
+                        {% endif %}
+                        {% if progress_percent > 100 %}
+                          {% assign progress_percent = 100 %}
+                        {% endif %}
+                        <div class="hero-highlight-progress" aria-label="Registry contribution progress" data-registry-progress data-goal-amount="{{ goal_amount }}" data-summary-endpoint="{{ page.registry_tracking_endpoint | default: '' }}">
+                          <div class="hero-highlight-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ progress_percent }}" data-registry-progress-track>
+                            <div class="hero-highlight-progress-fill" style="width: {{ progress_percent }}%;" data-registry-progress-fill></div>
+                          </div>
+                          {% if page.hero_highlight.progress_label %}
+                            <p class="hero-highlight-progress-meta" data-registry-progress-meta>{{ page.hero_highlight.progress_label }}</p>
+                          {% else %}
+                            <p class="hero-highlight-progress-meta" data-registry-progress-meta>${{ contributed_amount }} raised of ${{ goal_amount }} goal</p>
+                          {% endif %}
+                        </div>
+                      {% endif %}
+                      {% if page.hero_highlight.text %}
+                        <p class="hero-highlight-text">{{ page.hero_highlight.text }}</p>
+                      {% endif %}
+                    </article>
+                  {% endif %}
+
+                  {% if page.show_registry_methods_highlight %}
+                    <article class="hero-highlight-card">
+                      <p class="hero-highlight-kicker">Ways to Contribute</p>
+                      <div class="hero-highlight-method-list">
+                        <p class="hero-highlight-method-item">
+                          <strong>PayPal:</strong>
+                          {% if page.registry_payment.paypal_url and page.registry_payment.paypal_url != "" %}
+                            <a href="{{ page.registry_payment.paypal_url }}" target="_blank" rel="noopener">Open PayPal</a>
+                          {% else %}
+                            Add your PayPal link in paypal_url.
+                          {% endif %}
+                        </p>
+                        <p class="hero-highlight-method-item">
+                          <strong>Venmo:</strong>
+                          {% if page.registry_payment.venmo_url and page.registry_payment.venmo_url != "" %}
+                            <a href="{{ page.registry_payment.venmo_url }}" target="_blank" rel="noopener">Open Venmo</a>
+                          {% else %}
+                            Add your Venmo link in venmo_url.
+                          {% endif %}
+                        </p>
+                        <p class="hero-highlight-method-item">
+                          <strong>Zelle:</strong>
+                          {{ page.registry_payment.zelle_name | default: "Add recipient name" }}{% if page.registry_payment.zelle_detail %} — {{ page.registry_payment.zelle_detail }}{% endif %}
+                        </p>
+                      </div>
+                    </article>
+                  {% endif %}
+
+                  {% if page.show_registry_track_highlight %}
+                    <article class="hero-highlight-card">
+                      <p class="hero-highlight-kicker">Track a Contribution</p>
+                      <p class="hero-track-note">After sending a gift through PayPal, Venmo, or Zelle, please log it below so the progress bar stays up to date.</p>
+                      {% if page.registry_tracking_endpoint and page.registry_tracking_endpoint != "" %}
+                        <div class="hero-track-form">
+                          <form class="rsvp-form" id="registry-log-form" action="{{ page.registry_tracking_endpoint }}" method="POST">
+                            <input type="hidden" name="action" value="log_contribution">
+                            <input type="hidden" name="source" value="Wedding website registry page">
+
+                            <div class="rsvp-grid">
+                              <div class="form-group">
+                                <label for="contributor-name">Name (optional)</label>
+                                <input type="text" id="contributor-name" name="contributor_name" placeholder="Your name">
+                              </div>
+                            </div>
+
+                            <div class="rsvp-grid">
+                              <div class="form-group">
+                                <label for="payment-method">Payment method</label>
+                                <select id="payment-method" name="payment_method" required>
+                                  <option value="" selected disabled>Select method</option>
+                                  <option value="paypal">PayPal</option>
+                                  <option value="venmo">Venmo</option>
+                                  <option value="zelle">Zelle</option>
+                                  <option value="other">Other</option>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div class="rsvp-grid">
+                              <div class="form-group">
+                                <label for="contribution-amount">Amount (USD)</label>
+                                <input type="number" id="contribution-amount" name="amount" min="0.01" step="0.01" placeholder="0.00" required>
+                              </div>
+                            </div>
+
+                            <div class="rsvp-actions">
+                              <button type="submit" id="registry-log-submit">Log Contribution</button>
+                            </div>
+                            <p class="rsvp-processing" id="registry-log-processing" hidden>Saving your contribution update. Please wait...</p>
+                          </form>
+                        </div>
+                      {% else %}
+                        <p class="hero-track-note">Add registry_tracking_endpoint in this page front matter to enable contribution tracking.</p>
+                      {% endif %}
+                    </article>
+                  {% endif %}
+                </div>
+              {% endif %}
             {% endif %}
             {% unless page.hide_hero_meta %}
               <div class="hero-meta">
@@ -789,53 +1005,52 @@
               </div>
             {% endunless %}
           </div>
-          <div class="wedding-hero-photo">
-            {% if page.hero_slides %}
-              <div class="hero-photo-carousel">
-                {% for slide in page.hero_slides %}
-                  <div class="hero-photo-slide{% if forloop.first %} active{% endif %}" data-hero-photo-slide>
-                    <img src="{{ slide.image }}" alt="{{ slide.alt | default: page.title }}">
-                  </div>
-                {% endfor %}
-              </div>
-            {% elsif page.hero_image_slides %}
-              <div class="hero-photo-carousel" data-hero-image-carousel>
-                {% for slide in page.hero_image_slides %}
-                  {% assign slide_image = slide.image | default: slide %}
-                  <div class="hero-photo-slide{% if forloop.first %} active{% endif %}" data-hero-image-slide>
-                    <img src="{{ slide_image }}" alt="{{ slide.alt | default: page.title }}">
-                  </div>
-                {% endfor %}
-              </div>
-              {% if page.hero_image_slides.size > 1 %}
-                <div class="hero-image-carousel-controls" data-hero-image-controls>
-                  <div class="hero-image-carousel-nav">
-                    <button type="button" data-hero-image-prev aria-label="Previous photo">&#8592;</button>
-                    <button type="button" data-hero-image-next aria-label="Next photo">&#8594;</button>
-                  </div>
-                  <div class="hero-image-carousel-dots" role="tablist" aria-label="Welcome photos">
-                    {% for slide in page.hero_image_slides %}
-                      <button type="button" class="{% if forloop.first %}active{% endif %}" data-hero-image-dot data-hero-image-index="{{ forloop.index0 }}" aria-label="Go to photo {{ forloop.index }}"></button>
-                    {% endfor %}
-                  </div>
+          {% unless page.hide_hero_photo %}
+            <div class="wedding-hero-photo">
+              {% if page.hero_slides %}
+                <div class="hero-photo-carousel">
+                  {% for slide in page.hero_slides %}
+                    <div class="hero-photo-slide{% if forloop.first %} active{% endif %}" data-hero-photo-slide>
+                      <img src="{{ slide.image }}" alt="{{ slide.alt | default: page.title }}">
+                    </div>
+                  {% endfor %}
                 </div>
+              {% elsif page.hero_image_slides %}
+                <div class="hero-photo-carousel" data-hero-image-carousel>
+                  {% for slide in page.hero_image_slides %}
+                    {% assign slide_image = slide.image | default: slide %}
+                    <div class="hero-photo-slide{% if forloop.first %} active{% endif %}" data-hero-image-slide>
+                      <img src="{{ slide_image }}" alt="{{ slide.alt | default: page.title }}">
+                    </div>
+                  {% endfor %}
+                </div>
+                {% if page.hero_image_slides.size > 1 %}
+                  <div class="hero-image-carousel-controls" data-hero-image-controls>
+                    <div class="hero-image-carousel-nav">
+                      <button type="button" data-hero-image-prev aria-label="Previous photo">&#8592;</button>
+                      <button type="button" data-hero-image-next aria-label="Next photo">&#8594;</button>
+                    </div>
+                    <div class="hero-image-carousel-dots" role="tablist" aria-label="Welcome photos">
+                      {% for slide in page.hero_image_slides %}
+                        <button type="button" class="{% if forloop.first %}active{% endif %}" data-hero-image-dot data-hero-image-index="{{ forloop.index0 }}" aria-label="Go to photo {{ forloop.index }}"></button>
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endif %}
+              {% elsif page.hero_image %}
+                <img src="{{ page.hero_image }}" alt="Wedding photo of the couple">
+              {% else %}
+                <div style="width:100%;height:100%;border-radius:28px;background:linear-gradient(135deg,#f5e8df,#f7f1eb);display:flex;align-items:center;justify-content:center;color:#8c6f59;font-weight:700;min-height:420px;">Add your couple photo via page front matter</div>
               {% endif %}
-            {% elsif page.hero_image %}
-              <img src="{{ page.hero_image }}" alt="Wedding photo of the couple">
-            {% else %}
-              <div style="width:100%;height:100%;border-radius:28px;background:linear-gradient(135deg,#f5e8df,#f7f1eb);display:flex;align-items:center;justify-content:center;color:#8c6f59;font-weight:700;min-height:420px;">Add your couple photo via page front matter</div>
-            {% endif %}
-          </div>
+            </div>
+          {% endunless %}
         </div>
       </main>
     {% endunless %}
 
     {% assign wedding_content = content | strip %}
     {% if wedding_content != "" %}
-      <div class="wedding-content{% if page.hide_hero %} heroless{% endif %}{% if page.show_side_decor %} with-side-decor{% endif %}">
-        {% if page.show_side_decor %}
-          <img class="page-side-ornament" src="{{ '/assets/img/wedding/side-decor.png' | relative_url }}" alt="">
-        {% endif %}
+      <div class="wedding-content{% if page.hide_hero %} heroless{% endif %}">
         {{ content }}
       </div>
     {% endif %}

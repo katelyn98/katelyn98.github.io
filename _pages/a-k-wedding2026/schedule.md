@@ -5,6 +5,7 @@ title: Schedule
 hero_accent: Wedding Day Timeline
 hero_lead_primary: Our timeline for Friday, May 8, 2026.
 hero_lead_secondary: Thank you for celebrating this special day with us.
+hide_hero_meta: true
 hero_image: /assets/img/wedding/main.jpg
 hero_date: May 8, 2026
 hero_location: Pittsburgh, PA
@@ -13,14 +14,20 @@ hero_timeline:
     event: "Guest Arrival"
   - time: "5:00 PM"
     event: "Processional"
-  - time: "5:15 PM"
+  - time: "5:10 PM"
     event: "Ceremony"
-  - time: "5:35 PM"
+  - time: "5:30 PM"
     event: "End of Ceremony"
-  - time: "5:45 PM"
+  - time: "5:35 PM"
+    event: "Rooftop Cocktail Hour"
+  - time: "6:15 PM"
     event: "Dinner"
-  - time: "6:45 PM"
-    event: "Dessert"
-  - time: "7:00 PM - 9:00 PM"
-    event: "Evening Celebration"
+  - time: "7:00 PM"
+    event: "Cake & Desserts"
+  - time: "7:15 PM - 8:45 PM"
+    event: "Dance"
+  - time: "9 PM"
+    event: "Guest Departure"
+  - time: "11:00 PM"
+    event: "CAVO After party"
 ---

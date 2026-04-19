@@ -5,6 +5,8 @@ const INVITES_SHEET = 'Invites';
 const RESPONSES_SHEET = 'Responses';
 const SUMMARY_SHEET = 'Summary';
 const DIETARY_SHEET = 'Dietary';
+const CONTRIBUTIONS_SHEET = 'Contributions';
+const CONTRIBUTION_SUMMARY_SHEET = 'Contribution Summary';
 
 function setupWeddingRsvpSheet() {
   const spreadsheet = getSpreadsheetForSetup_();
@@ -12,76 +14,124 @@ function setupWeddingRsvpSheet() {
   const responses = getOrCreateSheet_(spreadsheet, RESPONSES_SHEET);
   const summary = getOrCreateSheet_(spreadsheet, SUMMARY_SHEET);
   const dietary = getOrCreateSheet_(spreadsheet, DIETARY_SHEET);
+  const contributions = getOrCreateSheet_(spreadsheet, CONTRIBUTIONS_SHEET);
+  const contributionSummary = getOrCreateSheet_(spreadsheet, CONTRIBUTION_SUMMARY_SHEET);
 
   PropertiesService.getScriptProperties().setProperty(SHEET_ID_PROPERTY, spreadsheet.getId());
   ensureInvitesSheet_(invites);
   ensureResponsesSheet_(responses);
+  ensureContributionsSheet_(contributions);
   const latestResponses = getLatestResponses_(responses);
+  const contributionRows = getContributionRows_(contributions);
   refreshSummarySheet_(summary, latestResponses);
   refreshDietarySheet_(dietary, latestResponses);
+  refreshContributionSummarySheet_(contributionSummary, contributionRows);
 }
 
 function doGet(e) {
   const data = e && e.parameter ? e.parameter : {};
   const action = String(data.action || '').toLowerCase();
 
-  if (action !== 'lookup') {
+  if (!action) {
     return ContentService.createTextOutput('Wedding RSVP web app is running.');
   }
 
-  try {
-    const spreadsheet = getSpreadsheetForWebApp_();
-    const invites = getOrCreateSheet_(spreadsheet, INVITES_SHEET);
-    const normalizedPhone = normalizePhone_(data.phone || '');
-    let invite = null;
+  if (action === 'lookup') {
+    try {
+      const spreadsheet = getSpreadsheetForWebApp_();
+      const invites = getOrCreateSheet_(spreadsheet, INVITES_SHEET);
+      const normalizedPhone = normalizePhone_(data.phone || '');
+      let invite = null;
 
-    ensureInvitesSheet_(invites);
+      ensureInvitesSheet_(invites);
 
-    if (normalizedPhone) {
-      invite = findInviteByPhone_(invites, normalizedPhone);
-    }
+      if (normalizedPhone) {
+        invite = findInviteByPhone_(invites, normalizedPhone);
+      }
 
-    if (!invite) {
+      if (!invite) {
+        return buildLookupResponse_(
+          {
+            ok: true,
+            found: false
+          },
+          data.callback
+        );
+      }
+
       return buildLookupResponse_(
         {
           ok: true,
-          found: false
+          found: true,
+          party: invite
+        },
+        data.callback
+      );
+    } catch (error) {
+      return buildLookupResponse_(
+        {
+          ok: false,
+          found: false,
+          error: error && error.message ? error.message : 'Lookup failed.'
         },
         data.callback
       );
     }
-
-    return buildLookupResponse_(
-      {
-        ok: true,
-        found: true,
-        party: invite
-      },
-      data.callback
-    );
-  } catch (error) {
-    return buildLookupResponse_(
-      {
-        ok: false,
-        found: false,
-        error: error && error.message ? error.message : 'Lookup failed.'
-      },
-      data.callback
-    );
   }
+
+  if (action === 'contribution_summary') {
+    try {
+      const spreadsheet = getSpreadsheetForWebApp_();
+      const contributions = getOrCreateSheet_(spreadsheet, CONTRIBUTIONS_SHEET);
+      const contributionSummary = getOrCreateSheet_(spreadsheet, CONTRIBUTION_SUMMARY_SHEET);
+
+      ensureContributionsSheet_(contributions);
+      const contributionRows = getContributionRows_(contributions);
+      const summaryData = refreshContributionSummarySheet_(contributionSummary, contributionRows);
+
+      return buildLookupResponse_(
+        {
+          ok: true,
+          summary: summaryData
+        },
+        data.callback
+      );
+    } catch (error) {
+      return buildLookupResponse_(
+        {
+          ok: false,
+          error: error && error.message ? error.message : 'Could not load contribution summary.'
+        },
+        data.callback
+      );
+    }
+  }
+
+  return ContentService.createTextOutput('Unknown action.');
 }
 
 function doPost(e) {
+  const data = e && e.parameter ? e.parameter : {};
+  const action = String(data.action || '').toLowerCase();
+
+  if (action === 'log_contribution') {
+    return handleContributionPost_(data);
+  }
+
+  return handleRsvpPost_(data);
+}
+
+function handleRsvpPost_(data) {
   try {
     const spreadsheet = getSpreadsheetForWebApp_();
     const invites = getOrCreateSheet_(spreadsheet, INVITES_SHEET);
     const responses = getOrCreateSheet_(spreadsheet, RESPONSES_SHEET);
     const summary = getOrCreateSheet_(spreadsheet, SUMMARY_SHEET);
     const dietary = getOrCreateSheet_(spreadsheet, DIETARY_SHEET);
+
     ensureInvitesSheet_(invites);
     ensureResponsesSheet_(responses);
 
-    const data = e && e.parameter ? e.parameter : {};
     const lookupPhone = normalizePhone_(data.lookup_phone || data.lookup_phone_display || '');
     const invite = lookupPhone ? findInviteByPhone_(invites, lookupPhone) : null;
     const invitedParty = invite ? invite.invited_party : (data.invited_party || '');
@@ -130,6 +180,51 @@ function doPost(e) {
   } catch (error) {
     return buildRsvpResponsePage_(
       'There was a problem saving your RSVP.',
+      error && error.message
+        ? error.message
+        : 'Please try again or contact the couple if the issue continues.'
+    );
+  }
+}
+
+function handleContributionPost_(data) {
+  try {
+    const spreadsheet = getSpreadsheetForWebApp_();
+    const contributions = getOrCreateSheet_(spreadsheet, CONTRIBUTIONS_SHEET);
+    const contributionSummary = getOrCreateSheet_(spreadsheet, CONTRIBUTION_SUMMARY_SHEET);
+    const now = new Date();
+    const paymentMethod = normalizePaymentMethod_(data.payment_method || '');
+    const amount = parseCurrencyAmount_(data.amount || 0);
+
+    ensureContributionsSheet_(contributions);
+
+    if (amount <= 0) {
+      return buildContributionResponsePage_(
+        'There was a problem saving your contribution update.',
+        'Please include a contribution amount greater than 0.'
+      );
+    }
+
+    contributions.appendRow([
+      now,
+      String(data.contributor_name || '').trim(),
+      paymentMethod || 'other',
+      amount,
+      String(data.transaction_reference || '').trim(),
+      String(data.note || '').trim(),
+      String(data.source || 'Wedding website registry page').trim()
+    ]);
+
+    const contributionRows = getContributionRows_(contributions);
+    refreshContributionSummarySheet_(contributionSummary, contributionRows);
+
+    return buildContributionResponsePage_(
+      'Thank you for your contribution update.',
+      'Your update was saved and your registry progress will refresh shortly.'
+    );
+  } catch (error) {
+    return buildContributionResponsePage_(
+      'There was a problem saving your contribution update.',
       error && error.message
         ? error.message
         : 'Please try again or contact the couple if the issue continues.'
@@ -189,6 +284,12 @@ function getConfiguredSheetId_() {
 function buildRsvpResponsePage_(message, details) {
   return HtmlService.createHtmlOutput(
     '<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>RSVP received</title><style>body{margin:0;font-family:Georgia,serif;background:#f9f5f0;color:#2b2720;display:grid;place-items:center;min-height:100vh;padding:2rem}main{max-width:40rem;background:#fff;border:1px solid rgba(205,194,178,.8);border-radius:24px;padding:2.5rem;box-shadow:0 26px 60px rgba(43,36,27,.08)}h1{margin:0 0 1rem;font-size:2.2rem;line-height:1.1}p{margin:.75rem 0 0;line-height:1.7;color:#51463f}.actions{margin-top:2rem}.button{display:inline-flex;align-items:center;justify-content:center;padding:.95rem 1.65rem;border-radius:999px;background:#8c6f59;color:#fff;text-decoration:none;font-size:1rem;border:none}</style></head><body><main><h1>Thank you for your RSVP</h1><p>' + message + '</p><p>' + details + '</p><div class="actions"><a class="button" href="' + WEBSITE_HOME_URL + '">Go to home page</a></div></main></body></html>'
+  );
+}
+
+function buildContributionResponsePage_(message, details) {
+  return HtmlService.createHtmlOutput(
+    '<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Contribution update received</title><style>body{margin:0;font-family:Georgia,serif;background:#f9f5f0;color:#2b2720;display:grid;place-items:center;min-height:100vh;padding:2rem}main{max-width:40rem;background:#fff;border:1px solid rgba(205,194,178,.8);border-radius:24px;padding:2.5rem;box-shadow:0 26px 60px rgba(43,36,27,.08)}h1{margin:0 0 1rem;font-size:2.2rem;line-height:1.1}p{margin:.75rem 0 0;line-height:1.7;color:#51463f}.actions{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.75rem}.button{display:inline-flex;align-items:center;justify-content:center;padding:.95rem 1.65rem;border-radius:999px;background:#8c6f59;color:#fff;text-decoration:none;font-size:1rem;border:none}</style></head><body><main><h1>Thank you</h1><p>' + message + '</p><p>' + details + '</p><div class="actions"><a class="button" href="' + WEBSITE_HOME_URL + 'registry/">Back to registry</a><a class="button" href="' + WEBSITE_HOME_URL + '">Go to home page</a></div></main></body></html>'
   );
 }
 
@@ -316,6 +417,86 @@ function refreshDietarySheet_(sheet, latestResponses) {
   sheet.setFrozenRows(1);
 }
 
+function ensureContributionsSheet_(sheet) {
+  const headers = [[
+    'Submitted At',
+    'Contributor Name',
+    'Payment Method',
+    'Amount',
+    'Transaction Reference',
+    'Note',
+    'Source'
+  ]];
+
+  if (sheet.getLastRow() === 0) {
+    sheet.getRange(1, 1, 1, headers[0].length).setValues(headers);
+  } else {
+    sheet.getRange(1, 1, 1, headers[0].length).setValues(headers);
+  }
+
+  sheet.setFrozenRows(1);
+}
+
+function getContributionRows_(sheet) {
+  const lastRow = sheet.getLastRow();
+
+  if (lastRow < 2) {
+    return [];
+  }
+
+  return sheet.getRange(2, 1, lastRow - 1, 7).getValues();
+}
+
+function refreshContributionSummarySheet_(sheet, contributionRows) {
+  const rows = contributionRows || [];
+  const totalRaised = rows.reduce(function (sum, row) {
+    return sum + parseCurrencyAmount_(row[3]);
+  }, 0);
+  const contributionCount = rows.filter(function (row) {
+    return parseCurrencyAmount_(row[3]) > 0;
+  }).length;
+  const byMethod = {
+    paypal: 0,
+    venmo: 0,
+    zelle: 0,
+    other: 0
+  };
+
+  rows.forEach(function (row) {
+    const method = normalizePaymentMethod_(row[2] || 'other');
+    const amount = parseCurrencyAmount_(row[3]);
+
+    if (amount <= 0) {
+      return;
+    }
+
+    if (!Object.prototype.hasOwnProperty.call(byMethod, method)) {
+      byMethod.other += amount;
+      return;
+    }
+
+    byMethod[method] += amount;
+  });
+
+  sheet.clear();
+  sheet.getRange('A1:B1').setValues([['Metric', 'Value']]);
+  sheet.getRange('A2:B7').setValues([
+    ['Total raised', totalRaised],
+    ['Contribution count', contributionCount],
+    ['PayPal total', byMethod.paypal],
+    ['Venmo total', byMethod.venmo],
+    ['Zelle total', byMethod.zelle],
+    ['Other total', byMethod.other]
+  ]);
+  sheet.setFrozenRows(1);
+
+  return {
+    total_raised: totalRaised,
+    contribution_count: contributionCount,
+    by_method: byMethod
+  };
+}
+
 function normalizePhone_(value) {
   let digits = String(value || '').replace(/\D/g, '');
 
@@ -324,6 +505,26 @@ function normalizePhone_(value) {
   }
 
   return digits;
+}
+
+function parseCurrencyAmount_(value) {
+  const normalized = Number(String(value || '').replace(/[^0-9.\-]/g, ''));
+
+  if (isNaN(normalized) || normalized <= 0) {
+    return 0;
+  }
+
+  return Math.round(normalized * 100) / 100;
+}
+
+function normalizePaymentMethod_(value) {
+  const normalized = String(value || '').trim().toLowerCase();
+
+  if (normalized === 'paypal' || normalized === 'venmo' || normalized === 'zelle') {
+    return normalized;
+  }
+
+  return 'other';
 }
 
 function findInviteByPhone_(sheet, normalizedPhone) {

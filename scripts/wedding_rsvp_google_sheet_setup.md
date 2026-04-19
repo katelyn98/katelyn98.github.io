@@ -1,11 +1,13 @@
 # Wedding RSVP Google Sheet Setup
 
-This setup keeps your custom RSVP page and sends each response into one Google Sheet with four tabs:
+This setup keeps your custom RSVP + registry tracking pages and sends each submission into one Google Sheet with six tabs:
 
 - `Invites`: private guest list used for phone lookup (not stored in GitHub)
 - `Responses`: every RSVP submission
 - `Summary`: live totals for ceremony, reception, full accepts, partials, declines, and dietary notes, based on the latest RSVP for each phone number
 - `Dietary`: only the latest responses with notes or dietary restrictions
+- `Contributions`: each contribution update submitted from the registry page
+- `Contribution Summary`: live totals for registry contributions (overall + by method)
 
 If a guest submits the RSVP again with the same phone number, their existing row is updated instead of creating a duplicate row.
 If you already have responses from an older version of the script, running the setup step again will update the sheet headers for the new format.
@@ -48,6 +50,8 @@ If the script is attached directly to the Google Sheet you want to use, you can 
    - `Responses`
    - `Summary`
    - `Dietary`
+   - `Contributions`
+   - `Contribution Summary`
 
 ## 3b. Fill the Invites tab (private lookup source)
 
@@ -89,6 +93,23 @@ In:
 
 replace the form action with your Apps Script URL.
 
+## 5b. Connect the registry tracking form + progress bar
+
+In:
+
+[`_pages/a-k-wedding2026/registry.md`](/Users/katelynmorrison/Documents/GitHub/katelyn98.github.io/_pages/a-k-wedding2026/registry.md)
+
+set:
+
+```yaml
+registry_tracking_endpoint: "YOUR_APPS_SCRIPT_WEB_APP_URL"
+```
+
+The registry page uses this same endpoint to:
+
+- submit `PayPal` / `Venmo` / `Zelle` contribution logs
+- fetch `contribution_summary` and refresh the progress bar automatically
+
 ## 6. Share the Sheet with helpers
 
 Share the Google Sheet with your wedding party helpers so they can:
@@ -96,6 +117,7 @@ Share the Google Sheet with your wedding party helpers so they can:
 - check live ceremony totals
 - check live reception totals
 - review dietary restrictions in one place
+- review registry contribution logs and totals
 
 ## Notes
 
@@ -106,6 +128,13 @@ Share the Google Sheet with your wedding party helpers so they can:
   - reception allowed / attending
   - attendance status
   - dietary notes / message
+- The registry tracking form sends:
+  - contributor name (optional)
+  - payment method (`paypal`, `venmo`, `zelle`, or `other`)
+  - contribution amount
+  - transaction reference (optional)
+  - note (optional)
 - The `Responses` tab keeps both `Submitted At` and `Last Updated` so you can tell when a guest changed their RSVP.
 - Keep phone numbers out of this repo; store them only in the private Google Sheet `Invites` tab.
+- Registry totals are based on the submitted contribution logs; they do not automatically sync from PayPal, Venmo, or Zelle APIs.
 - If you update the script later, redeploy the web app so the latest version is live.
