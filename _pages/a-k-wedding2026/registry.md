@@ -3,6 +3,7 @@ layout: wedding
 permalink: /a-k-wedding2026/registry/
 title: Registry
 hero_accent: Gift Registry
+hide_hero_title: true
 hero_lead_primary: Your love and presence are the greatest gift. If you would still like to give, we would be so grateful for support as we move to Seattle together. Your contribution will help with moving costs and legal fees as we start our next chapter together in Seattle.
 hide_hero_lead_secondary: true
 hide_hero_meta: true

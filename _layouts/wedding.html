@@ -836,7 +836,9 @@
         <div class="wedding-hero-grid{% if page.hero_slides %} has-story-carousel{% endif %}{% if page.hide_hero_photo %} no-photo{% endif %}{% if page.show_registry_methods_highlight and page.show_registry_track_highlight %} has-trio-highlights{% endif %}">
           <div class="wedding-hero-copy">
             <p class="wedding-accent{% if page.hero_slides %} has-carousel{% endif %}">{{ page.hero_accent | default: "A celebration of love" }}</p>
-            <h1>{{ page.title | newline_to_br }}</h1>
+            {% unless page.hide_hero_title %}
+              <h1>{{ page.title | newline_to_br }}</h1>
+            {% endunless %}
             {% if page.hero_slides %}
               <div class="hero-copy-carousel" data-hero-carousel>
                 {% for slide in page.hero_slides %}
