@@ -74,7 +74,7 @@
         max-width: 760px;
       }
       .wedding-hero-grid.no-photo.has-trio-highlights {
-        max-width: 1280px;
+        max-width: 1440px;
       }
       .wedding-hero-grid.has-story-carousel {
         align-items: start;
@@ -91,6 +91,9 @@
         display: grid;
         place-content: center;
         padding: 4rem 3.5rem;
+      }
+      .wedding-hero-grid.no-photo .wedding-hero-copy {
+        place-content: start;
       }
       .wedding-hero-copy .wedding-accent {
         font-size: 0.95rem;
@@ -117,6 +120,13 @@
         font-size: 1.05rem;
         color: #5f5750;
         line-height: 1.9;
+      }
+      .wedding-hero-copy.no-hero-title p.lead:first-of-type {
+        margin-top: 0.8rem;
+      }
+      .wedding-hero-grid.no-photo .wedding-hero-copy p.lead,
+      .wedding-hero-grid.no-photo .hero-timeline {
+        max-width: 68rem;
       }
       .hero-timeline {
         margin-top: 1.35rem;
@@ -624,16 +634,11 @@
       }
       @media (max-width: 768px) {
         .wedding-tabs {
-          flex-wrap: nowrap;
-          justify-content: flex-start;
-          overflow-x: auto;
-          -webkit-overflow-scrolling: touch;
-          scrollbar-width: none;
+          flex-wrap: wrap;
+          justify-content: center;
+          overflow-x: visible;
           padding: 0.85rem 0.9rem;
           gap: 0.6rem;
-        }
-        .wedding-tabs::-webkit-scrollbar {
-          display: none;
         }
         .wedding-tabs a {
           flex: 0 0 auto;
@@ -834,7 +839,7 @@
     {% unless page.hide_hero %}
       <main class="wedding-hero-wrapper">
         <div class="wedding-hero-grid{% if page.hero_slides %} has-story-carousel{% endif %}{% if page.hide_hero_photo %} no-photo{% endif %}{% if page.show_registry_methods_highlight and page.show_registry_track_highlight %} has-trio-highlights{% endif %}">
-          <div class="wedding-hero-copy">
+          <div class="wedding-hero-copy{% if page.hide_hero_title %} no-hero-title{% endif %}">
             <p class="wedding-accent{% if page.hero_slides %} has-carousel{% endif %}">{{ page.hero_accent | default: "A celebration of love" }}</p>
             {% unless page.hide_hero_title %}
               <h1>{{ page.title | newline_to_br }}</h1>

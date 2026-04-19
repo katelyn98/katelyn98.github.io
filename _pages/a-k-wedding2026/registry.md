@@ -22,7 +22,7 @@ hero_highlight:
   title: "Help us move to Seattle!"
   goal: "Goal: $7,000"
   contributed_amount: 0
-  goal_amount: 7000
+  goal_amount: 10000
 ---
 
 {% if page.registry_tracking_endpoint and page.registry_tracking_endpoint != "" %}
