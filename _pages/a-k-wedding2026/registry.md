@@ -11,8 +11,8 @@ hide_hero_photo: true
 hero_image: /assets/img/wedding/main.jpg
 registry_tracking_endpoint: "https://script.google.com/macros/s/AKfycbwoHRQt-aUzwZ3sgYHkTklanwrY7_3hkHQBMXIPeNcVM0kzdL1_2l7Yutr5-IvUXNZA/exec"
 registry_payment:
-  paypal_url: "paypal.me/KateCMorrison"
-  venmo_url: "@Katelyn-Morrison-6"
+  paypal_url: "https://paypal.me/KateCMorrison"
+  venmo_url: "https://venmo.com/Katelyn-Morrison-6"
   zelle_name: "Katelyn Morrison"
   zelle_detail: "alvaroandkatefm@gmail.com"
 show_registry_methods_highlight: true

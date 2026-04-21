@@ -939,19 +939,46 @@
                   {% if page.show_registry_methods_highlight %}
                     <article class="hero-highlight-card">
                       <p class="hero-highlight-kicker">Ways to Contribute</p>
+                      {% assign raw_paypal_url = page.registry_payment.paypal_url | default: "" | strip %}
+                      {% assign paypal_link = "" %}
+                      {% if raw_paypal_url != "" %}
+                        {% if raw_paypal_url contains "://" %}
+                          {% assign paypal_link = raw_paypal_url %}
+                        {% elsif raw_paypal_url contains "paypal.me/" or raw_paypal_url contains "paypal.com/" %}
+                          {% assign paypal_link = "https://" | append: raw_paypal_url %}
+                        {% else %}
+                          {% assign paypal_link = "https://paypal.me/" | append: raw_paypal_url | remove_first: "@" %}
+                        {% endif %}
+                      {% endif %}
+
+                      {% assign raw_venmo_url = page.registry_payment.venmo_url | default: "" | strip %}
+                      {% assign venmo_link = "" %}
+                      {% if raw_venmo_url != "" %}
+                        {% assign venmo_first_char = raw_venmo_url | slice: 0, 1 %}
+                        {% if raw_venmo_url contains "://" %}
+                          {% assign venmo_link = raw_venmo_url %}
+                        {% elsif raw_venmo_url contains "venmo.com/" %}
+                          {% assign venmo_link = "https://" | append: raw_venmo_url %}
+                        {% elsif venmo_first_char == "@" %}
+                          {% assign venmo_link = "https://venmo.com/" | append: raw_venmo_url | remove_first: "@" %}
+                        {% else %}
+                          {% assign venmo_link = "https://venmo.com/" | append: raw_venmo_url %}
+                        {% endif %}
+                      {% endif %}
+
                       <div class="hero-highlight-method-list">
                         <p class="hero-highlight-method-item">
                           <strong>PayPal:</strong>
-                          {% if page.registry_payment.paypal_url and page.registry_payment.paypal_url != "" %}
-                            <a href="{{ page.registry_payment.paypal_url }}" target="_blank" rel="noopener">Open PayPal</a>
+                          {% if paypal_link != "" %}
+                            <a href="{{ paypal_link }}" target="_blank" rel="noopener">Open PayPal</a>
                           {% else %}
                             Add your PayPal link in paypal_url.
                           {% endif %}
                         </p>
                         <p class="hero-highlight-method-item">
                           <strong>Venmo:</strong>
-                          {% if page.registry_payment.venmo_url and page.registry_payment.venmo_url != "" %}
-                            <a href="{{ page.registry_payment.venmo_url }}" target="_blank" rel="noopener">Open Venmo</a>
+                          {% if venmo_link != "" %}
+                            <a href="{{ venmo_link }}" target="_blank" rel="noopener">Open Venmo</a>
                           {% else %}
                             Add your Venmo link in venmo_url.
                           {% endif %}
