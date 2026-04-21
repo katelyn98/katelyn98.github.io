@@ -47,7 +47,7 @@ show_side_decor: false
 
   <details>
     <summary>Is there parking onsite?</summary>
-    <p>Yes, there is onsite parking available for guests.</p>
+    <p>There is limited onsite parking available for guests. We encourage to ride-sharing where possible to minimize our carbon footprint.</p>
   </details>
 
   <details>
