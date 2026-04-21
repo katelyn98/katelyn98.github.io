@@ -20,7 +20,7 @@ show_registry_track_highlight: true
 hero_highlight:
   kicker: "Registry Item"
   title: "Help us move to Seattle!"
-  goal: "Goal: $7,000"
+  goal: "Goal: $10,000"
   contributed_amount: 0
   goal_amount: 10000
 ---
