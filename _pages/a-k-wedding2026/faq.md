@@ -21,8 +21,33 @@ show_side_decor: false
   </details>
 
   <details>
-    <summary>What time should I arrive?</summary>
-    <p>Please plan to arrive at 4:30 PM so you can find parking and get settled before the processional begins.</p>
+    <summary>Can I bring a date?</summary>
+    <p>Due to limited space, we are only able to accommodate guests formally listed on each invitation. If you received a plus one, it will appear with your invitation details when you RSVP.</p>
+  </details>
+
+  <details>
+    <summary>Can we bring our children?</summary>
+    <p>Invitations include the names of everyone invited. If children are included, they will be listed with your invitation when you RSVP.</p>
+  </details>
+
+  <details>
+    <summary>What happens if I do not RSVP in time?</summary>
+    <p>If we do not receive your RSVP by the deadline, we will need to mark your response as not attending so we can provide final counts to our vendors.</p>
+  </details>
+
+  <details>
+    <summary>Will there be an open bar?</summary>
+    <p>Yes. We will have an open bar during the celebration. Please plan ahead for a safe ride home.</p>
+  </details>
+
+  <details>
+    <summary>What time should I arrive at the ceremony?</summary>
+    <p>Please arrive by 4:30 PM so you have time to park, settle in, and be seated before the ceremony begins.</p>
+  </details>
+
+  <details>
+    <summary>Is there parking onsite?</summary>
+    <p>Yes, there is onsite parking available for guests.</p>
   </details>
 
   <details>
