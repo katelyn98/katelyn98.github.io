@@ -12,7 +12,7 @@ show_side_decor: false
 
   <details>
     <summary>What is the attire?</summary>
-    <p>We are aiming for business casual. For the gentlemen, no suits necessary (Álvaro will not be wearing a suit). For the ladies, just try to avoid sparkly gowns. Please wear whatever helps you feel comfortable, confident, and ready to celebrate.</p>
+    <p>We are aiming for business casual. For the gentlemen, no suits necessary (Álvaro will be wearing khakis). For the ladies, just try to avoid sparkly gowns. Please wear whatever helps you feel comfortable, confident, and ready to celebrate.</p>
   </details>
 
   <details>
