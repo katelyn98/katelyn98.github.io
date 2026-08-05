@@ -1,6 +1,0 @@
-# Optional metadata keyed by file name without extension.
-# Example:
-# my-demo-video:
-#   title: My Demo Video
-#   description: A short summary of what this video shows.
-#   thumbnail: /assets/img/my-demo-thumb.jpg
