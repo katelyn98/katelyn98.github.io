@@ -5,6 +5,17 @@
 #   description: A short summary of what this video shows.
 #   thumbnail: /assets/img/my-demo-thumb.jpg
 
+"wavelength-intro":
+  title: Wavelength.AI Demo
+  description: A demo of Wavelength.AI, a collaborative game testbed for studying shared understanding in human-agent teams.
+  publications:
+    - label: Wavelength.AI Demo Track
+      url: /publications/#morrison2026wavelengthai
+    - label: On the Same Wavelength
+      url: /publications/#morrison2026onthesamew
+    - label: Wavelength as a Testbed
+      url: /publications/#morrison2025establishi
+
 "GenAIxRAD Demo":
   title: GenAIxRAD Demo
   description: A demo video showcasing the GenAIxRAD project interface and workflow.
