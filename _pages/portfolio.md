@@ -2,7 +2,7 @@
 layout: page
 title: portfolio
 permalink: /portfolio/
-description: Video portfolio with previews and fullscreen playback.
+description: Interactive demos and project walkthroughs.
 nav: true
 ---
 
@@ -49,29 +49,31 @@ nav: true
     line-height: 1.45;
   }
 
-  .fullscreen-btn {
-    border: 1px solid #c7d2e5;
-    background: #f6f8fc;
-    color: #1f2937;
-    border-radius: 8px;
-    padding: 0.38rem 0.7rem;
-    font-size: 0.86rem;
-    font-weight: 600;
-    cursor: pointer;
+  .publication-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin: 0.55rem 0 0;
   }
 
-  .fullscreen-btn:hover {
+  .publication-tag {
+    border: 1px solid #c7d2e5;
+    border-radius: 999px;
+    padding: 0.22rem 0.55rem;
+    background: #f6f8fc;
+    color: #1f2937;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+
+  .publication-tag:hover {
     background: #e9eef9;
+    color: #1f2937;
+    text-decoration: none;
   }
 </style>
 
 {% assign portfolio_videos = site.static_files | where_exp: "file", "file.path contains '/assets/vid/'" %}
-
-<div class="portfolio-intro">
-  <p>
-    Explore selected portfolio videos. Use the player controls or the fullscreen button on each card.
-  </p>
-</div>
 
 {% if portfolio_videos.size > 0 %}
   <div class="portfolio-grid">
@@ -99,9 +101,13 @@ nav: true
         <div class="portfolio-copy">
           <h3>{{ video_title }}</h3>
           <p>{{ video_description }}</p>
-          <button class="fullscreen-btn" type="button" onclick="openPortfolioFullscreen('{{ video_id }}')">
-            Fullscreen
-          </button>
+          {% if meta.publications %}
+            <div class="publication-tags" aria-label="Related publications">
+              {% for publication in meta.publications %}
+                <a class="publication-tag" href="{{ publication.url | relative_url }}">{{ publication.label }}</a>
+              {% endfor %}
+            </div>
+          {% endif %}
         </div>
       </article>
     {% endfor %}
@@ -111,18 +117,3 @@ nav: true
     Add your videos to <code>assets/vid/</code> and they will appear here automatically.
   </p>
 {% endif %}
-
-<script>
-  function openPortfolioFullscreen(videoId) {
-    var el = document.getElementById(videoId);
-    if (!el) return;
-
-    if (el.requestFullscreen) {
-      el.requestFullscreen();
-    } else if (el.webkitRequestFullscreen) {
-      el.webkitRequestFullscreen();
-    } else if (el.msRequestFullscreen) {
-      el.msRequestFullscreen();
-    }
-  }
-</script>

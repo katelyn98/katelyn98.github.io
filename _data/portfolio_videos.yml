@@ -4,3 +4,17 @@
 #   title: My Demo Video
 #   description: A short summary of what this video shows.
 #   thumbnail: /assets/img/my-demo-thumb.jpg
+
+"GenAIxRAD Demo":
+  title: GenAIxRAD Demo
+  description: A demo video showcasing the GenAIxRAD project interface and workflow.
+  publications:
+    - label: Reframing Explainable Generative AI as a Tool for Thought
+      url: /publications/#morrison2026reframinge
+
+"PHORA Demo":
+  title: PHORA Demo
+  description: A demo video showcasing the PHORA project interface and workflow.
+  publications:
+    - label: It’s Not Just for Trust
+      url: /publications/#morrison2026itsnotjust
