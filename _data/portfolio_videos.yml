@@ -8,6 +8,7 @@
 "wavelength-intro":
   title: Wavelength.AI Demo
   description: A demo of Wavelength.AI, a collaborative game testbed for studying shared understanding in human-agent teams.
+  demo: https://play-wavelength-ai.com/
   publications:
     - label: Wavelength.AI Demo Track
       url: /publications/#morrison2026wavelengthai

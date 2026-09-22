@@ -1,0 +1,46 @@
+- title: Human-Made Wildfires in the US
+  description: A 2021 class project created with Swetha Kannan, exploring where large human-caused wildfires occurred and how their causes changed across the United States from 2000 to 2018.
+  thumbnail: /assets/img/human-made-wildfires-viz.png
+  url: https://cmu-vis-2021.github.io/assignment-3-environment-viz/
+  demo: https://cmu-vis-2021.github.io/assignment-3-environment-viz/
+  github: https://github.com/CMU-Vis-2021/assignment-3-environment-viz
+
+- title: Insightful Saliency Maps
+  description: A 2021 class project created with Swetha Kannan, developing interactive saliency-map tools to help data scientists explore and debug image-classification model behavior.
+  thumbnail: /assets/img/insightfulsaliencymaps.png
+  url: https://cmu-vis-2021.github.io/Insightful-Saliency-Maps/
+  demo: https://cmu-vis-2021.github.io/Insightful-Saliency-Maps/
+  github: https://github.com/CMU-Vis-2021/Insightful-Saliency-Maps
+
+- title: Claim Mapping Visualization & Analysis
+  description: An IQT Labs project created with Nina Lopatina, visualizing claims and narratives in COVID-19 Twitter data across topic, location, date, and metadata.
+  thumbnail: /assets/img/claim-mapping.gif
+  url: https://github.com/IQTLabs/ClaimMapping
+  github: https://github.com/IQTLabs/ClaimMapping
+
+- title: "Civic Hacking & Urban Informatics: Mapping Data with GeoPandas"
+  description: A 2020 PyOhio tutorial on using Python, GeoPandas, and public data to examine equity in Pittsburgh's bike-sharing system.
+  embed: https://www.youtube.com/embed/iaHDm0OPZsE?si=s6F8VoC4jFVaPpo0
+  url: https://www.youtube.com/watch?v=iaHDm0OPZsE
+  github: https://github.com/katelyn98/HealthyRide-Mapping
+
+- title: CityZen
+  description: A 2020 Software Engineering class project where I served as Scrum Master, building a crowdsourcing platform for Pittsburgh residents to share ideas and concerns about city infrastructure.
+  thumbnail: /assets/img/cityzen-demo.gif
+  url: https://github.com/CityZenPGH/Tutorials
+  github: https://github.com/CityZenPGH/Tutorials
+
+- title: "JamDraw: Sketch Your Mind"
+  description: A 2019 Dare Mighty Things Hackathon project that won Best Use of Audio Visualization, translating dominant colors in drawings into music using computer vision, K-means clustering, and Spotify data.
+  video: /assets/img/jamdraw-demo.mp4
+  url: https://github.com/katelyn98/JamDrawHacakthon
+  github: https://github.com/katelyn98/JamDrawHacakthon
+
+- title: Thoracic Rotation Range of Motion
+  description: A 2020 ICMI project with Daniel Yates, Maya Roman, and William W. Clark, using Raspberry Pi computer vision and object tracking to measure thoracic rotation without a goniometer.
+  video: /assets/img/thoracic-rotation-demo.mp4
+  url: /publications/#morrison2020usingobjec
+  github: https://github.com/katelyn98/CalcTorso-OpenCV
+  publications:
+    - label: Workshop paper
+      url: https://dl.acm.org/doi/10.1145/3395035.3425189

@@ -26,12 +26,21 @@ nav: true
   }
 
   .portfolio-card video,
-  .portfolio-card img {
+  .portfolio-card img,
+  .portfolio-card iframe {
     width: 100%;
     height: 210px;
-    object-fit: cover;
     display: block;
     background: #0b1020;
+  }
+
+  .portfolio-card video,
+  .portfolio-card img {
+    object-fit: cover;
+  }
+
+  .portfolio-card iframe {
+    border: 0;
   }
 
   .portfolio-copy {
@@ -74,8 +83,9 @@ nav: true
 </style>
 
 {% assign portfolio_videos = site.static_files | where_exp: "file", "file.path contains '/assets/vid/'" %}
+{% assign portfolio_projects = site.data.portfolio_projects %}
 
-{% if portfolio_videos.size > 0 %}
+{% if portfolio_videos.size > 0 or portfolio_projects.size > 0 %}
   <div class="portfolio-grid">
     {% for video in portfolio_videos %}
       {% assign slug = video.basename %}
@@ -101,9 +111,47 @@ nav: true
         <div class="portfolio-copy">
           <h3>{{ video_title }}</h3>
           <p>{{ video_description }}</p>
-          {% if meta.publications %}
-            <div class="publication-tags" aria-label="Related publications">
+          {% if meta.demo or meta.publications %}
+            <div class="publication-tags" aria-label="Project links">
+              {% if meta.demo %}
+                <a class="publication-tag" href="{{ meta.demo }}" target="_blank" rel="noopener noreferrer">Demo</a>
+              {% endif %}
               {% for publication in meta.publications %}
+                <a class="publication-tag" href="{{ publication.url | relative_url }}">{{ publication.label }}</a>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+
+    {% for project in portfolio_projects %}
+      <article class="portfolio-card">
+        {% if project.video %}
+          <video autoplay muted loop playsinline preload="metadata" aria-label="{{ project.title }} demo">
+            <source src="{{ project.video | relative_url }}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        {% elsif project.embed %}
+          <iframe src="{{ project.embed }}" title="{{ project.title }} video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        {% else %}
+          <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer">
+            <img src="{{ project.thumbnail | relative_url }}" alt="Screenshot of the {{ project.title }} interactive visualization">
+          </a>
+        {% endif %}
+
+        <div class="portfolio-copy">
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
+          {% if project.github or project.demo or project.publications %}
+            <div class="publication-tags" aria-label="Project links">
+              {% if project.github %}
+                <a class="publication-tag" href="{{ project.github }}" target="_blank" rel="noopener noreferrer">Source code</a>
+              {% endif %}
+              {% if project.demo %}
+                <a class="publication-tag" href="{{ project.demo }}" target="_blank" rel="noopener noreferrer">Demo</a>
+              {% endif %}
+              {% for publication in project.publications %}
                 <a class="publication-tag" href="{{ publication.url | relative_url }}">{{ publication.label }}</a>
               {% endfor %}
             </div>
