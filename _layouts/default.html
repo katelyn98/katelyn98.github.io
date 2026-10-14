@@ -30,7 +30,7 @@
   {% include scripts/misc.html %}
   {% if page.travel_map %}
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="{{ '/assets/js/travel-map.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/travel-map.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
   {% endif %}
 
 </html>
