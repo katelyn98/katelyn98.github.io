@@ -1,0 +1,47 @@
+themes:
+  human-ai:
+    label: Human-AI Teamwork
+    color: "#e15d4f"
+  xai:
+    label: Explainable AI
+    color: "#16847d"
+  health:
+    label: Clinical AI & Decision-Making
+    color: "#b77900"
+  imaging:
+    label: Medical Imaging AI
+    color: "#3d72bf"
+  trustworthy:
+    label: Trustworthy & Robust AI
+    color: "#9a4d7d"
+
+papers:
+  vlases2026addressing: { theme: xai }
+  morrison2026wavelengthai: { theme: human-ai }
+  spitzer2026dontbefool: { theme: xai }
+  kim2026surfacingd: { theme: health }
+  fauvel2026refiningth: { theme: health }
+  morrison2026itsnotjust: { theme: health }
+  ghosh2025mammofmbre: { theme: imaging }
+  spitzer2026agenticaut: { theme: human-ai }
+  morrison2026onthesamew: { theme: human-ai }
+  morrison2026reframinge: { theme: xai }
+  abrini2025proceeding: { theme: human-ai }
+  sivaraman2025overrelyin: { theme: health }
+  bradshaw2025towardinte: { theme: xai }
+  morrison2025ahumancent: { theme: imaging }
+  spitzer2025imperfecti: { theme: xai }
+  morrison2025establishi: { theme: human-ai }
+  spitzer2025hybridauto: { theme: human-ai }
+  xu2024medsyntext: { theme: imaging }
+  morrison2024theimpacto: { theme: xai }
+  turri2024transparen: { theme: trustworthy }
+  morrison2024aipoweredr: { theme: human-ai }
+  morrison2023evaluating: { theme: xai }
+  morrison2024trew: { theme: xai }
+  morrison2023eyeintoaie: { theme: xai }
+  morrison2023sharedinte: { theme: xai }
+  aswal2022towardsgen: { theme: xai }
+  morrison2021exploringc: { theme: trustworthy }
+  morrison2020usingobjec: { theme: health }
+  morrison2020reducingdi: { theme: trustworthy }

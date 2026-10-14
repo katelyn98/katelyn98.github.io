@@ -7,7 +7,7 @@
     {% include scripts/mathjax.html %}
   </head>
 
-  <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}{% if page.travel_map %} travel-map-page{% endif %}">
+  <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}{% if page.travel_map %} travel-map-page{% endif %}{% if page.publication_atlas %} publication-atlas-page{% endif %}">
 
     <!-- Header -->
 
@@ -31,6 +31,10 @@
   {% if page.travel_map %}
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="{{ '/assets/js/travel-map.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+  {% endif %}
+  {% if page.publication_atlas %}
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script src="{{ '/assets/js/publication-atlas.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
   {% endif %}
 
 </html>
