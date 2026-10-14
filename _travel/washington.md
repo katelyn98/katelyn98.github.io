@@ -1,10 +1,12 @@
 ---
 layout: page
 title: Washington, United States
-description: For the love of Washington...I absolutely have too many pictures
+description: Favorite trails, alpine lakes, and landscapes across Washington.
 img: /assets/img/travel/washington/washingtoncovervideo.gif
 importance: 4
 category: North America
+latitude: 47.40
+longitude: -120.70
 ---
 
 Those who know me know that I absolutely adore Washington State. Washington fosters this connection to nature that I have not seen anywhere else in the states. I have gone on many adventures in Washington over the years, primarily with my aunt and cousins. This post summarizes some of the places in Washington that I love the most.

@@ -7,7 +7,7 @@
     {% include scripts/mathjax.html %}
   </head>
 
-  <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}">
+  <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}{% if page.travel_map %} travel-map-page{% endif %}">
 
     <!-- Header -->
 
@@ -28,5 +28,9 @@
   {% include scripts/bootstrap.html %}
   {% include scripts/mansory.html %}
   {% include scripts/misc.html %}
+  {% if page.travel_map %}
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="{{ '/assets/js/travel-map.js' | relative_url }}"></script>
+  {% endif %}
 
 </html>

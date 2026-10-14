@@ -1,0 +1,608 @@
+// Interactive travel map
+
+.travel-index {
+  --travel-coral: var(--global-theme-color);
+  --travel-gold: var(--global-theme-color);
+  --travel-ink: var(--global-text-color);
+  --travel-mint: var(--global-bg-color);
+  --travel-paper: var(--global-bg-color);
+  --travel-muted: var(--global-text-color-light);
+  --travel-on-accent: #fff;
+  --travel-shadow: rgba(0, 0, 0, 0.16);
+
+  background: var(--travel-mint);
+  color: var(--travel-ink);
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  min-height: calc(100vh - 85px);
+  overflow: hidden;
+
+  .travel-map__intro {
+    align-items: end;
+    display: grid;
+    gap: 0.5rem clamp(2rem, 7vw, 7rem);
+    grid-template-columns: minmax(0, 1.3fr) minmax(16rem, 0.7fr);
+    padding: 2.25rem max(calc((100vw - 1180px) / 2), 2rem) 1.75rem;
+
+    > p {
+      color: var(--travel-coral);
+      font-size: 0.7rem;
+      font-weight: 700;
+      grid-column: 1 / -1;
+      letter-spacing: 0.12em;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      color: var(--travel-ink);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(2.8rem, 6vw, 5.25rem);
+      line-height: 0.9;
+      margin: 0;
+
+      em {
+        color: var(--travel-coral);
+        font-weight: 400;
+      }
+    }
+
+    > span {
+      color: var(--travel-ink);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      padding-bottom: 0.35rem;
+    }
+  }
+
+  .travel-map__toolbar {
+    align-items: center;
+    background: var(--travel-ink);
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    min-height: 3.6rem;
+    padding: 0.55rem max(calc((100vw - 1180px) / 2), 2rem);
+  }
+
+  .travel-map__filters {
+    display: flex;
+    gap: 0.4rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    button {
+      background: transparent;
+      border: 1px solid var(--travel-muted);
+      border-radius: 2rem;
+      color: var(--travel-paper);
+      flex: 0 0 auto;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 0.45rem 0.75rem;
+      transition: background 140ms ease, color 140ms ease;
+
+      &.is-active,
+      &:hover {
+        background: var(--travel-gold);
+        border-color: var(--travel-gold);
+        color: var(--travel-ink);
+      }
+    }
+  }
+
+  .travel-map__reset {
+    align-items: center;
+    background: var(--travel-coral);
+    border: 0;
+    border-radius: 50%;
+    color: var(--travel-on-accent);
+    display: flex;
+    flex: 0 0 auto;
+    height: 2.35rem;
+    justify-content: center;
+    width: 2.35rem;
+  }
+
+  .travel-map__stage {
+    min-height: 660px;
+    position: relative;
+  }
+
+  .travel-map__title {
+    background: var(--travel-paper);
+    box-shadow: 0.65rem 0.65rem 0 var(--travel-coral);
+    left: 0;
+    padding: clamp(1.2rem, 3vw, 2.25rem) max(calc((50vw - 590px) / 2), 2rem);
+    position: absolute;
+    top: 0;
+    width: 50%;
+    z-index: 500;
+
+    h1 {
+      color: var(--travel-ink);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(2.5rem, 4vw, 4.25rem);
+      line-height: 0.9;
+      margin: 0;
+
+      em {
+        color: var(--travel-coral);
+        display: block;
+        font-weight: 400;
+      }
+    }
+
+    p {
+      color: var(--travel-muted);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin: 0.9rem 0 0;
+      text-transform: uppercase;
+    }
+  }
+
+  #travel-map {
+    background: var(--travel-paper);
+    height: min(72vh, 760px);
+    min-height: 660px;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .leaflet-tile-pane {
+    filter: saturate(0.55) contrast(0.94);
+  }
+
+  .leaflet-control-attribution {
+    font-size: 0.6rem;
+  }
+
+  .leaflet-control-zoom a {
+    color: var(--travel-ink);
+  }
+
+  .travel-map__journal {
+    background: var(--travel-paper);
+    box-shadow: 0.8rem 0.8rem 0 var(--travel-gold), 0 1.5rem 3rem var(--travel-shadow);
+    left: max(calc((100vw - 1180px) / 2), 2rem);
+    max-width: 24rem;
+    opacity: 0;
+    position: absolute;
+    bottom: 2rem;
+    top: auto;
+    transform: translateY(0.75rem) rotate(-0.6deg);
+    transition: opacity 220ms ease, transform 220ms ease;
+    width: calc(100% - 4rem);
+    z-index: 500;
+
+    &.is-visible {
+      opacity: 1;
+      transform: translateY(0) rotate(-0.6deg);
+    }
+  }
+
+  .travel-map__photo {
+    background: var(--travel-paper);
+    margin: 0.65rem 0.65rem 0;
+    position: relative;
+
+    img {
+      aspect-ratio: 16 / 10;
+      display: block;
+      object-fit: cover;
+      width: 100%;
+    }
+
+  }
+
+  .travel-map__journal-body {
+    padding: 1.2rem 1.4rem 1.5rem;
+
+    > span {
+      color: var(--travel-coral);
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      color: var(--travel-ink);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 2.25rem;
+      line-height: 1.05;
+      margin: 0.35rem 0 0.65rem;
+    }
+
+    p {
+      color: var(--travel-muted);
+      font-size: 0.88rem;
+      line-height: 1.55;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      border-bottom: 2px solid var(--travel-gold);
+      color: var(--travel-ink);
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding-bottom: 0.15rem;
+      text-transform: uppercase;
+
+      &:hover {
+        color: var(--travel-coral);
+        text-decoration: none;
+      }
+    }
+  }
+
+  .travel-map__status {
+    background: var(--travel-coral);
+    bottom: 1rem;
+    color: var(--travel-on-accent);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin: 0;
+    padding: 0.45rem 0.7rem;
+    position: absolute;
+    right: 4rem;
+    text-transform: uppercase;
+    z-index: 500;
+  }
+
+  .travel-map__places {
+    align-items: center;
+    background: var(--travel-mint);
+    display: flex;
+    gap: 0.7rem;
+    overflow-x: auto;
+    padding: 1rem max(calc((100vw - 1180px) / 2), 2rem) 1.25rem;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    > span {
+      color: var(--travel-ink);
+      flex: 0 0 auto;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-right: 0.4rem;
+      text-transform: uppercase;
+    }
+
+    button {
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid var(--travel-ink);
+      color: var(--travel-ink);
+      flex: 0 0 auto;
+      font-family: Georgia, 'Times New Roman', serif;
+      padding: 0.15rem 0;
+
+      &:hover {
+        border-color: var(--travel-coral);
+        color: var(--travel-coral);
+      }
+    }
+  }
+
+  .travel-map__marker-wrap {
+    background: transparent;
+    border: 0;
+  }
+
+  .travel-map__marker {
+    align-items: center;
+    background: var(--travel-coral);
+    border: 3px solid var(--travel-paper);
+    border-radius: 50%;
+    box-shadow: 0 2px 8px var(--travel-shadow);
+    display: flex;
+    height: 1.4rem;
+    justify-content: center;
+    transition: background 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+    width: 1.4rem;
+
+    &.is-active,
+    &:hover {
+      box-shadow: 0 0 0 4px var(--travel-paper), 0 0 0 7px var(--travel-coral);
+      transform: scale(1.25);
+    }
+  }
+
+  .travel-map__marker--1 { background: var(--travel-coral); }
+  .travel-map__marker--2 { background: color-mix(in srgb, var(--travel-coral) 88%, var(--travel-muted)); }
+  .travel-map__marker--3 { background: color-mix(in srgb, var(--travel-coral) 76%, var(--travel-muted)); }
+  .travel-map__marker--4 { background: color-mix(in srgb, var(--travel-coral) 64%, var(--travel-muted)); }
+  .travel-map__marker--5 { background: color-mix(in srgb, var(--travel-coral) 52%, var(--travel-muted)); }
+  .travel-map__marker--6 { background: color-mix(in srgb, var(--travel-coral) 40%, var(--travel-muted)); }
+  .travel-map__marker--7 { background: color-mix(in srgb, var(--travel-coral) 28%, var(--travel-muted)); }
+  .travel-map__marker--8 { background: color-mix(in srgb, var(--travel-coral) 16%, var(--travel-muted)); }
+  .travel-map__marker--9 { background: color-mix(in srgb, var(--travel-coral) 8%, var(--travel-muted)); }
+
+  .travel-map__journal.has-no-image {
+    .travel-map__photo {
+      display: none;
+    }
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  #travel-map:focus-visible {
+    outline: 3px solid var(--travel-coral);
+    outline-offset: 3px;
+  }
+}
+
+@media (max-width: 720px) {
+  .travel-index {
+    .travel-map__intro {
+      display: block;
+      padding: 1.75rem 1.25rem 1.5rem;
+
+      h1 {
+        font-size: clamp(2.7rem, 14vw, 4.2rem);
+        margin: 0.7rem 0 1rem;
+      }
+
+      > span {
+        display: block;
+        font-size: 0.95rem;
+      }
+    }
+
+    .travel-map__toolbar {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .travel-map__stage {
+      background: var(--travel-paper);
+      min-height: 0;
+    }
+
+    .travel-map__title {
+      left: 0.75rem;
+      padding: 0.8rem 1rem;
+      top: 0.75rem;
+      width: calc(100% - 1.5rem);
+
+      h1 {
+        font-size: clamp(2rem, 10vw, 2.8rem);
+
+        em {
+          display: inline;
+        }
+      }
+
+      p {
+        font-size: 0.6rem;
+        margin-top: 0.5rem;
+      }
+    }
+
+    #travel-map {
+      height: 52vh;
+      min-height: 390px;
+    }
+
+    .travel-map__journal {
+      box-shadow: 0.55rem 0.55rem 0 var(--travel-gold);
+      left: auto;
+      margin: -2rem auto 2rem;
+      max-width: calc(100% - 2.5rem);
+      position: relative;
+      top: auto;
+      width: 24rem;
+      z-index: 500;
+    }
+
+    .travel-map__status {
+      bottom: auto;
+      right: 0.75rem;
+      top: 0.75rem;
+    }
+
+    .travel-map__places {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .travel-index .travel-map__journal,
+  .travel-index .travel-map__marker {
+    transition: none;
+  }
+}
+
+html[data-theme='dark'] .travel-index {
+  --travel-on-accent: #0b1625;
+  --travel-shadow: rgba(0, 0, 0, 0.45);
+
+  .leaflet-tile-pane {
+    filter: brightness(0.62) saturate(0.45) contrast(1.08);
+  }
+}
+
+// Keep the complete map workspace inside the viewport between the fixed nav and footer.
+body.travel-map-page {
+  height: 100dvh;
+  overflow: hidden;
+  padding-bottom: 35px;
+
+  > .container {
+    height: calc(100dvh - 91px);
+    margin-top: 0 !important;
+  }
+
+  .travel-index {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+    height: 100%;
+    min-height: 0;
+  }
+
+  .travel-map__intro {
+    padding-bottom: 1rem;
+    padding-top: 1.25rem;
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+    }
+  }
+
+  .travel-map__stage,
+  #travel-map {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .travel-map__places {
+    padding-bottom: 0.65rem;
+    padding-top: 0.55rem;
+  }
+
+  .travel-map__journal {
+    max-height: calc(100% - 4rem);
+    max-width: 21rem;
+    overflow: hidden;
+  }
+
+  .travel-map__journal-body {
+    padding: 0.9rem 1.15rem 1.1rem;
+
+    h2 {
+      font-size: 1.9rem;
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  body.travel-map-page {
+    padding-bottom: 71px;
+
+    > .container {
+      height: calc(100dvh - 127px);
+    }
+
+    .travel-map__intro {
+      padding: 0.8rem 1rem 0.75rem;
+
+      > p {
+        font-size: 0.6rem;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 11vw, 3.25rem);
+        margin: 0.35rem 0 0.45rem;
+      }
+
+      > span {
+        font-size: 0.82rem;
+      }
+    }
+
+    .travel-map__toolbar {
+      min-height: 3.15rem;
+      padding-bottom: 0.4rem;
+      padding-top: 0.4rem;
+    }
+
+    .travel-map__stage {
+      min-height: 0;
+    }
+
+    #travel-map {
+      min-height: 0;
+    }
+
+    .travel-map__journal {
+      bottom: 0.75rem;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      left: 0.75rem;
+      margin: 0;
+      max-height: 9.5rem;
+      max-width: calc(100% - 1.5rem);
+      position: absolute;
+      top: auto;
+      width: calc(100% - 1.5rem);
+    }
+
+    .travel-map__journal.has-no-image {
+      grid-template-columns: 1fr;
+    }
+
+    .travel-map__photo {
+      height: calc(100% - 1rem);
+      margin: 0.5rem 0 0.5rem 0.5rem;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    .travel-map__journal-body {
+      align-self: center;
+      min-width: 0;
+      padding: 0.7rem 0.75rem;
+
+      > span {
+        font-size: 0.55rem;
+      }
+
+      h2 {
+        font-size: 1.25rem;
+        margin: 0.2rem 0 0.35rem;
+      }
+
+      p {
+        display: -webkit-box;
+        font-size: 0.7rem;
+        line-height: 1.35;
+        margin-bottom: 0.45rem;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+
+      a {
+        font-size: 0.58rem;
+      }
+    }
+
+    .travel-map__status {
+      font-size: 0.55rem;
+      padding: 0.35rem 0.5rem;
+    }
+
+    .travel-map__places {
+      gap: 0.55rem;
+      padding: 0.4rem 1rem 0.5rem;
+
+      > span {
+        display: none;
+      }
+
+      button {
+        font-size: 0.78rem;
+      }
+    }
+  }
+}

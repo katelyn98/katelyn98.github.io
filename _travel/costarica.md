@@ -1,10 +1,12 @@
 ---
 layout: page
 title: Costa Rica
-description: Spring break study abroad trip in 2019 to learn about sustainable business practices and tropical ecology
+description: Studying sustainable business and tropical ecology in 2019.
 img: /assets/img/travel/costarica/costaricacovervideo.gif
 importance: 1
 category: Central America
+latitude: 9.75
+longitude: -83.75
 ---
 
 ## *Coming Soon* 

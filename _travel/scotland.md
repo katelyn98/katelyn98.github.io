@@ -1,10 +1,12 @@
 ---
 layout: page
 title: Scotland
-description: Conducting ancestral research in scotland with my dad during our two week tour of Scotland.
+description: Tracing family history on a two-week journey with my dad.
 img: /assets/img/travel/scotland/cover.gif
 importance: 1
 category: Europe & UK
+latitude: 56.49
+longitude: -4.20
 ---
 
 # Discovering our Ancestors

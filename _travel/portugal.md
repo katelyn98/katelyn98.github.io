@@ -1,10 +1,12 @@
 ---
 layout: page
 title: Portugal
-description: A road trip around Portugal for spring break. Learned a lot about Port wine!
+description: A spring road trip through Porto, Lisbon, and the Douro Valley.
 img: /assets/img/travel/portugal/portugalcovervideo.gif
 importance: 2
 category: Europe & UK
+latitude: 39.50
+longitude: -8.00
 ---
 
 # Porto

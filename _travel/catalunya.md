@@ -1,10 +1,12 @@
 ---
 layout: page
 title: Spain
-description: Exploring the nature of Spain.
+description: Hiking and biking through the landscapes of Catalunya.
 img: /assets/img/travel/catalunya/cover.gif
 importance: 1
 category: Europe & UK
+latitude: 41.98
+longitude: 2.82
 ---
 
 # Pre-Pyrnees

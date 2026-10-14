@@ -1,10 +1,12 @@
 ---
 layout: page
 title: British Columbia, Canada
-description: From the sea to the sky...we explored all the beautiful nature in British Columbia.
+description: Exploring British Columbia from the coast to the mountains.
 img: /assets/img/travel/bc/bccovervideo.gif
 importance: 4
 category: North America
+latitude: 53.73
+longitude: -127.65
 ---
 
 ## *Coming Soon*

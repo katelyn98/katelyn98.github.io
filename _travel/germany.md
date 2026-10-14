@@ -1,10 +1,12 @@
 ---
 layout: page
 title: Germany
-description: Hikes around the Bavarian Alps!
+description: Hiking through gorges and peaks in the Bavarian Alps.
 img: /assets/img/travel/germany/germanycovervideo.gif
 importance: 1
 category: Europe & UK
+latitude: 47.56
+longitude: 11.12
 ---
 
 # Garmisch-Partenkirchen
