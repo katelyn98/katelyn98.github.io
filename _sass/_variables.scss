@@ -30,9 +30,17 @@ $grey-color-dark:     darken($grey-color, 25%);
 $white-color: #ffffff !default;
 $black-color: #000000 !default;
 
+$dark-bg-color:          #0b1625 !default;
+$dark-surface-color:     #13263d !default;
+$dark-border-color:      #31577a !default;
+$dark-text-color:        #eaf2fa !default;
+$dark-text-color-light:  #b6c7d8 !default;
+$dark-theme-color:       #6ec6ff !default;
+$dark-footer-bg-color:   #060d17 !default;
+
 
 // Theme colors
 
 $code-bg-color-light:     rgba($purple-color, 0.05);
-$code-bg-color-dark:      #2c3237 !default;
+$code-bg-color-dark:      $dark-surface-color !default;
 
