@@ -6,7 +6,7 @@ description: 'Senior UX Researcher @ <img src="/assets/img/microsoft-logo.webp" 
 
 profile:
   align: right
-  image: prof_pic2.jpg
+  image: profile_picture_cropped.jpeg
   address: >
     <i class="far fa-file-alt"></i> <a href="/assets/pdf/Morrison_Katelyn_Resume.pdf">Current Resume</a>
 
