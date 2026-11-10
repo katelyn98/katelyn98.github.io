@@ -1,27 +1,37 @@
 themes:
   human-ai:
     label: Human-AI Teamwork
+    description: How can people and AI agents build shared understanding and coordinate their work?
     color: "#e15d4f"
   xai:
     label: Explainable AI
+    description: What makes an explanation useful—and when can it mislead human judgment?
     color: "#16847d"
   health:
     label: Clinical AI & Decision-Making
+    description: How can AI support clinical reasoning, communication, and shared decisions?
     color: "#b77900"
   imaging:
     label: Medical Imaging AI
+    description: How can generative models support medical imaging and the people who use it?
     color: "#3d72bf"
   trustworthy:
     label: Trustworthy & Robust AI
+    description: Where do AI systems fall short, and how can we understand those limitations in practice?
     color: "#9a4d7d"
 
 papers:
+  deck2026shadesofwrong: { theme: xai }
   vlases2026addressing: { theme: xai }
   morrison2026wavelengthai: { theme: human-ai }
   spitzer2026dontbefool: { theme: xai }
   kim2026surfacingd: { theme: health }
   fauvel2026refiningth: { theme: health }
-  morrison2026itsnotjust: { theme: health }
+  morrison2026itsnotjust:
+    theme: health
+    image: /assets/img/lab-foundation-practical-xai.png
+    image_alt: What-if explanation interface for exploring clinical outcomes
+    summary: Co-designing explanations as tools for clinical communication, learning, and exploring possible outcomes.
   ghosh2025mammofmbre: { theme: imaging }
   spitzer2026agenticaut: { theme: human-ai }
   morrison2026onthesamew: { theme: human-ai }
@@ -34,10 +44,18 @@ papers:
   morrison2025establishi: { theme: human-ai }
   spitzer2025hybridauto: { theme: human-ai }
   xu2024medsyntext: { theme: imaging }
-  morrison2024theimpacto: { theme: xai }
+  morrison2024theimpacto:
+    theme: xai
+    image: /assets/img/lab-foundation-imperfect-xai.png
+    image_alt: Correct and incorrect AI predictions paired with imperfect explanations
+    summary: Studying how imperfect explanations affect reliance on AI and human–AI decision-making.
   turri2024transparen: { theme: trustworthy }
   morrison2024aipoweredr: { theme: human-ai }
-  morrison2023evaluating: { theme: xai }
+  morrison2023evaluating:
+    theme: xai
+    image: /assets/img/lab-foundation-human-strategies.png
+    image_alt: Interface for eliciting explanations of building damage in satellite imagery
+    summary: Eliciting human explanation strategies and testing their effects on visual decision-making.
   morrison2024trew: { theme: xai }
   morrison2023eyeintoaie: { theme: xai }
   morrison2023sharedinte: { theme: xai }

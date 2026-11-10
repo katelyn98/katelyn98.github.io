@@ -12,11 +12,11 @@ nav: true
 <div class="publication-explorer" data-publication-explorer>
   <div class="publication-explorer__masthead">
     <div>
-      <h2>Follow the ideas across my work.</h2>
+      <h2>Explore by research theme</h2>
     </div>
     <div class="publication-explorer__view-toggle" role="group" aria-label="Publication view">
-      <button type="button" class="is-active" data-publication-view="atlas" aria-pressed="true">Research Atlas</button>
-      <button type="button" data-publication-view="list" aria-pressed="false">Traditional List</button>
+      <button type="button" class="is-active" data-publication-view="atlas" aria-pressed="true">By theme</button>
+      <button type="button" data-publication-view="list" aria-pressed="false">All publications</button>
     </div>
   </div>
 
@@ -28,37 +28,26 @@ nav: true
         <input type="search" data-publication-search placeholder="Search titles, authors, or venues">
       </label>
       <div class="publication-atlas__themes" data-publication-themes aria-label="Filter by research theme"></div>
-      <button type="button" class="publication-atlas__trace" data-publication-trace>
-        <i class="fas fa-route" aria-hidden="true"></i>
-        <span>Trace the arc</span>
-      </button>
+      <label class="publication-browser__year">Year <select data-publication-year><option value="all">All years</option></select></label>
+      <button type="button" class="publication-browser__clear" data-publication-clear>Clear filters</button>
     </div>
 
-    <div class="publication-atlas__workspace">
-      <div class="publication-atlas__canvas" data-publication-canvas>
-        <svg class="publication-atlas__svg" data-publication-svg role="img" aria-label="Publications arranged by year and research theme"></svg>
-        <button type="button" class="publication-atlas__reset" data-publication-reset title="Reset atlas view" aria-label="Reset atlas view">
-          <i class="fas fa-compress-arrows-alt" aria-hidden="true"></i>
-        </button>
-        <div class="publication-atlas__tooltip" data-publication-tooltip role="status"></div>
-      </div>
+    <p class="publication-browser__help">Browse the themes below, then select a paper to read its abstract and open its links.</p>
+    <p class="publication-browser__count" data-publication-count role="status" aria-live="polite"></p>
+    <div class="publication-browser__workspace">
+      <div class="publication-browser__results" data-publication-results></div>
 
-      <aside class="publication-atlas__detail" data-publication-detail aria-live="polite">
+      <aside class="publication-atlas__detail" data-publication-detail aria-label="Selected paper" aria-live="polite" tabindex="-1">
+        <button type="button" class="publication-browser__back" data-publication-back>Back to papers</button>
         <p class="publication-atlas__detail-theme" data-detail-theme></p>
         <h3 data-detail-title></h3>
         <p class="publication-atlas__detail-meta" data-detail-meta></p>
         <div class="publication-atlas__detail-authors" data-detail-authors></div>
-        <p class="publication-atlas__detail-abstract" data-detail-abstract></p>
+        <p class="publication-atlas__detail-abstract" data-detail-abstract tabindex="0" role="region" aria-label="Abstract"></p>
         <div class="publication-atlas__detail-links" data-detail-links></div>
       </aside>
     </div>
 
-    <div class="publication-atlas__legend" aria-label="Publication type legend">
-      <span><i class="publication-atlas__shape publication-atlas__shape--circle"></i> Journal</span>
-      <span><i class="publication-atlas__shape publication-atlas__shape--square"></i> Conference</span>
-      <span><i class="publication-atlas__shape publication-atlas__shape--diamond"></i> Workshop & other</span>
-      <strong data-publication-count></strong>
-    </div>
   </section>
 
   <section class="publications publication-list" data-publication-panel="list">

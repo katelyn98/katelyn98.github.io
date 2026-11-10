@@ -51,9 +51,9 @@
             {{ formatted_author }}
           {% else %}
             {% unless forloop.last %}
-              {{ formatted_author }},
+              {{ formatted_author }};
             {% else %}
-              and {{ formatted_author }}
+              {{ formatted_author }}
             {% endunless %}
           {% endif %}
         {% endfor %}
@@ -69,6 +69,12 @@
         {{entry.year}}
       {% endif %}
       </div>
+    {% endif %}
+
+    {% if entry.award %}
+    <div class="publication-recognition">
+      <i class="fas fa-microphone" aria-hidden="true"></i> {{ entry.award }}
+    </div>
     {% endif %}
 
     <div class="links">
